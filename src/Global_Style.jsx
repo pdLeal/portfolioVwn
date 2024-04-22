@@ -19,6 +19,10 @@ const Global_Style = createGlobalStyle`
         font-style: italic;
     }
 
+    button {
+        font-family: inherit;
+    }
+
     :root {
         --bg-color: #110404;
         --typeSpeed: 5s;
