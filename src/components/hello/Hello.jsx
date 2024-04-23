@@ -22,26 +22,26 @@ function Hello() {
     };
 
     const [count, setCount] = useState(0)
-    function handleMouseMove() {
+    function handleMouseMove(e) {
         setBtnPosition({
             x: random(),
             y: random()
         });
+        console.log()
 
-        if(count < 20) {
-            setCount(prev => (prev + 1));
+        if(count > 20 || (e.touches && count > 3)) {
+            setshowNext(true);
             
         } else {
-            setshowNext(true);
+            setCount(prev => (prev + 1));
 
         }
     }
 
+    const [helpActive, setHelpActive] = useState(false);
     function handleDone() {
-        setBtnPosition({
-            x: 50,
-            y: 65
-        });
+        setHelpActive(true);
+        return;
     }
 
     return (
@@ -56,7 +56,7 @@ function Hello() {
                 {showNext &&
                     <span>
                         <Typewriter
-                            words={['', 'It seems you\'re having a hard time clicking the button =S', 'Here, let me help you!']}
+                            words={['It seems you\'re having a hard time clicking the button =S', 'Here, let me help you!']}
                             loop={1}
                             cursor
                             typeSpeed={100}
@@ -70,9 +70,13 @@ function Hello() {
                 <S.Wrapper
                     $xPosition={btnPosition.x}
                     $yPosition={btnPosition.y}
-                    onMouseMove={handleMouseMove}>
+                    onMouseMove={handleMouseMove}
+                    onTouchStart={handleMouseMove}>
                     <S.Button>Click Me</S.Button>
                 </S.Wrapper>}
+
+            {helpActive &&
+                <S.HelpBtn>Click Me</S.HelpBtn>}
 
         </S.Container>
     )
