@@ -61,3 +61,13 @@ export const HelpBtn = styled(Button)`
   position: fixed;
   top: 65%;
 `;
+
+export const SkipBtn = styled(Button)`
+  font-size: clamp(0.5rem, 1vw + 0.5rem, 1rem);
+  border: none;
+  box-shadow: none;
+
+  position: fixed;
+  top: 5%;
+  right: 5%;
+`;

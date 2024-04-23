@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTypewriter, Cursor, Typewriter } from 'react-simple-typewriter';
 import * as S from './Hello_Style';
+import { useNavigate } from 'react-router-dom';
 
 function Hello() {
     const [typeEffect, helper] = useTypewriter({
@@ -41,11 +42,26 @@ function Hello() {
     const [helpActive, setHelpActive] = useState(false);
     function handleDone() {
         setHelpActive(true);
-        return;
+    }
+
+    // SKIP BTN
+    const [canSkip, setCanSkip] = useState(false);
+    useEffect(() => {
+        if (localStorage.getItem('skippable')) {
+            setCanSkip(true);
+        } else {
+            localStorage.setItem('skippable', true);
+        }
+    }, []);
+
+    const navigate = useNavigate();
+    function handleClick() {
+        navigate('/home');
     }
 
     return (
         <S.Container>
+            {canSkip && <S.SkipBtn onClick={handleClick}>Skip {`>>>`}</S.SkipBtn>}
             <S.H1>
                 {!showNext &&
                     (<>
@@ -56,7 +72,7 @@ function Hello() {
                 {showNext &&
                     <span>
                         <Typewriter
-                            words={['It seems you\'re having a hard time clicking the button =S', 'Here, let me help you!']}
+                            words={['It seems you\'re having a hard time clicking the button =S', 'Here, a button that won\'t runaway! You can trust me XD']}
                             loop={1}
                             cursor
                             typeSpeed={100}
