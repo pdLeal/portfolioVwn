@@ -3,7 +3,6 @@ import { createGlobalStyle } from "styled-components";
 const Global_Style = createGlobalStyle`
     html {
         box-sizing: border-box;
-        color: white;
         background-color: var(--bg-color);
     }
 
@@ -24,7 +23,8 @@ const Global_Style = createGlobalStyle`
     }
 
     :root {
-        --bg-color: #110404;
+        --bg-color: #150101;
+        --runaway-color: #0ded0d;
         --typeSpeed: 5s;
         --delay: 1s;
     }
