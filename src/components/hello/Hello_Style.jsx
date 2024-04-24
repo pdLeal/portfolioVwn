@@ -13,10 +13,10 @@ export const Container = styled.div`
     position: relative;
     `;
 
-export const H1 = styled.h1`
+export const H3 = styled.h3`
     font-size: clamp(1.5rem, 3vw + 0.5rem, 2.5rem);
-    color: var(--runaway-color);
-    text-shadow: 0px 0px 3px var(--runaway-color);
+    color: var(--primary-color);
+    text-shadow: 0px 0px 3px var(--primary-color);
     `;
 
 export const Wrapper = styled.div.attrs(props => ({
@@ -35,25 +35,25 @@ export const Wrapper = styled.div.attrs(props => ({
 
 export const Button = styled.button`
     font-size: clamp(0.8rem, 2vw + 0.5rem, 1.8rem);
-    color: var(--runaway-color);
-    text-shadow: 0px 0px 4px var(--runaway-color);
-    box-shadow:  0px 0px 4px var(--runaway-color);
+    color: var(--primary-color);
+    text-shadow: 0px 0px 4px var(--primary-color);
+    box-shadow:  0px 0px 4px var(--primary-color);
     padding: 0.225em 0.8em;
     cursor: pointer;
-    border: solid 1px var(--runaway-color);
+    border: solid 1px var(--primary-color);
     border-left: solid 3px;
     border-radius: 5px;
     background-color: transparent;
     
         &:hover,
         &:focus-visible {
-          color: orangered;
-          border-color: orangered;
+          color: #66f666;
+          border-color: #66f666;
         }
         
         &:active {
-          color: #eaff00;
-          border-color: #eaff00;
+          color: #2b6a2b;
+          border-color: #2b6a2b;
         }
 `;
 

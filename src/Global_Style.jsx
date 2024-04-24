@@ -5,6 +5,7 @@ const Global_Style = createGlobalStyle`
         box-sizing: border-box;
         color: white;
         background-color: var(--bg-color);
+        backdrop-filter: blur(10px);
     }
 
     *, *::before, *::after {
@@ -24,8 +25,8 @@ const Global_Style = createGlobalStyle`
     }
 
     :root {
-        --bg-color: #150101;
-        --runaway-color: #0ded0d;
+        --bg-color: #0c0101;
+        --primary-color: #0ded0d;
         --typeSpeed: 5s;
         --delay: 1s;
     }

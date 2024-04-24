@@ -62,7 +62,7 @@ function Hello() {
     return (
         <S.Container>
             {canSkip && <S.SkipBtn onClick={handleClick}>Skip {`>>>`}</S.SkipBtn>}
-            <S.H1>
+            <S.H3>
                 {!showNext &&
                     (<>
                         <span>{typeEffect}</span>
@@ -80,7 +80,7 @@ function Hello() {
                             onLoopDone={handleDone}
                         />
                     </span>}
-            </S.H1>
+            </S.H3>
 
             {isDone &&
                 <S.Wrapper
@@ -92,7 +92,7 @@ function Hello() {
                 </S.Wrapper>}
 
             {helpActive &&
-                <S.HelpBtn>Click Me</S.HelpBtn>}
+                <S.HelpBtn onClick={handleClick}>Click Me</S.HelpBtn>}
 
         </S.Container>
     )
