@@ -61,7 +61,7 @@ function Hello() {
 
     return (
         <S.Container>
-            {canSkip && <S.SkipBtn onClick={handleClick}>Skip {`>>>`}</S.SkipBtn>}
+            {(canSkip || helpActive) && <S.SkipBtn onClick={handleClick}>Skip {`>>>`}</S.SkipBtn>}
             <S.H3>
                 {!showNext &&
                     (<>
@@ -88,11 +88,11 @@ function Hello() {
                     $yPosition={btnPosition.y}
                     onMouseMove={handleMouseMove}
                     onTouchStart={handleMouseMove}>
-                    <S.Button>Click Me</S.Button>
+                    <S.Button onClick={handleClick}>Click Me</S.Button>
                 </S.Wrapper>}
 
             {helpActive &&
-                <S.HelpBtn onClick={handleClick}>Click Me</S.HelpBtn>}
+                <S.HelpBtn>Click Me</S.HelpBtn>}
 
         </S.Container>
     )

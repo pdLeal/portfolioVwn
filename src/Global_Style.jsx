@@ -3,6 +3,7 @@ import { createGlobalStyle } from "styled-components";
 const Global_Style = createGlobalStyle`
     html {
         box-sizing: border-box;
+        font-family: "Ubuntu Mono", monospace;
         color: white;
         background-color: var(--bg-color);
         backdrop-filter: blur(10px);
