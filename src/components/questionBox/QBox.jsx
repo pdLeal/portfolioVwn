@@ -18,7 +18,7 @@ function QBox() {
 
 
     return (
-        <S.Section>
+        <S.Container>
             {!clicked && <S.SeeBtn onClick={handleClick}>See More...</S.SeeBtn>}
 
             {clicked &&
@@ -39,7 +39,7 @@ function QBox() {
     </S.Anwsers>*/}
                 </S.Question_Box>
             }
-        </S.Section>
+        </S.Container>
     )
 }
 

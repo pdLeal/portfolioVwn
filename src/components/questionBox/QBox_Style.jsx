@@ -2,7 +2,7 @@ import styled, { keyframes } from "styled-components";
 
 import { Button, H3 } from '../hello/Hello_Style';
 
-export const Section = styled.section`
+export const Container = styled.div`
     width: 100%;
     height: 100%;
 
@@ -10,7 +10,6 @@ export const Section = styled.section`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* background-color: orangered; */
 `;
 
 const grow = keyframes`

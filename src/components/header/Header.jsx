@@ -23,18 +23,13 @@ function Header() {
 
           } else {
             return (
-              <S.Li onClick={() => setIsSelected(item)}>
-                <Link to={`/${item}`}>{item}</Link>
+              <S.Li>
+                <Link onClick={() => setIsSelected(item)} to={`/${item}`}>{item}</Link>
               </S.Li>
             );
 
           }
         })}
-
-        {/* <S.Li><Link className='glitch' to='/home'>Home</Link></S.Li>
-        <S.Li><Link to='/projects'>Projects</Link></S.Li>
-        <S.Li><Link to='/about'>About</Link></S.Li>
-        <S.Li><Link to='/contact'>Contact</Link></S.Li> */}
       </S.Ul>
     </nav>
   )
