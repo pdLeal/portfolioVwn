@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import * as S from './Header_Style';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 function Header() {
-  const [isSelected, setIsSelected] = useState('home');
+  const location = useLocation();
+  const currentPage = location.pathname.substring(1);
+
+  const [isSelected, setIsSelected] = useState(currentPage);
   const menuItens = ['home', 'projects', 'about', 'contact'];
+
+  console.log();
 
   return (
     <nav>
@@ -12,7 +17,7 @@ function Header() {
         {menuItens.map((item) => {
           if (isSelected === item) {
             return (
-              <S.Li>
+              <S.Li key={item}>
                 <Link className='glitch' to={`/${item}`}>
                   <span aria-hidden='true'>{item}</span>
                   {item}
@@ -23,8 +28,8 @@ function Header() {
 
           } else {
             return (
-              <S.Li>
-                <Link onClick={() => setIsSelected(item)} to={`/${item}`}>{item}</Link>
+              <S.Li key={item}>
+                <Link to={`/${item}`}>{item}</Link>
               </S.Li>
             );
 
