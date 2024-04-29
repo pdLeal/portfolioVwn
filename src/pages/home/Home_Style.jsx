@@ -22,13 +22,16 @@ export const Span = styled.span`
 `;
 
 export const Projects = styled.section`
+    text-align: center;
     margin-top: 48px;
     background-color: #012827;
 `;
 
 export const Grid = styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(40%, 250px));
+    grid-template-columns: repeat(auto-fill, minmax(40%, 250px));
+    grid-template-rows: min-content auto auto auto;
     justify-content: center;
+    align-items: center;
     gap: 16px;
 `;

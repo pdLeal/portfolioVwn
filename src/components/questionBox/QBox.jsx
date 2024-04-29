@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import * as S from './QBox_Style';
+import { H3 } from '../hello/Hello_Style';
 import { Typewriter } from 'react-simple-typewriter';
 
 function QBox() {
 
     const [clicked, setClicked] = useState(false);
     const [animationIsDone, setAnimationIsDone] = useState(false);
-
+    const [typingIsDone, setTypingIsDone] = useState(false);
 
     function handleClick() {
         setClicked(true);
@@ -14,6 +15,10 @@ function QBox() {
         setTimeout(() => {
             setAnimationIsDone(true);
         }, 3500);
+
+        setTimeout(() => {
+            setTypingIsDone(true);
+        }, 15500);
     }
 
 
@@ -25,18 +30,17 @@ function QBox() {
                 <S.Question_Box>
 
                     {animationIsDone &&
-                        <S.Bot_Talk>
+                        <H3>
                             <Typewriter
-                                words={['', 'So here we are again, uh? If you wanna know more about him, you have to answer some questions of mine, do you agree?']}
-                                loop={1}
+                                words={['', 'So here we are again, uh? If you wanna know more about him, you\'ll have to answer some questions of mine, do you agree?']}
                                 cursor />
-                        </S.Bot_Talk>
+                        </H3>
                     }
 
-                    {/*<S.Anwsers>
-    <label htmlFor="yes"><input type="checkbox" name="yes" id="yes" />Yes</label>
-    <label htmlFor="no"><input type="checkbox" name="no" id="no" />No</label>
-    </S.Anwsers>*/}
+                    {typingIsDone && <S.Anwsers>
+                        <S.Label htmlFor="yes"><S.Input type="radio" name="agreed" /> Yes</S.Label>
+                        <S.Label htmlFor="no"><S.Input type="radio" name="agreed" /> No</S.Label>
+                    </S.Anwsers>}
                 </S.Question_Box>
             }
         </S.Container>

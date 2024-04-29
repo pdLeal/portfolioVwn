@@ -4,11 +4,11 @@ import McDesafio from '../../assets/McDesafio.png';
 
 function Card() {
   return (
-    <div>
+    <S.Sub_Grid>
         <img src={McDesafio} alt="" />
-        <h3>Card title</h3>
+        <h3>McDesafio</h3>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-    </div>
+    </S.Sub_Grid>
   )
 }
 
