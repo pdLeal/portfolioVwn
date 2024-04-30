@@ -10,10 +10,10 @@ function Home() {
     <>
       <Header />
       <S.Main>
-        <S.About>
+        <S.About_Section>
           <p>Hello! I'm Pedro and for the last year I've been studying so I can become a front-end developer. I have to admit that my own designs leave a LOT to disere, but I'm certain I can code <S.Span>almost</S.Span> anything you can came up with!</p>
           <QBox />
-        </S.About>
+        </S.About_Section>
         <S.Projects>
           <h2>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</h2>
           <S.Grid>

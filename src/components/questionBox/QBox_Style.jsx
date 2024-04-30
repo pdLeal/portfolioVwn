@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 
-import { Button } from '../hello/Hello_Style';
+import { Button, H3 } from '../hello/Hello_Style';
 
 export const Container = styled.div`
     font-family: "VT323", monospace;
@@ -47,12 +47,26 @@ export const Question_Box = styled.div`
     padding: 0;
     width: 0;
     height: 0;
-    display: grid;
-    grid-template-rows: max-content 1fr;
+    display: ${props => {
+        if(props.$display == 0) {
+            return 'grid'
+        } else {
+            return 'flex'
+        }
+    }};
+
+${props => {
+        if(props.$display == 0) {
+            return 'grid-template-rows: max-content 1fr;'
+        } else {
+            return 'justify-content: center; align-items: center;'
+        }
+    }};
+    
    
     border: solid 1px var(--primary-color);
     box-shadow: inset 0px 0px 20px -8px var(--primary-color);
-    animation: ${grow} 3s 250ms linear forwards;
+    animation: ${grow} 3s 250ms ease-in-out forwards;
 `;
 
 export const Anwsers = styled.div`
@@ -95,5 +109,19 @@ export const Input = styled.input`
         &:checked + ${Label}::before {
             content: 'X';
         }
+`;
 
+const goBig = keyframes`
+    75% {
+        transform: scale(2) rotate(720deg);
+    }
+    
+    100% {
+        transform: scale(1);
+    }
+`;
+
+export const Confirmation_Statement = styled(H3)`
+    transform: scale(0) rotate(0deg);
+    animation: ${goBig} 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 `;

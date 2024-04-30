@@ -7,7 +7,7 @@ export const Main = styled.main`
     font-size: clamp(1.2rem, 3vw, 2.5rem);
     `;
 
-export const About = styled.section`
+export const About_Section = styled.section`
     display: grid;
     justify-items: center;
     align-items: center;
