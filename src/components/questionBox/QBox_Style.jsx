@@ -48,7 +48,7 @@ export const Question_Box = styled.div`
     width: 0;
     height: 0;
     display: ${props => {
-        if(props.$display == 0) {
+        if(props.$display) {
             return 'grid'
         } else {
             return 'flex'
@@ -56,7 +56,7 @@ export const Question_Box = styled.div`
     }};
 
 ${props => {
-        if(props.$display == 0) {
+        if(props.$display) {
             return 'grid-template-rows: max-content 1fr;'
         } else {
             return 'justify-content: center; align-items: center;'

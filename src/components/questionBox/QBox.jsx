@@ -8,7 +8,8 @@ function QBox() {
     const [clicked, setClicked] = useState(false);
     const [animationIsDone, setAnimationIsDone] = useState(false);
     const [typingIsDone, setTypingIsDone] = useState(false);
-    const [question, setQuestion] = useState(0);
+    const [question, setQuestion] = useState(0); // all .5 are responses to the users
+    const [isQuestion, setIsQuestion] = useState(true);
 
     const ConfirmRef = useRef(null);
 
@@ -17,7 +18,8 @@ function QBox() {
         if (node) {
             function handleAnimationEnd() {
                 setTimeout(() => {
-                    setQuestion(2);
+                    setQuestion(1);
+                    setIsQuestion(true);
                 }, 1000);
             };
 
@@ -38,12 +40,13 @@ function QBox() {
 
         setTimeout(() => {
             setTypingIsDone(true);
-        }, 3500); // 15500
+        }, 15500); // 15500
     }
 
     function handleFirstAnswer() {
         setTimeout(() => {
-            setQuestion(1);
+            setQuestion(0.5);
+            setIsQuestion(false);
         }, 500);
     }
 
@@ -53,7 +56,7 @@ function QBox() {
             {!clicked && <S.SeeBtn onClick={handleClick}>See More...</S.SeeBtn>}
 
             {clicked &&
-                <S.Question_Box $display={question}>
+                <S.Question_Box $display={isQuestion}>
 
                     {/* FIRST QUESTION */}
                     {(animationIsDone && question == 0) &&
@@ -74,13 +77,13 @@ function QBox() {
                     }
                     {/* END OF FIRST QUESTION */}
 
-                    {question == 1 &&
+                    {question == 0.5 &&
                         <S.Confirmation_Statement ref={ConfirmRef}>
                             CHALLENGE ACCEPTED
                         </S.Confirmation_Statement>
                     }
 
-                    {question == 2 &&
+                    {question == 1 &&
                         <H3>
                             <Typewriter
                                 words={['', 'First Question: What is the answer to The Ultimate Question of Life, The Universe and Everything?']}
