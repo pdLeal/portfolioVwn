@@ -60,7 +60,7 @@ export const Anwsers = styled.div`
     justify-content: space-evenly;
     align-self: center;
 
-        & > :first-child {
+        & > :nth-child(2) {
             color: red;
             text-shadow: 0px 0px 10px red;
         }
@@ -72,15 +72,28 @@ export const Anwsers = styled.div`
 `;
 
 export const Label = styled.label`
-    &::before {
-        content: '';
-        display: inline-block;
-        width: 0.8em;
-        aspect-ratio: 1 / 1;
-        border: solid 1px;
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+        &::before {
+            content: '';
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 0.8em;
+            aspect-ratio: 1;
+            border: solid 1px;
+            box-shadow: 0px 0px 3px 1px;
+        }
 `;
 
 export const Input = styled.input`
     display: none;
+
+        &:checked + ${Label}::before {
+            content: 'X';
+        }
+
 `;

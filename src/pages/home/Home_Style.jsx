@@ -12,9 +12,13 @@ export const About = styled.section`
     justify-items: center;
     align-items: center;
     grid-template-columns: 40% 1fr;
-    column-gap: 16px;
+    gap: 16px;
     position: relative;
 
+        @media screen and (max-width: 560px) {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto 250px;
+        }
 `;
 
 export const Span = styled.span`

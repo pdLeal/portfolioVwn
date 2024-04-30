@@ -6,13 +6,13 @@ export const Ul = styled.ul`
     max-width: 80vw;
     margin-inline: auto;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     list-style: none;
     border-bottom: solid 1px var(--primary-color);
 `;
 
 const glitchEffect = keyframes`
-     0% {
+  0% {
     text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
       -0.05em -0.025em 0 rgba(0, 255, 0, 0.75),
       -0.025em 0.05em 0 rgba(0, 0, 255, 0.75);

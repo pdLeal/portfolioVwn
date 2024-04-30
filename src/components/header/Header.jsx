@@ -7,7 +7,7 @@ function Header() {
   const currentPage = location.pathname.substring(1);
 
   const [isSelected, setIsSelected] = useState(currentPage);
-  const menuItens = ['home', 'projects', 'about', 'contact'];
+  const menuItens = ['home', 'projects', 'about'];
 
   console.log();
 

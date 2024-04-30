@@ -37,10 +37,14 @@ function QBox() {
                         </H3>
                     }
 
-                    {typingIsDone && <S.Anwsers>
-                        <S.Label htmlFor="yes"><S.Input type="radio" name="agreed" /> Yes</S.Label>
-                        <S.Label htmlFor="no"><S.Input type="radio" name="agreed" /> No</S.Label>
-                    </S.Anwsers>}
+                    {typingIsDone &&
+                        <S.Anwsers>
+                            <S.Input type="radio" name="agreed" id="yes" /> 
+                            <S.Label htmlFor="yes">Yes</S.Label>
+                            <S.Input type="radio" name="agreed" id="no" /> 
+                            <S.Label htmlFor="no">No</S.Label>
+                        </S.Anwsers>
+                    }
                 </S.Question_Box>
             }
         </S.Container>
