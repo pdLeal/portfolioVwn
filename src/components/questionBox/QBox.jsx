@@ -8,7 +8,7 @@ function QBox() {
     const [clicked, setClicked] = useState(false);
     const [animationIsDone, setAnimationIsDone] = useState(false);
     const [typingIsDone, setTypingIsDone] = useState(false);
-    const [question, setQuestion] = useState(0); // all .5 are responses to the users
+    const [question, setQuestion] = useState(0); // all .5 are responses to the user
     const [isQuestion, setIsQuestion] = useState(true);
 
     const ConfirmRef = useRef(null);
@@ -34,7 +34,7 @@ function QBox() {
     function handleClick() {
         setClicked(true);
 
-        setTimeout(() => {
+        setTimeout(() => { // think of a better way than setTimeout later
             setAnimationIsDone(true);
         }, 3500);
 
@@ -68,10 +68,10 @@ function QBox() {
                     }
 
                     {(typingIsDone && question == 0) &&
-                        <S.Anwsers>
-                            <S.Input onChange={handleFirstAnswer} type="radio" name="agreed" id="yes" />
+                        <S.Anwsers $options={2}>
+                            <S.Input onChange={handleFirstAnswer} type="radio" id="yes" name='agreed' />
                             <S.Label htmlFor="yes">Yes</S.Label>
-                            <S.Input onChange={handleFirstAnswer} type="radio" name="agreed" id="no" />
+                            <S.Input onChange={handleFirstAnswer} type="radio" id="no" name='agreed' />
                             <S.Label htmlFor="no">No</S.Label>
                         </S.Anwsers>
                     }
@@ -83,6 +83,7 @@ function QBox() {
                         </S.Confirmation_Statement>
                     }
 
+                    {/* SECOND QUESTION */}
                     {question == 1 &&
                         <H3>
                             <Typewriter
@@ -90,6 +91,21 @@ function QBox() {
                                 cursor />
                         </H3>
                     }
+
+                    {true && 
+                        <p>Hint: is inside <span style={{color:'red'}}>you</span></p>}
+
+                    {true &&
+                        <S.Anwsers $options={4}>
+                            <S.Input type="radio" id="towels" name='notIt' />
+                            <S.Label htmlFor="towels">Towels</S.Label>
+                            <S.Input type="radio" id="love" name='notIt' />
+                            <S.Label htmlFor="love">Love</S.Label>
+                            <S.Input type="radio" id="evolution" name='notIt' />
+                            <S.Label htmlFor="evolution">Evolution</S.Label>
+                            <S.Input type="radio" id="god" name='notIt' />
+                            <S.Label htmlFor="god">God</S.Label>
+                        </S.Anwsers>}
                 </S.Question_Box>
             }
         </S.Container>

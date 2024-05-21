@@ -47,19 +47,16 @@ export const Question_Box = styled.div`
     padding: 0;
     width: 0;
     height: 0;
-    display: ${props => {
-        if(props.$display) {
-            return 'grid'
-        } else {
-            return 'flex'
-        }
-    }};
 
 ${props => {
-        if(props.$display) {
-            return 'grid-template-rows: max-content 1fr;'
+        if (props.$display) {
+            return `
+            display: grid;
+            grid-template-rows: max-content auto;`
         } else {
-            return 'justify-content: center; align-items: center;'
+            return `
+            display: flex;
+            justify-content: center; align-items: center;`
         }
     }};
     
@@ -70,11 +67,16 @@ ${props => {
 `;
 
 export const Anwsers = styled.div`
-    display: flex;
-    justify-content: space-evenly;
-    align-self: center;
+    
+    
+        ${props => {
+        if (props.$options == 2) {
+            return `
+            display: flex;
+            justify-content: space-evenly;
+            align-self: center;
 
-        & > :nth-child(2) {
+            & > :nth-child(2) {
             color: red;
             text-shadow: 0px 0px 10px red;
         }
@@ -83,6 +85,17 @@ export const Anwsers = styled.div`
             color: blue;
             text-shadow: 0px 0px 10px blue;
         }
+            `;
+        } else {
+            return `
+            margin-inline: auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            justify-items: start;
+            column-gap: 16px;
+            `;
+        }
+    }};
 `;
 
 export const Label = styled.label`
