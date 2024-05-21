@@ -10,6 +10,15 @@ function QBox() {
     const [typingIsDone, setTypingIsDone] = useState(false);
     const [question, setQuestion] = useState(0); // all .5 are responses to the user
     const [isQuestion, setIsQuestion] = useState(true);
+    const [secondTyping, setSecondTyping] = useState(false);
+    const [giveHint, setGiveHint] = useState(false);
+    const [secondAnswer, setSecondAnswer] = useState(<span onClick={() => {
+        setSecondAnswer(<span onClick={handleSecondAnswer} style={{ color: 'red', display: 'inline-block' }}>
+            <S.Input type="radio" id="yep" name='notIt' />
+            <S.Label htmlFor="yep">42</S.Label>
+        </span>);
+
+    }} style={{ color: 'red' }}>you</span>);
 
     const ConfirmRef = useRef(null);
 
@@ -21,6 +30,10 @@ function QBox() {
                     setQuestion(1);
                     setIsQuestion(true);
                 }, 1000);
+
+                setTimeout(() => { //gambiarra relacionada ao fim da digitação da segunda pergunta
+                    setSecondTyping(true);
+                }, 11500);
             };
 
             node.addEventListener('animationend', handleAnimationEnd);
@@ -50,6 +63,17 @@ function QBox() {
         }, 500);
     }
 
+    function handleFakeAnswers() {
+        setGiveHint(true);
+    }
+
+    function handleSecondAnswer() {
+        setTimeout(() => {
+            setQuestion(1.5);
+            setIsQuestion(false);
+        }, 500);
+    }
+
 
     return (
         <S.Container>
@@ -69,7 +93,7 @@ function QBox() {
 
                     {(typingIsDone && question == 0) &&
                         <S.Anwsers $options={2}>
-                            <S.Input onChange={handleFirstAnswer} type="radio" id="yes" name='agreed' />
+                            <S.Input type="radio" id="yes" name='agreed' />
                             <S.Label htmlFor="yes">Yes</S.Label>
                             <S.Input onChange={handleFirstAnswer} type="radio" id="no" name='agreed' />
                             <S.Label htmlFor="no">No</S.Label>
@@ -84,28 +108,36 @@ function QBox() {
                     }
 
                     {/* SECOND QUESTION */}
-                    {question == 1 &&
+                    {question == 1 && <>
                         <H3>
                             <Typewriter
                                 words={['', 'First Question: What is the answer to The Ultimate Question of Life, The Universe and Everything?']}
                                 cursor />
                         </H3>
+                        {giveHint &&
+                            <S.Para>Hint: the answer is inside {secondAnswer}</S.Para>}
+
+                        {secondTyping &&
+                            <S.Anwsers $options={4}>
+                                <S.Input onChange={handleFakeAnswers} type="radio" id="towels" name='notIt' />
+                                <S.Label htmlFor="towels">Towels</S.Label>
+                                <S.Input onChange={handleFakeAnswers} type="radio" id="love" name='notIt' />
+                                <S.Label htmlFor="love">Love</S.Label>
+                                <S.Input onChange={handleFakeAnswers} type="radio" id="evolution" name='notIt' />
+                                <S.Label htmlFor="evolution">Evolution</S.Label>
+                                <S.Input onChange={handleFakeAnswers} type="radio" id="god" name='notIt' />
+                                <S.Label htmlFor="god">God</S.Label>
+                            </S.Anwsers>
+                        }
+                    </>
                     }
+                    {/* END OF SECOND QUESTION */}
 
-                    {true && 
-                        <p>Hint: is inside <span style={{color:'red'}}>you</span></p>}
-
-                    {true &&
-                        <S.Anwsers $options={4}>
-                            <S.Input type="radio" id="towels" name='notIt' />
-                            <S.Label htmlFor="towels">Towels</S.Label>
-                            <S.Input type="radio" id="love" name='notIt' />
-                            <S.Label htmlFor="love">Love</S.Label>
-                            <S.Input type="radio" id="evolution" name='notIt' />
-                            <S.Label htmlFor="evolution">Evolution</S.Label>
-                            <S.Input type="radio" id="god" name='notIt' />
-                            <S.Label htmlFor="god">God</S.Label>
-                        </S.Anwsers>}
+                    {question == 1.5 &&
+                        <S.Confirmation_Statement>
+                            YO-HO-HOOOW!
+                        </S.Confirmation_Statement>
+                    }
                 </S.Question_Box>
             }
         </S.Container>

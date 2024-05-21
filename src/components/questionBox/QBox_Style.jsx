@@ -77,13 +77,13 @@ export const Anwsers = styled.div`
             align-self: center;
 
             & > :nth-child(2) {
-            color: red;
-            text-shadow: 0px 0px 10px red;
-        }
-        
-        & > :last-child {
-            color: blue;
-            text-shadow: 0px 0px 10px blue;
+                color: blue;
+                text-shadow: 0px 0px 10px blue;
+            }
+            
+            & > :last-child {
+                color: red;
+                text-shadow: 0px 0px 10px red;
         }
             `;
         } else {
@@ -93,6 +93,8 @@ export const Anwsers = styled.div`
             grid-template-columns: repeat(2, 1fr);
             justify-items: start;
             column-gap: 16px;
+            color: blue;
+            text-shadow: 0px 0px 10px blue;
             `;
         }
     }};
@@ -137,4 +139,9 @@ const goBig = keyframes`
 export const Confirmation_Statement = styled(H3)`
     transform: scale(0) rotate(0deg);
     animation: ${goBig} 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+`;
+
+export const Para = styled.p`
+    display: flex;
+    gap: 8px;
 `;
