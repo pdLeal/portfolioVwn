@@ -18,7 +18,9 @@ function QBox() {
         <span
             onClick={() => {
                 setSecondAnswer(<span onClick={handleSecondAnswer} style={{ color: 'red', display: 'inline-block' }}>
-                    <S.Input type="radio" id="yep" name='notIt' /> </span>);
+                    <S.Input type="radio" id="yep" name='notIt' />
+                    <S.Label htmlFor="yep">42</S.Label>
+                    </span>);
             }}>
             you
         </span>);
