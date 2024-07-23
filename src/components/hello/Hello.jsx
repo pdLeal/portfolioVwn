@@ -1,16 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useTypewriter, Cursor, Typewriter } from 'react-simple-typewriter';
 import * as S from './Hello_Style';
 import { useNavigate } from 'react-router-dom';
+import TypeEfct from '../TypeEfct.jsx';
 
 function Hello() {
-    const [typeEffect, helper] = useTypewriter({
-        words: ['', '. . .', '. . .', 'Oh! Hello! Sorry, didn\'t see you there...', 'I suppose you\'re here to see Pedro\'s portfolio, right?', 'I\'ll stay out of your way then, just click the button =)'],
-        loop: 1,
-        typeSpeed: 100
-    });
-    const { isDone } = helper;
-
     const [showNext, setshowNext] = useState(false);
 
     const [btnPosition, setBtnPosition] = useState({
@@ -28,20 +21,25 @@ function Hello() {
             x: random(),
             y: random()
         });
-        console.log()
 
-        if(count > 20 || (e.touches && count > 3)) {
+        if (count > 20 || (e.touches && count > 3)) {
             setshowNext(true);
-            
+
         } else {
             setCount(prev => (prev + 1));
 
         }
     }
 
+    const [showBtn, setShowBtn] = useState(false);
     const [helpActive, setHelpActive] = useState(false);
-    function handleDone() {
-        setHelpActive(true);
+
+    function handleDone(done) {
+        if (!showNext) {
+            setShowBtn(true);
+        } else {
+            setHelpActive(done);
+        }
     }
 
     // SKIP BTN
@@ -63,26 +61,13 @@ function Hello() {
         <S.Container>
             {(canSkip || helpActive) && <S.SkipBtn onClick={handleClick}>Skip {`>>>`}</S.SkipBtn>}
             <S.H3>
-                {!showNext &&
-                    (<>
-                        <span>{typeEffect}</span>
-                        <Cursor />
-                    </>)}
+                {!showNext && <TypeEfct text={['Oh! Hello! Sorry, didn\'t see you there...', 'I suppose you\'re here to see Pedro\'s portfolio, right?', 'But before, what about a game?', 'All you have to do is click the button =)']} onDone={handleDone} />}
 
-                {showNext &&
-                    <span>
-                        <Typewriter
-                            words={['It seems you\'re having a hard time clicking the button =S', 'Here, a button that won\'t runaway! You can trust me XD']}
-                            loop={1}
-                            cursor
-                            typeSpeed={100}
-                            delaySpeed={1000}
-                            onLoopDone={handleDone}
-                        />
-                    </span>}
+                {showNext && <TypeEfct text={['It seems you\'re having a hard time clicking the button =S', 'Here, a button that won\'t runaway!']} onDone={handleDone} />
+                }
             </S.H3>
 
-            {isDone &&
+            {showBtn &&
                 <S.Wrapper
                     $xPosition={btnPosition.x}
                     $yPosition={btnPosition.y}
@@ -92,7 +77,7 @@ function Hello() {
                 </S.Wrapper>}
 
             {helpActive &&
-                <S.HelpBtn>Click Me</S.HelpBtn>}
+                <S.HelpBtn>For the weak!</S.HelpBtn>}
 
         </S.Container>
     )

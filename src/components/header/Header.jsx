@@ -9,8 +9,6 @@ function Header() {
   const [isSelected, setIsSelected] = useState(currentPage);
   const menuItens = ['home', 'projects', 'about'];
 
-  console.log();
-
   return (
     <nav>
       <S.Ul>
