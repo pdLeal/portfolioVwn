@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import * as S from './QBox_Style';
 import { H3 } from '../hello/Hello_Style';
 import { Typewriter } from 'react-simple-typewriter';
+import TypeEfct from '../TypeEfct.jsx';
 
 function QBox() {
 
@@ -12,13 +13,15 @@ function QBox() {
     const [isQuestion, setIsQuestion] = useState(true);
     const [secondTyping, setSecondTyping] = useState(false);
     const [giveHint, setGiveHint] = useState(false);
-    const [secondAnswer, setSecondAnswer] = useState(<span onClick={() => {
-        setSecondAnswer(<span onClick={handleSecondAnswer} style={{ color: 'red', display: 'inline-block' }}>
-            <S.Input type="radio" id="yep" name='notIt' />
-            <S.Label htmlFor="yep">42</S.Label>
-        </span>);
 
-    }} style={{ color: 'red' }}>you</span>);
+    const [secondAnswer, setSecondAnswer] = useState(
+        <span
+            onClick={() => {
+                setSecondAnswer(<span onClick={handleSecondAnswer} style={{ color: 'red', display: 'inline-block' }}>
+                    <S.Input type="radio" id="yep" name='notIt' /> </span>);
+            }}>
+            you
+        </span>);
 
     const ConfirmRef = useRef(null);
 
@@ -46,18 +49,10 @@ function QBox() {
 
     function handleClick() {
         setClicked(true);
-
-        setTimeout(() => { // think of a better way than setTimeout later
-            setAnimationIsDone(true);
-        }, 3500);
-
-        setTimeout(() => {
-            setTypingIsDone(true);
-        }, 15500); // 15500
     }
 
     function handleFirstAnswer() {
-        setTimeout(() => {
+        setTimeout(() => { // cria um pequeno atraso para melhor experiência do usuário
             setQuestion(0.5);
             setIsQuestion(false);
         }, 500);
@@ -68,26 +63,45 @@ function QBox() {
     }
 
     function handleSecondAnswer() {
-        setTimeout(() => {
+        setTimeout(() => { 
             setQuestion(1.5);
             setIsQuestion(false);
         }, 500);
     }
 
+    // TESTES 
 
+    useEffect(() => {  // fica de olho na animação da qBox e ao fim habilita a primeira pergunta
+        const node = ConfirmRef.current;
+        if (node) {
+            function handleAnimationEnd() {
+                setAnimationIsDone(true);
+            };
+
+            node.addEventListener('animationend', handleAnimationEnd);
+
+            return () => {
+                node.removeEventListener('animationend', handleAnimationEnd);
+            };
+        }
+    }, [clicked]);
+
+    function handleTyping() {
+        setTypingIsDone(true);
+    }
+
+    // TESTES
     return (
         <S.Container>
             {!clicked && <S.SeeBtn onClick={handleClick}>See More...</S.SeeBtn>}
 
             {clicked &&
-                <S.Question_Box $display={isQuestion}>
+                <S.Question_Box $display={isQuestion} ref={ConfirmRef}>
 
                     {/* FIRST QUESTION */}
                     {(animationIsDone && question == 0) &&
                         <H3>
-                            <Typewriter
-                                words={['', 'So here we are again, uh? If you wanna know more about him, you\'ll have to answer some questions of mine, do you agree?']}
-                                cursor />
+                            <TypeEfct text={['', 'So here we are again, uh? If you wanna know more about him, you\'ll have to answer some questions of mine, do you agree?']} onDone={handleTyping} />
                         </H3>
                     }
 

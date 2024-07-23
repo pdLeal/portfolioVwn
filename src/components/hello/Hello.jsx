@@ -15,7 +15,7 @@ function Hello() {
         return Math.floor(Math.random() * 71) + 10;
     };
 
-    const [count, setCount] = useState(0)
+    const [count, setCount] = useState(0);
     function handleMouseMove(e) {
         setBtnPosition({
             x: random(),
