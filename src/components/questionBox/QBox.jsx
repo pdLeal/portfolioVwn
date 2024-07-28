@@ -160,10 +160,16 @@ function QBox() {
                     }
 
                     {/* THIRD QUESTION */}
-                    {question == 2 &&
+                    {question == 2 && 
+                    <>
                         <H3>
-                            <TypeEfct text={['', 'pergunta 3 krai, pensa em algo ai!']} onDone={handleTyping} />
+                            <TypeEfct text={['', 'Complete the sentence: We all float down here...']} onDone={handleTyping} />
                         </H3>
+                        
+                        {typingIsDone &&
+                            <S.TextInput onChange={()=>{console.log('funcionou?')}} type="text" name="" id="" />
+                        }
+                    </>
                     }
                 </S.Question_Box>
             }

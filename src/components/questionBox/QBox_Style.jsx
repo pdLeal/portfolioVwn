@@ -46,6 +46,7 @@ const grow = keyframes`
 export const Question_Box = styled.div`
     padding: 0;
     width: 0;
+    max-width: 100%;
     height: 0;
 
 ${props => {
@@ -144,4 +145,18 @@ export const Confirmation_Statement = styled(H3)`
 export const Para = styled.p`
     display: flex;
     gap: 8px;
+`;
+
+export const TextInput = styled.input`
+    width: 90%;
+    margin-inline: auto;
+    padding-inline: 8px;
+    font-size: clamp(1.5rem, 3vw + 0.5rem, 2.5rem);
+    line-height:1.5em;
+    color: blue;
+    align-self: center;
+    background-color: transparent;
+    border: solid 1px var(--primary-color);
+    text-shadow: 0px 0px 10px blue;
+    outline: none;
 `;
