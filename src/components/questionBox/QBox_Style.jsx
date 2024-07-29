@@ -65,6 +65,11 @@ ${props => {
     border: solid 1px var(--primary-color);
     box-shadow: inset 0px 0px 20px -8px var(--primary-color);
     animation: ${grow} 3s 250ms ease-in-out forwards;
+
+    .rightAnswer {
+            color: red;
+            text-shadow: 0px 0px 10px red;
+        }
 `;
 
 export const Anwsers = styled.div`
@@ -151,6 +156,7 @@ export const TextInput = styled.input`
     width: 90%;
     margin-inline: auto;
     padding-inline: 8px;
+    font-family: "VT323", monospace;
     font-size: clamp(1.5rem, 3vw + 0.5rem, 2.5rem);
     line-height:1.5em;
     color: blue;
@@ -159,4 +165,8 @@ export const TextInput = styled.input`
     border: solid 1px var(--primary-color);
     text-shadow: 0px 0px 10px blue;
     outline: none;
+`;
+
+export const Video = styled.video`
+    max-width: 100%;
 `;

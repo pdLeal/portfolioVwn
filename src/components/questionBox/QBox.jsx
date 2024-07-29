@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import * as S from './QBox_Style';
 import { H3 } from '../hello/Hello_Style';
 import TypeEfct from '../TypeEfct.jsx';
+import redBallons from '../../assets/you_float_too.mp4';
+import pennywiseLaught from '../../assets/PennywiseLaugh.mp3';
 
 function QBox() {
 
@@ -64,6 +66,14 @@ function QBox() {
         }
     }, [question]);
 
+    const inputRef = useRef(null);
+
+    useEffect(() => {
+        if (inputRef.current) {
+            inputRef.current.focus();
+        }
+    }, [typingIsDone]);
+
 
     function handleClick() {
         setClicked(true);
@@ -93,6 +103,25 @@ function QBox() {
         }, 500);
     }
 
+    function handleInputText(e) {
+        const answer = e.target.value.toLowerCase();
+        if (answer == 'down here') {
+            e.target.classList.add('rightAnswer');
+            e.target.setAttribute('disabled', '');
+
+            setTimeout(() => {
+                setQuestion(2.5);
+                setIsQuestion(false);
+                setTypingIsDone(false);
+            }, 500);
+        }
+    }
+
+    function handleVideoEnd() {
+        setQuestion(3);
+        setIsQuestion(true);
+    };
+
     return (
         <S.Container>
             {!clicked && <S.SeeBtn onClick={handleClick}>See More...</S.SeeBtn>}
@@ -102,21 +131,20 @@ function QBox() {
 
                     {/* FIRST QUESTION */}
                     {(animationIsDone && question == 0) &&
-                    <>
-                        <H3>
-                            <TypeEfct text={['', 'tests']} onDone={handleTyping} />
-                            {/* 'So here we are again, uh? If you wanna know more about him, you\'ll have to answer some questions of mine, do you agree?' */}
-                        </H3>
+                        <>
+                            <H3>
+                                <TypeEfct text={['', 'So here we are again, uh? If you wanna know more about him, you\'ll have to answer some questions of mine, do you agree?']} onDone={handleTyping} />
+                            </H3>
 
-                        {typingIsDone &&
-                            <S.Anwsers $options={2}>
-                                <S.Input type="radio" id="yes" name='agreed' />
-                                <S.Label htmlFor="yes">Yes</S.Label>
-                                <S.Input onChange={handleFirstAnswer} type="radio" id="no" name='agreed' />
-                                <S.Label htmlFor="no">No</S.Label>
-                            </S.Anwsers>
-                        }
-                    </>
+                            {typingIsDone &&
+                                <S.Anwsers $options={2}>
+                                    <S.Input type="radio" id="yes" name='agreed' />
+                                    <S.Label htmlFor="yes">Yes</S.Label>
+                                    <S.Input onChange={handleFirstAnswer} type="radio" id="no" name='agreed' />
+                                    <S.Label htmlFor="no">No</S.Label>
+                                </S.Anwsers>
+                            }
+                        </>
                     }
 
                     {/* END OF FIRST QUESTION */}
@@ -129,27 +157,26 @@ function QBox() {
 
                     {/* SECOND QUESTION */}
                     {question == 1 &&
-                    <>
-                        <H3>
-                            <TypeEfct text={['', 'tests']} onDone={handleTyping} />
-                            {/* 'First Question: What is the answer to The Ultimate Question of Life, The Universe and Everything?' */}
-                        </H3>
-                        {giveHint &&
-                            <S.Para>Hint: the answer is inside {secondAnswer}</S.Para>}
+                        <>
+                            <H3>
+                                <TypeEfct text={['', 'First Question: What is the answer to The Ultimate Question of Life, The Universe and Everything?']} onDone={handleTyping} />
+                            </H3>
+                            {giveHint &&
+                                <S.Para>Hint: the answer is inside {secondAnswer}</S.Para>}
 
-                        {typingIsDone &&
-                            <S.Anwsers $options={4}>
-                                <S.Input onChange={handleFakeAnswers} type="radio" id="towels" name='notIt' />
-                                <S.Label htmlFor="towels">Towels</S.Label>
-                                <S.Input onChange={handleFakeAnswers} type="radio" id="love" name='notIt' />
-                                <S.Label htmlFor="love">Love</S.Label>
-                                <S.Input onChange={handleFakeAnswers} type="radio" id="evolution" name='notIt' />
-                                <S.Label htmlFor="evolution">Evolution</S.Label>
-                                <S.Input onChange={handleFakeAnswers} type="radio" id="god" name='notIt' />
-                                <S.Label htmlFor="god">God</S.Label>
-                            </S.Anwsers>
-                        }
-                    </>
+                            {typingIsDone &&
+                                <S.Anwsers $options={4}>
+                                    <S.Input onChange={handleFakeAnswers} type="radio" id="towels" name='notIt' />
+                                    <S.Label htmlFor="towels">Towels</S.Label>
+                                    <S.Input onChange={handleFakeAnswers} type="radio" id="love" name='notIt' />
+                                    <S.Label htmlFor="love">Love</S.Label>
+                                    <S.Input onChange={handleFakeAnswers} type="radio" id="evolution" name='notIt' />
+                                    <S.Label htmlFor="evolution">Evolution</S.Label>
+                                    <S.Input onChange={handleFakeAnswers} type="radio" id="god" name='notIt' />
+                                    <S.Label htmlFor="god">God</S.Label>
+                                </S.Anwsers>
+                            }
+                        </>
                     }
                     {/* END OF SECOND QUESTION */}
 
@@ -160,16 +187,39 @@ function QBox() {
                     }
 
                     {/* THIRD QUESTION */}
-                    {question == 2 && 
-                    <>
-                        <H3>
-                            <TypeEfct text={['', 'Complete the sentence: We all float down here...']} onDone={handleTyping} />
-                        </H3>
-                        
-                        {typingIsDone &&
-                            <S.TextInput onChange={()=>{console.log('funcionou?')}} type="text" name="" id="" />
-                        }
-                    </>
+                    {question == 2 &&
+                        <>
+                            <H3>
+                                <TypeEfct text={['', 'Complete the sentence: We all float...']} onDone={handleTyping} />
+                            </H3>
+
+                            {typingIsDone &&
+                                <S.TextInput onChange={handleInputText} type="text" ref={inputRef} />
+                            }
+
+
+                        </>
+                    }
+                    {/* END OF THIRD QUESTION */}
+
+                    {question == 2.5 &&
+                        <>
+                            <S.Video autoPlay preload='true' onEnded={handleVideoEnd}>
+                                <source src={redBallons} type="video/mp4" />
+                            </S.Video>
+                            <audio autoPlay preload='true'>
+                                <source src={pennywiseLaught} type="audio/mp3" />
+                            </audio>
+                        </>
+                    }
+
+                    {/* LAST QUESTION */}
+                    {question == 3 &&
+                        <>
+                            <H3>
+                                <TypeEfct text={['', 'Agora só pensar na última e boa!']} />
+                            </H3>
+                        </>
                     }
                 </S.Question_Box>
             }
