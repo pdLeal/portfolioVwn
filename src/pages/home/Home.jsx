@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../../components/header/Header';
 import * as S from './Home_Style';
 import QBox from '../../components/questionBox/QBox';
 import Card from '../../components/card/Card';
 
-function Home() {
 
+function Home() {
+  
   return (
     <>
       <Header />

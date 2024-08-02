@@ -4,6 +4,7 @@ import { H3 } from '../hello/Hello_Style';
 import TypeEfct from '../TypeEfct.jsx';
 import redBallons from '../../assets/you_float_too.mp4';
 import pennywiseLaught from '../../assets/PennywiseLaugh.mp3';
+import useWinnerContext from '../../contexts/WinnerContext.js';
 
 function QBox() {
 
@@ -25,6 +26,7 @@ function QBox() {
             you
         </span>);
 
+    // referências ligadas às animações
     const ConfirmRef = useRef(null);
     useEffect(() => {  // fica de olho na animação da qBox e ao fim habilita a primeira pergunta
         const node = ConfirmRef.current;
@@ -66,6 +68,7 @@ function QBox() {
         }
     }, [question]);
 
+    // red para auto-foco do input de text
     const inputRef = useRef(null);
 
     useEffect(() => {
@@ -74,7 +77,11 @@ function QBox() {
         }
     }, [typingIsDone]);
 
+    // context logic
+    const { aboutWinner, setAboutWinner } = useWinnerContext();
 
+
+    // funções
     function handleClick() {
         setClicked(true);
     }
@@ -217,7 +224,12 @@ function QBox() {
                     {question == 3 &&
                         <>
                             <H3>
-                                <TypeEfct text={['', 'Agora só pensar na última e boa!']} />
+                                <TypeEfct
+                                text={['', 'You shall pass...for now']}
+                                onDone={() => {
+                                    // teste do contexto
+                                    setAboutWinner(true);
+                                }} />
                             </H3>
                         </>
                     }
