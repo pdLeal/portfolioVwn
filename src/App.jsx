@@ -5,7 +5,7 @@ import NotFount from './pages/NotFound';
 import Projects from './pages/projects/Projects';
 import Global_Style from "./Global_Style";
 import About from "./pages/about/About";
-import Denied from "./pages/Denied";
+import Denied from "./pages/denied/Denied";
 
 import { useState } from "react";
 import { WinnerProvider } from "./contexts/WinnerContext"; 

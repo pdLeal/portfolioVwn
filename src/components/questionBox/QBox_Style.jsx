@@ -48,6 +48,7 @@ export const Question_Box = styled.div`
     width: 0;
     max-width: 100%;
     height: 0;
+    position: relative;
 
 ${props => {
         if (props.$display) {
@@ -168,5 +169,9 @@ export const TextInput = styled.input`
 `;
 
 export const Video = styled.video`
-    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+    z-index: -99;
 `;

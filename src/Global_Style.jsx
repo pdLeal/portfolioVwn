@@ -26,7 +26,7 @@ const Global_Style = createGlobalStyle`
     }
 
     :root {
-        --bg-color: #0c0101;
+        --bg-color: #000;
         --primary-color: #0ded0d;
         --typeSpeed: 5s;
         --delay: 1s;
