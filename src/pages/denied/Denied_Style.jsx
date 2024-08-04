@@ -1,13 +1,9 @@
 import styled from "styled-components";
-import hackImg1 from '../../assets/hackCode1.png'
 import {Video} from '../../components/questionBox/QBox_Style';
 
 export const Flex = styled.div`
     max-width: 100%;
     max-height: 100svh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     overflow: hidden;
 `;
 
@@ -17,7 +13,8 @@ export const OuterBox = styled.div`
     outline: solid 1px red;
     box-shadow: 0px 0px 16px -3px red;
     position: absolute;
-    top: 50px;
+    top: ${props => props.$top}px;
+    left: ${props => props.$left}px;
     
         .flex {
             display: flex;
@@ -41,8 +38,8 @@ export const OuterBox = styled.div`
     `;
 
 export const InnerBox = styled.div`
-    width: 200px;
-    aspect-ratio: 1;
+    width: ${props => props.$width}px;
+    aspect-ratio: ${props => props.$ratio};
     display: grid;
     grid-template-rows: 3fr 1fr;
     align-items: center;
