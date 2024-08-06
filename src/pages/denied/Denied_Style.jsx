@@ -1,10 +1,11 @@
 import styled from "styled-components";
-import {Video} from '../../components/questionBox/QBox_Style';
+import { Video } from '../../components/questionBox/QBox_Style';
 
-export const Flex = styled.div`
-    max-width: 100%;
-    max-height: 100svh;
+export const Container = styled.div`
+    width: 100vw;
+    height: 100vh;
     overflow: hidden;
+    position: relative;
 `;
 
 export const OuterBox = styled.div`
@@ -38,8 +39,8 @@ export const OuterBox = styled.div`
     `;
 
 export const InnerBox = styled.div`
-    width: ${props => props.$width}px;
-    aspect-ratio: ${props => props.$ratio};
+    width: clamp(150px, ${props => props.$width}px, 400px);
+    height: clamp(15%, ${props => props.$height}px, 45%);
     display: grid;
     grid-template-rows: 3fr 1fr;
     align-items: center;
@@ -68,6 +69,15 @@ export const InnerBox = styled.div`
 `;
 
 export const HackVideo = styled(Video)`
+    position: absolute;
+    top: 4px;
+`;
+
+export const HackImg = styled.img`
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -99;
     position: absolute;
     top: 4px;
 `;
