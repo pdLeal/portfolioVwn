@@ -5,17 +5,31 @@ export const Container = styled.div`
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    position: relative;
+    /* position: relative; */
+
+    display: grid;
+    grid-template-columns: repeat(${props => props.$numOfColumns}, minmax(150px, 400px));
+    grid-template-rows: repeat(${props => props.$numOfRows}, minmax(150px, 400px));
 `;
 
 export const OuterBox = styled.div`
+    --color: ${props => props.$color};
+
+    text-transform: uppercase;
     border: solid 10px transparent;
     border-top: none;
-    outline: solid 1px red;
-    box-shadow: 0px 0px 16px -3px red;
-    position: absolute;
-    top: ${props => props.$top}px;
-    left: ${props => props.$left}px;
+    outline: solid 1px var(--color);
+    box-shadow: 0px 0px 16px -3px var(--color);
+    /* position: relative; */
+    display: flex;
+    flex-direction: column;
+
+    
+    scale: ${props => props.$scale};
+    grid-column: ${props => props.$areaColumn};
+    grid-row: ${props => props.$areaRow};
+    
+    transition: scale 350ms cubic-bezier(0.47, 0, 0.75, 0.72);
     
         .flex {
             display: flex;
@@ -39,12 +53,11 @@ export const OuterBox = styled.div`
     `;
 
 export const InnerBox = styled.div`
-    width: clamp(150px, ${props => props.$width}px, 400px);
-    height: clamp(15%, ${props => props.$height}px, 45%);
+    height: 100%;
     display: grid;
     grid-template-rows: 3fr 1fr;
     align-items: center;
-    border-top: dashed 1px red;
+    border-top: dashed 1px var(--color);
 
         div.evly {
             justify-content: space-evenly;
@@ -56,7 +69,7 @@ export const InnerBox = styled.div`
             justify-content: flex-end;
             background-color: transparent;
             backdrop-filter: blur(0.05rem);
-            border-top: dashed 1px red;
+            border-top: dashed 1px var(--color);
         }
 
         .ok {
@@ -64,7 +77,7 @@ export const InnerBox = styled.div`
             height:60%;
             margin-right: 18px;
             background-color: transparent;
-            border: inset 1px red;
+            border: inset 1px var(--color);
         }
 `;
 
