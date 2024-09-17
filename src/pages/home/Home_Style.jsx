@@ -13,7 +13,7 @@ export const About_Section = styled.section`
     align-items: center;
     grid-template-columns: 40% 1fr;
     gap: 16px;
-    position: relative;
+    /* position: relative; */
 
         @media screen and (max-width: 560px) {
             grid-template-columns: 1fr;

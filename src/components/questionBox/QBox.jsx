@@ -130,6 +130,7 @@ function QBox() {
     };
 
     return (
+        <>
         <S.Container>
             {!clicked && <S.SeeBtn onClick={handleClick}>See More...</S.SeeBtn>}
 
@@ -140,7 +141,8 @@ function QBox() {
                     {(animationIsDone && question == 0) &&
                         <>
                             <H3>
-                                <TypeEfct text={['', 'So here we are again, uh? If you wanna know more about him, you\'ll have to answer some questions of mine, do you agree?']} onDone={handleTyping} />
+                                <TypeEfct text={['']} onDone={handleTyping} />
+                                {/* , 'So here we are again, uh? If you wanna know more about him, you\'ll have to answer some questions of mine, do you agree?' */}
                             </H3>
 
                             {typingIsDone &&
@@ -166,7 +168,8 @@ function QBox() {
                     {question == 1 &&
                         <>
                             <H3>
-                                <TypeEfct text={['', 'First Question: What is the answer to The Ultimate Question of Life, The Universe and Everything?']} onDone={handleTyping} />
+                                <TypeEfct text={['']} onDone={handleTyping} />
+                                {/* , 'First Question: What is the answer to The Ultimate Question of Life, The Universe and Everything?' */}
                             </H3>
                             {giveHint &&
                                 <S.Para>Hint: the answer is inside {secondAnswer}</S.Para>}
@@ -197,8 +200,9 @@ function QBox() {
                     {question == 2 &&
                         <>
                             <H3>
-                                <TypeEfct text={['', 'Complete the sentence: We all float...']} onDone={handleTyping} />
+                                <TypeEfct text={['']} onDone={handleTyping} /> 
                             </H3>
+                            {/* , 'Complete the sentence: We all float...' */}
 
                             {typingIsDone &&
                                 <S.TextInput onChange={handleInputText} type="text" ref={inputRef} />
@@ -209,16 +213,16 @@ function QBox() {
                     }
                     {/* END OF THIRD QUESTION */}
 
-                    {question == 2.5 &&
+                    {/* {question == 2.5 &&
                         <>
-                            <S.Video autoPlay preload='true' onEnded={handleVideoEnd}>
+                            <S.Video controls autoPlay preload='true' onEnded={handleVideoEnd}>
                                 <source src={redBallons} type="video/mp4" />
                             </S.Video>
                             <audio autoPlay preload='true'>
                                 <source src={pennywiseLaught} type="audio/mp3" />
                             </audio>
                         </>
-                    }
+                    } */}
 
                     {/* LAST QUESTION */}
                     {question == 3 &&
@@ -236,6 +240,19 @@ function QBox() {
                 </S.Question_Box>
             }
         </S.Container>
+
+        
+            {question == 2.5 &&
+                        <S.Test>
+                            <S.Video controls autoPlay preload='true' onEnded={handleVideoEnd}>
+                                <source src={redBallons} type="video/mp4" />
+                            </S.Video>
+                            <audio autoPlay preload='true'>
+                                <source src={pennywiseLaught} type="audio/mp3" />
+                            </audio>
+                        </S.Test>
+                    }
+        </>
     )
 }
 

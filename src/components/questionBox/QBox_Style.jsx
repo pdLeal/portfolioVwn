@@ -172,6 +172,11 @@ export const Video = styled.video`
     width: 100%;
     height: 100%;
     object-fit: cover;
-    position: relative;
-    z-index: -99;
+    overflow: hidden;
+    
+`;
+
+export const Test = styled.div`
+    position: absolute;
+    inset: 0;
 `;
