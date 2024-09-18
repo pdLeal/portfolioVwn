@@ -5,7 +5,6 @@ export const Container = styled.div`
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    /* position: relative; */
 
     display: grid;
     grid-template-columns: repeat(${props => props.$numOfColumns}, minmax(150px, 400px));
@@ -20,14 +19,13 @@ export const OuterBox = styled.div`
     border-top: none;
     outline: solid 1px var(--color);
     box-shadow: 0px 0px 16px -3px var(--color);
-    /* position: relative; */
     display: flex;
     flex-direction: column;
 
     
     scale: ${props => props.$scale};
-    grid-column: ${props => props.$areaColumn};
-    grid-row: ${props => props.$areaRow};
+    /* grid-column: ${props => props.$areaColumn};
+    grid-row: ${props => props.$areaRow}; */
     
     transition: scale 350ms cubic-bezier(0.47, 0, 0.75, 0.72);
     
@@ -81,16 +79,16 @@ export const InnerBox = styled.div`
         }
 `;
 
-export const HackVideo = styled(Video)`
-    position: absolute;
-    top: 4px;
-`;
+// export const HackVideo = styled(Video)`
+//     position: absolute;
+//     top: 4px;
+// `;
 
-export const HackImg = styled.img`
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -99;
-    position: absolute;
-    top: 4px;
-`;
+// export const HackImg = styled.img`
+//     width: 100%;
+//     height: 100%;
+//     object-fit: cover;
+//     z-index: -99;
+//     position: absolute;
+//     top: 4px;
+// `;

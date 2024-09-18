@@ -38,43 +38,7 @@ function ErrorMsg({
 
 function Denied() {
   // TESTES
-  const testArr = [
-    {
-      id: 'fail_1',
-      title: 'error',
-      msg: 'access denied',
-      color: 'red',
-    },
-
-    {
-      id: 'success_1',
-      title: 'conected',
-      msg: 'access granted',
-      color: 'green',
-    },
-
-    {
-      id: 'fail_1',
-      title: 'error',
-      msg: 'access denied',
-      color: 'red',
-    },
-
-    {
-      id: 'success_1',
-      title: 'conected',
-      msg: 'access granted',
-      color: 'green',
-    },
-
-    {
-      id: 'fail_1',
-      title: 'error',
-      msg: 'access denied',
-      color: 'red',
-    },
-  ];
-
+  
   const [scale, setScale] = useState(0);
 
   useEffect(() => {
@@ -87,11 +51,32 @@ function Denied() {
 
   const [numOfColumns, setNumOfColumns] = useState(1);
   const [numOfRows, setNumOfRows] = useState(1);
+
   useEffect(() => {
     setNumOfColumns(Math.floor(window.innerWidth / 150));
     setNumOfRows(Math.floor(window.innerHeight / 150));
-
+    
   }, [])
+
+  const [testArr, setTestArr] = useState([]);
+  
+  useEffect(() => {
+    const maxOfErrors = numOfColumns * numOfRows;
+    const newErros = []
+
+    for (let i = 1; i <= maxOfErrors; i++) {
+      newErros.push({
+           id: i,
+           title: 'error',
+           msg: 'access denied',
+           color: 'red',
+         });
+
+      setTestArr(newErros);
+    }
+
+  }, [numOfColumns]);
+  
 
   // TESTES
 
@@ -103,19 +88,14 @@ function Denied() {
 
       {/* TESTES */}
 
-      {/* <ErrorMsgs scale={scale} /> */}
-
-      {testArr.map((error, i) => {
+      {testArr.map((error) => {
 
         return <ErrorMsg
-          key={i}
+          key={error.id}
           title={error.title}
           msg={error.msg}
           color={error.color}
           scale={scale}
-
-          areaColumn ={i}
-          areaRow ={i}
           />
       })}
 
