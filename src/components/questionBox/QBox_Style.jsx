@@ -48,9 +48,8 @@ export const Question_Box = styled.div`
     width: 0;
     max-width: 100%;
     height: 0;
-    position: relative;
-
-${props => {
+    
+    ${props => {
         if (props.$display) {
             return `
             display: grid;
