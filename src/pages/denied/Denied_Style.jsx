@@ -24,8 +24,8 @@ export const OuterBox = styled.div`
 
     
     scale: ${props => props.$scale};
-    /* grid-column: ${props => props.$areaColumn};
-    grid-row: ${props => props.$areaRow}; */
+    grid-column: ${props => props.$areaColumn};
+    grid-row: ${props => props.$areaRow};
     
     transition: scale 350ms cubic-bezier(0.47, 0, 0.75, 0.72);
     

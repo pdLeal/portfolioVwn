@@ -38,10 +38,10 @@ function ErrorMsg({
 
 function Denied() {
   // TESTES
-  
+
   const [scale, setScale] = useState(0);
 
-  useEffect(() => {
+  useEffect(() => { // Responsável pela animação das msg de erro
     const timer = setTimeout(() => {
       setScale(1);
     }, 250);
@@ -52,31 +52,50 @@ function Denied() {
   const [numOfColumns, setNumOfColumns] = useState(1);
   const [numOfRows, setNumOfRows] = useState(1);
 
-  useEffect(() => {
+  useEffect(() => { // Determina a grid de acorda com a largura/altura da janela
     setNumOfColumns(Math.floor(window.innerWidth / 150));
     setNumOfRows(Math.floor(window.innerHeight / 150));
-    
+
   }, [])
 
   const [testArr, setTestArr] = useState([]);
-  
-  useEffect(() => {
+
+  useEffect(() => { // Posiciona as msg de erro na grid
     const maxOfErrors = numOfColumns * numOfRows;
     const newErros = []
 
     for (let i = 1; i <= maxOfErrors; i++) {
-      newErros.push({
-           id: i,
-           title: 'error',
-           msg: 'access denied',
-           color: 'red',
-         });
+      if (i == 1) {
+        // Determinam o local da primeira msg de erro como o centro da janela
+        const column = numOfColumns % 2 == 0 ? `${numOfColumns / 2} / span 2` : `${Math.floor(numOfColumns / 2)} / span 3`;
+        const row = numOfRows % 2 == 0 ? `${numOfRows / 2} / span 2` : `${Math.floor(numOfRows / 2)} / span 3`;
+
+        newErros.push({
+          id: i,
+          title: 'error',
+          msg: 'access denied',
+          color: 'green',
+          areaColumn: column,
+          areaRow: row,
+        });
+
+      } else {
+        newErros.push({
+          id: i,
+          title: 'error',
+          msg: 'access denied',
+          color: 'red',
+          areaColumn: '1',
+          areaRow: '1',
+        });
+
+      }
 
       setTestArr(newErros);
     }
 
   }, [numOfColumns]);
-  
+
 
   // TESTES
 
@@ -95,8 +114,10 @@ function Denied() {
           title={error.title}
           msg={error.msg}
           color={error.color}
+          areaColumn={error.areaColumn}
+          areaRow={error.areaRow}
           scale={scale}
-          />
+        />
       })}
 
     </S.Container>
