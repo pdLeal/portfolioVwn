@@ -63,33 +63,31 @@ function Denied() {
   useEffect(() => { // Posiciona as msg de erro na grid
     const maxOfErrors = numOfColumns * numOfRows;
     const newErros = []
+    // Determinam o local da primeira msg de erro como o centro da janela
+    const column = numOfColumns % 2 == 0 ? `${numOfColumns / 2} / span 2` : `${Math.floor(numOfColumns / 2)} / span 3`;
+    const row = numOfRows % 2 == 0 ? `${numOfRows / 2} / span 2` : `${Math.floor(numOfRows / 2)} / span 3`;
 
+    newErros.push({
+      id: 1,
+      title: 'error',
+      msg: 'access denied',
+      color: 'green',
+      areaColumn: column,
+      areaRow: row,
+    });
+    
     for (let i = 1; i <= maxOfErrors; i++) {
-      if (i == 1) {
-        // Determinam o local da primeira msg de erro como o centro da janela
-        const column = numOfColumns % 2 == 0 ? `${numOfColumns / 2} / span 2` : `${Math.floor(numOfColumns / 2)} / span 3`;
-        const row = numOfRows % 2 == 0 ? `${numOfRows / 2} / span 2` : `${Math.floor(numOfRows / 2)} / span 3`;
 
         newErros.push({
-          id: i,
-          title: 'error',
-          msg: 'access denied',
-          color: 'green',
-          areaColumn: column,
-          areaRow: row,
-        });
-
-      } else {
-        newErros.push({
-          id: i,
+          id: i + 1,
           title: 'error',
           msg: 'access denied',
           color: 'red',
-          areaColumn: '1',
-          areaRow: '1',
+          areaColumn: i,
+          areaRow: i,
         });
 
-      }
+      
 
       setTestArr(newErros);
     }
