@@ -1,5 +1,6 @@
 import styled, { keyframes, css } from "styled-components";
 import { H3 } from '../../components/hello/Hello_Style';
+import { Button } from '../../components/hello/Hello_Style';
 
 export const Main = styled.main`
     height: 100vh;
@@ -67,4 +68,10 @@ export const Tease = styled(H3)`
     margin-inline: auto;
     max-width: 80%;
     text-align: center;
+`;
+
+export const BackHome = styled(Button)`
+    position: fixed;
+    top: 5%;
+    right: 5%;
 `;
