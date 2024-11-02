@@ -11,7 +11,8 @@ export const Main = styled.main`
 
 export const H1 = styled.h1`
     font-size: clamp(2rem, 7vw + 1rem, 6rem);
-    color: red;
+    color: ${props => props.$color};
+    text-shadow: 0px 0px 50px ${props => props.$color};
 `;
 
 export const Container = styled.main`
