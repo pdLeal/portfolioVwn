@@ -4,7 +4,7 @@ export const Main = styled.main`
     margin-top: 24px;
     margin-inline: auto;
     max-width: 80vw;
-    font-size: clamp(1.2rem, 3vw, 2.5rem);
+    font-size: clamp(1.2rem, 2vw + 0.5rem, 2.5rem);
     `;
 
 export const About_Section = styled.section`
