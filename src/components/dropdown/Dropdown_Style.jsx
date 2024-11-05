@@ -2,7 +2,7 @@ import styled, { keyframes } from "styled-components";
 
 export const Container = styled.div`
     padding: 0.5em;
-    max-height:${(props) => (props.$isOpen ? "800px" : "100px")};
+    max-height:${(props) => (props.$isOpen ? "1000px" : `calc(${props.$maxHeight}px + 1em)`)}; // É preciso "deslocar a max-height em 1em p/ compensar o padding de 0.5em"
     overflow: hidden;
     transition: max-height 1s linear;
     border: 1px solid var(--primary-color);
