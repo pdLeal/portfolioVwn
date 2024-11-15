@@ -3,10 +3,11 @@ import Header from '../../components/header/Header';
 import * as S from './Home_Style';
 import QBox from '../../components/questionBox/QBox';
 import Card from '../../components/card/Card';
+import data from '../../data/Projetos.json';
 
 
 function Home() {
-  
+
   return (
     <>
       <Header />
@@ -16,12 +17,20 @@ function Home() {
           <QBox />
         </S.About_Section>
         <S.Projects>
-          <h2>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</h2>
+          <S.H2>Some Projects</S.H2>
           <S.Grid>
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            {
+              data.map(project => {
+                return <Card
+                        key={project.id}
+                        title={project.title}
+                        gitUrl={project.gitUrl}
+                        pageUrl={project.pageUrl}
+                        img={project.img}
+                        alt={project.alt}
+                        text={project.text} />
+              })
+            }
           </S.Grid>
         </S.Projects>
       </S.Main>

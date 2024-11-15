@@ -27,14 +27,19 @@ export const Span = styled.span`
 export const Projects = styled.section`
     text-align: center;
     margin-top: 48px;
-    background-color: #012827;
+    padding-block: 24px;
+`;
+
+export const H2 = styled.h2`
+    margin-bottom: 16px;
+    font-size: clamp(1.3rem, 4vw + 0.5rem, 2.5rem);
 `;
 
 export const Grid = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(40%, 250px));
-    grid-template-rows: min-content auto auto auto;
-    justify-content: center;
+    grid-template-rows: min-content auto auto auto auto;
+    justify-content: space-between;
     align-items: center;
     gap: 16px;
 `;

@@ -1,13 +1,21 @@
 import React from 'react';
 import * as S from './Card_Style';
-import McDesafio from '../../assets/McDesafio.png';
 
-function Card() {
+function Card({
+  key,
+  title,
+  gitUrl,
+  pageUrl,
+  img,
+  alt,
+  text
+}) {
   return (
-    <S.Sub_Grid>
-        <img src={McDesafio} alt="" />
-        <h3>McDesafio</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+    <S.Sub_Grid key={key}>
+        <a href={pageUrl} target='_blank'><img src={img} alt={alt} /></a>
+        <h3>{title}</h3>
+        <p>{text}</p>
+        <a href={gitUrl} target='_blank'>See repository</a>
     </S.Sub_Grid>
   )
 }
