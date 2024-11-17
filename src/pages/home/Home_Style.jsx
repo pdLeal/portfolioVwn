@@ -42,4 +42,8 @@ export const Grid = styled.div`
     justify-content: space-between;
     align-items: center;
     gap: 16px;
+
+    @media screen and (max-width: 644px) {
+        justify-content:center;
+        }
 `;
