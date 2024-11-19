@@ -21,44 +21,8 @@ export const AboutMain = styled(Main)`
         font-size: 22px;
         font-weight: bold;
         color: #fff;
-        background-color: #2c2c2c;
+        background-color: #000000;
     }
-
-    /* .swiper-slide:nth-child(1n) {
-        background-color: rgb(206, 17, 17);
-    } */
-
-    /* .swiper-slide:nth-child(2n) {
-        background-color: rgb(0, 140, 255);
-     }
-
-    .swiper-slide:nth-child(3n) {
-        background-color: rgb(10, 184, 111);
-    }
-
-    .swiper-slide:nth-child(4n) {
-        background-color: rgb(211, 122, 7);
-    }
-
-    .swiper-slide:nth-child(5n) {
-        background-color: rgb(118, 163, 12);
-    }
-
-    .swiper-slide:nth-child(6n) {
-        background-color: rgb(180, 10, 47);
-    }
-
-    .swiper-slide:nth-child(7n) {
-        background-color: rgb(35, 99, 19);
-    }
-
-    .swiper-slide:nth-child(8n) {
-        background-color: rgb(0, 68, 255);
-    }
-
-    .swiper-slide:nth-child(9n) {
-        background-color: rgb(218, 12, 218);
-    } */
 `;
 
 export const Section = styled.section`
@@ -82,17 +46,59 @@ export const OuterBg = styled.div`
     border-radius: 5px;
     border-bottom-left-radius: 10%;
     border-bottom-right-radius: 10%;
-    background-color: #679302;
     position: relative;
+    background-image: url("/bgGamesCard.jpg");
+    // Image from Thomas Bormans https://unsplash.com/pt-br/@thomasbormans
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 `;
 
 export const InnerBg = styled.div`
     display: grid;
-    grid-template-rows: 1fr 3fr 1fr 3fr;
+    grid-template-rows: auto 4fr auto 4fr;
     position: absolute;
     inset: 10px 5% -10px 5%;
     
     background-color: #520293;
+
+        h3 {
+            padding-left: 8px;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(190deg, #444444, #222);
+            border: 1px solid #000000; 
+            border-radius: 3% 3% 3% 3% / 39% 39% 38% 39%; 
+            box-shadow:
+                0 0 0px 2px rgb(255 255 255 / 80%), 
+                0 0 10px rgba(0, 0, 0, 0.8), 
+                inset 0 -3px 0 0px rgb(0 0 0 / 20%);
+                z-index: 1;
+        }
+
+        svg {
+            justify-self: center;
+            align-self: center;
+            height: 100%;
+            width: 100%;
+            background-color: aqua;
+        }
+
+        .type {
+            padding-left: 8px;
+            padding-block: 0.1em;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(190deg, #444444, #222);
+            border: 1px solid #000000; 
+            border-radius: 3% 3% 3% 3% / 39% 39% 38% 39%; 
+            box-shadow:
+                0 0 0px 2px rgb(255 255 255 / 80%), 
+                0 0 10px rgba(0, 0, 0, 0.8), 
+                inset 0 -3px 0 0px rgb(0 0 0 / 20%);
+                z-index: 1;
+        }
+
     p {
         font-size: 1rem;
     }

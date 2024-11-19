@@ -34,58 +34,80 @@ function About() {
                 <S.InnerBg>
                   <h3>HTML</h3>
                   <SiHtml5 color="#E34F26" size={32} />
-                  <p>Markup Language</p>
+                  <p className='type'>Markup Language</p>
                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, rem odio ullam iusto quis inventore harum cum beatae aperiam pariatur!</p>
                 </S.InnerBg>
               </S.OuterBg>
             </SwiperSlide>
             <SwiperSlide>
-              <figure>
-                <SiCss3 color="#1572B6" size={32} />
-                <figcaption>CSS</figcaption>
-              </figure>
+              <S.OuterBg>
+                <S.InnerBg>
+                  <h3>CSS</h3>
+                  <SiCss3 color="#1572B6" size={32} />
+                  <p className='type'>Style Sheet Language</p>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, rem odio ullam iusto quis inventore harum cum beatae aperiam pariatur!</p>
+                </S.InnerBg>
+              </S.OuterBg>
             </SwiperSlide>
             <SwiperSlide>
-              <figure>
-                <SiJavascript color="#F7DF1E" size={32} />
-                <figcaption>JavaScript</figcaption>
-              </figure>
+              <S.OuterBg>
+                <S.InnerBg>
+                  <h3>JavaScript</h3>
+                  <SiJavascript color="#F7DF1E" size={32} />
+                  <p className='type'>Programming Language</p>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, rem odio ullam iusto quis inventore harum cum beatae aperiam pariatur!</p>
+                </S.InnerBg>
+              </S.OuterBg>
             </SwiperSlide>
             <SwiperSlide>
-              <figure>
-                <SiReact color="#61DAFB" size={32} />
-                <figcaption>React</figcaption>
-              </figure>
+              <S.OuterBg>
+                <S.InnerBg>
+                  <h3>React</h3>
+                  <SiReact color="#61DAFB" size={32} />
+                  <p className='type'>Library</p>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, rem odio ullam iusto quis inventore harum cum beatae aperiam pariatur!</p>
+                </S.InnerBg>
+              </S.OuterBg>
             </SwiperSlide>
             <SwiperSlide>
-              <figure>
-                <SiStyledcomponents color="#DB7093" size={32} />
-                <figcaption>Styled-Components</figcaption>
-              </figure>
+              <S.OuterBg>
+                <S.InnerBg>
+                  <h3>Styled-Components</h3>
+                  <SiStyledcomponents color="#DB7093" size={32} />
+                  <p className='type'>Library</p>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, rem odio ullam iusto quis inventore harum cum beatae aperiam pariatur!</p>
+                </S.InnerBg>
+              </S.OuterBg>
             </SwiperSlide>
             <SwiperSlide>
-              <figure>
-                <SiNextdotjs color="#ffffff" size={32} />
-                <figcaption>Next.js</figcaption>
-              </figure>
+              <S.OuterBg>
+                <S.InnerBg>
+                  <h3>Next.js</h3>
+                  <SiNextdotjs color="#ffffff" size={32} />
+                  <p className='type'>Framework</p>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, rem odio ullam iusto quis inventore harum cum beatae aperiam pariatur!</p>
+                </S.InnerBg>
+              </S.OuterBg>
             </SwiperSlide>
             <SwiperSlide>
-              <figure>
-                <SiSass color="#CC6699" size={32} />
-                <figcaption>SASS</figcaption>
-              </figure>
+              <S.OuterBg>
+                <S.InnerBg>
+                  <h3>Tailwind</h3>
+                  <SiTailwindcss color="#38B2AC" size={32} />
+                  <p className='type'>Library</p>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, rem odio ullam iusto quis inventore harum cum beatae aperiam pariatur!</p>
+                </S.InnerBg>
+              </S.OuterBg>
             </SwiperSlide>
             <SwiperSlide>
-              <figure>
-                <SiTailwindcss color="#38B2AC" size={32} />
-                <figcaption>Tailwind</figcaption>
-              </figure>
-            </SwiperSlide>
-            <SwiperSlide>
-              <figure>
-                <SiGit color="#F05032" size={32} />
-                <figcaption>Git</figcaption>
-              </figure>
+              <S.OuterBg>
+                <S.InnerBg>
+                  <h3>Git</h3>
+                  <SiGit color="#F05032" size={32} />
+                  <p className='type'>Version Control</p>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, rem odio ullam iusto quis inventore harum cum beatae aperiam pariatur!</p>
+                </S.InnerBg>
+              </S.OuterBg>
             </SwiperSlide>
           </Swiper>
         </S.Section>
