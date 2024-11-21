@@ -8,7 +8,7 @@ export const AboutMain = styled(Main)`
     }
      // SWIPER TESTS
      .swiper {
-        width: 240px;
+        width: 260px;
         height: 320px;
     }
 
@@ -40,13 +40,14 @@ export const H2 = styled.h2`
 
 export const OuterBg = styled.div`
     width: 100%;
-    height: 90%;
+    height: 85%;
     padding: 5px;
     border-radius: 5px;
     border-bottom-left-radius: 10%;
     border-bottom-right-radius: 10%;
+    border: 10px solid black;
     position: relative;
-    background-image: url("/bgGamesCard.jpg");
+    background-image: url("/bgGamesCard.png");
     // Image from Thomas Bormans https://unsplash.com/pt-br/@thomasbormans
     background-size: cover;
     background-position: center;
@@ -57,33 +58,18 @@ export const InnerBg = styled.div`
     display: grid;
     grid-template-rows: auto 4fr auto 4fr;
     position: absolute;
-    inset: 10px 5% -10px 5%;
+    inset: 10px 5% -15px 5%;
     
-    background-color: #520293;
-
-        h3 {
-            padding-left: 8px;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(190deg, #444444, #222);
-            border: 1px solid #000000; 
-            border-radius: 3% 3% 3% 3% / 39% 39% 38% 39%; 
-            box-shadow:
+    border: 1px solid #000000; 
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    box-shadow:
                 0 0 0px 2px rgb(255 255 255 / 80%), 
                 0 0 10px rgba(0, 0, 0, 0.8), 
                 inset 0 -3px 0 0px rgb(0 0 0 / 20%);
-                z-index: 1;
-        }
-
-        svg {
-            justify-self: center;
-            align-self: center;
-            height: 100%;
-            width: 100%;
-            background-color: aqua;
-        }
-
-        .type {
+    background-color: black;
+        
+        .titles {
             padding-left: 8px;
             padding-block: 0.1em;
             display: flex;
@@ -95,10 +81,27 @@ export const InnerBg = styled.div`
                 0 0 0px 2px rgb(255 255 255 / 80%), 
                 0 0 10px rgba(0, 0, 0, 0.8), 
                 inset 0 -3px 0 0px rgb(0 0 0 / 20%);
-                z-index: 1;
+            z-index: 9;
         }
 
-    p {
-        font-size: 1rem;
-    }
+        h3 {
+            font-size: clamp(1.3rem, 2vw + 0.5rem, 2rem);
+        }
+
+        svg {
+            height: 100%;
+            width: 100%;
+            justify-self: center;
+            align-self: center;
+            background-color: black;
+        }
+
+
+        p {
+            font-size: 1rem;
+        }
+
+        .description {
+            padding: 4px;
+        }
     `;
