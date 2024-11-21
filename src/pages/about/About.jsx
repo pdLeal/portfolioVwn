@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Header from '../../components/header/Header';
 import * as S from './About_Style';
 import { SiHtml5, SiCss3, SiJavascript, SiReact, SiStyledcomponents, SiNextdotjs, SiTailwindcss, SiGit } from "react-icons/si";
@@ -15,19 +15,6 @@ import 'swiper/css/effect-cards';
 import { EffectCards } from 'swiper/modules';
 
 function About() {
-  const [mouseX, setMouseX] = useState(null);
-  const [mouseY, setMouseY] = useState(null);
-
-
-  function test(e) {
-
-    let x = e.pageX - e.currentTarget.offsetLeft;
-    let y = e.pageY - e.currentTarget.offsetTop;
-
-    setMouseX(x);
-    setMouseY(y);
-  }
-
   return (
     <>
       <Header />
@@ -43,9 +30,7 @@ function About() {
             className="mySwiper"
           >
             <SwiperSlide>
-              <S.Container onClick={e => {
-                test(e)
-              }} $mouseX={mouseX} $mouseY={mouseY}>
+              <S.Container>
                 <S.OuterBg>
                   <S.InnerBg>
                     <h3 className='titles'>HTML</h3>
@@ -103,7 +88,7 @@ function About() {
                     <h3 className='titles'>Styled-Components</h3>
                     <SiStyledcomponents color="#DB7093" size={32} />
                     <p className='titles'>Library</p>
-                    <p className='description'>Allows developers to write CSS directly within JavaScript. It enables the creation of dynamic and scoped styles, making it easy to manage and maintain complex user interfaces.</p>
+                    <p className='description'>Allows devs to write CSS directly within JS. It enables the creation of dynamic and scoped styles, making it easy to manage and maintain complex user interfaces.</p>
                   </S.InnerBg>
                 </S.OuterBg>
               </S.Container>

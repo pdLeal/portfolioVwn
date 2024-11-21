@@ -49,19 +49,6 @@ export const Container = styled.div.attrs(props => ({
     align-items: start;
     justify-content: center;
     background-color: #000000;
-    position: relative;
-    overflow: hidden;
-
-    /* &::before {
-        content: '';
-        position: absolute;
-        left: var(--mouse-x);
-        top: var(--mouse-y);
-        transform: translate(-50%, 50%);
-        background: radial-gradient(red, transparent, transparent);
-        width: 100px;
-        height: 100px;
-    } */
 `;
 
 export const OuterBg = styled.div`
