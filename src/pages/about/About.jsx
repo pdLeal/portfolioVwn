@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../../components/header/Header';
 import * as S from './About_Style';
-import { SiHtml5, SiCss3, SiJavascript, SiReact, SiStyledcomponents, SiSass, SiNextdotjs, SiTailwindcss, SiGit } from "react-icons/si";
+import { SiHtml5, SiCss3, SiJavascript, SiReact, SiStyledcomponents, SiNextdotjs, SiTailwindcss, SiGit } from "react-icons/si";
 import Dropdown from '../../components/dropdown/Dropdown';
 
 import { Swiper, SwiperSlide } from 'swiper/react';

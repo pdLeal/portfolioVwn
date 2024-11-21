@@ -13,7 +13,6 @@ export const AboutMain = styled(Main)`
     }
 
     .swiper-slide {
-        padding: 10px;
         display: flex;
         align-items: start;
         justify-content: center;
