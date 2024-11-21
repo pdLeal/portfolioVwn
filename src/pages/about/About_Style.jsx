@@ -6,7 +6,6 @@ export const AboutMain = styled(Main)`
     & > :first-child {
         margin-bottom: 32px;
     }
-     // SWIPER TESTS
      .swiper {
         width: 260px;
         height: 320px;
@@ -14,28 +13,55 @@ export const AboutMain = styled(Main)`
 
     .swiper-slide {
         display: flex;
-        align-items: start;
-        justify-content: center;
         border-radius: 10px;
-        font-size: 22px;
-        font-weight: bold;
-        color: #fff;
-        background-color: #000000;
+        box-shadow: 0 0 13px -5px var(--primary-color);
     }
+
+    
 `;
 
 export const Section = styled.section`
-    padding-top: 24px;
+    padding-block: 24px;
     margin-top: 24px;
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
     gap: 8px;
     border-top: 1px solid var(--primary-color);
-    background-color: #fa80721f;
+    border-bottom: 1px solid var(--primary-color);
 `;
 
 export const H2 = styled.h2`
     margin-bottom: 16px;
+`;
+
+export const Container = styled.div.attrs(props => ({
+    style: {
+        '--mouse-x': props.$mouseX || 0,
+        '--mouse-y': props.$mouseY || 0,
+    }
+}))`
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    background-color: #000000;
+    position: relative;
+    overflow: hidden;
+
+    /* &::before {
+        content: '';
+        position: absolute;
+        left: var(--mouse-x);
+        top: var(--mouse-y);
+        transform: translate(-50%, 50%);
+        background: radial-gradient(red, transparent, transparent);
+        width: 100px;
+        height: 100px;
+    } */
 `;
 
 export const OuterBg = styled.div`
@@ -45,10 +71,8 @@ export const OuterBg = styled.div`
     border-radius: 5px;
     border-bottom-left-radius: 10%;
     border-bottom-right-radius: 10%;
-    border: 10px solid black;
     position: relative;
-    background-image: url("/bgGamesCard.png");
-    // Image from Thomas Bormans https://unsplash.com/pt-br/@thomasbormans
+    background-image: url("/bgGamesCard.png"); // Image from Thomas Bormans https://unsplash.com/pt-br/@thomasbormans
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -102,6 +126,6 @@ export const InnerBg = styled.div`
         }
 
         .description {
-            padding: 4px;
+            padding: 8px 4px;
         }
     `;
