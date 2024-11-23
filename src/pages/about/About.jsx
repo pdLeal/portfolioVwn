@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../../components/header/Header';
 import * as S from './About_Style';
-import { SiHtml5, SiCss3, SiJavascript, SiReact, SiStyledcomponents, SiNextdotjs, SiTailwindcss, SiGit } from "react-icons/si";
+import { SiHtml5, SiCss3, SiJavascript, SiReact, SiStyledcomponents, SiNextdotjs, SiTailwindcss, SiGit, SiLinkedin, SiGithub } from "react-icons/si";
 import Dropdown from '../../components/dropdown/Dropdown';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -135,6 +135,11 @@ function About() {
 
           </Swiper>
         </S.Section>
+        <S.ContactWrapper>
+          <a href='https://www.linkedin.com/in/pdleal/' target='_blank'><SiLinkedin  /></a>
+          <a href='https://github.com/pdLeal' target='_blank'><SiGithub  /></a>
+          <p>I'm just at the beginning of my journey as a dev, and I can't wait to see what paths open up in this RPG called life. Until then, if you'd like to join the adventure, here's my LinkedIn and GitHub. Let's create something amazing together!</p>
+        </S.ContactWrapper>
       </S.AboutMain>
     </>
   )

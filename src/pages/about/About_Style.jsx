@@ -22,7 +22,7 @@ export const AboutMain = styled(Main)`
 
 export const Section = styled.section`
     padding-block: 24px;
-    margin-top: 24px;
+    margin-block: 24px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,12 +36,7 @@ export const H2 = styled.h2`
     margin-bottom: 16px;
 `;
 
-export const Container = styled.div.attrs(props => ({
-    style: {
-        '--mouse-x': props.$mouseX || 0,
-        '--mouse-y': props.$mouseY || 0,
-    }
-}))`
+export const Container = styled.div`
     padding: 10px;
     width: 100%;
     height: 100%;
@@ -114,5 +109,42 @@ export const InnerBg = styled.div`
 
         .description {
             padding: 8px 4px;
+        }
+    `;
+
+export const ContactWrapper = styled.section`
+        display: grid;
+        grid-template-columns: 1fr 1fr 2fr;
+        justify-content: center;
+        align-items: center;
+        justify-items: center;
+
+            svg {
+                font-size: clamp(2rem, 5vw + 0.5rem,5rem);
+                color: var(--primary-color);
+                text-shadow: 0px 0px 3px var(--primary-color);
+                transition:
+                    transform 500ms cubic-bezier(.68,-0.55,.27,1.55),
+                    color 500ms linear;
+            }
+
+            svg:hover, 
+            svg:focus-visible {
+                transform: scale(1.5);
+                color: red;
+            }
+
+            @media screen and (max-width: 775px) {
+            grid-template-columns: none;
+            grid-template-rows: 2fr 1fr;
+            row-gap: 24px;
+
+                a {
+                    grid-row: 2;
+                }
+
+                p {
+                    grid-column: span 2;
+                }
         }
     `;
