@@ -4,6 +4,7 @@ import * as S from './Home_Style';
 import QBox from '../../components/questionBox/QBox';
 import Card from '../../components/card/Card';
 import data from '../../data/Projetos.json';
+import Footer from '../../components/footer/Footer'
 
 
 function Home() {
@@ -34,6 +35,7 @@ function Home() {
           </S.Grid>
         </S.Projects>
       </S.Main>
+      <Footer />
     </>
   )
 }
