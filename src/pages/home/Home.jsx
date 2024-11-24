@@ -23,7 +23,7 @@ function Home() {
             {
               data.map(project => {
                 return <Card
-                        key={project.id}
+                        keyId={project.id}
                         title={project.title}
                         gitUrl={project.gitUrl}
                         pageUrl={project.pageUrl}

@@ -131,6 +131,11 @@ function QBox() {
         document.body.style.overflow = 'visible';
     };
 
+    function handleAboutWinner() {
+        setAboutWinner(true);
+        localStorage.setItem('isAboutWinner', true);
+    }
+
     return (
         <S.Container>
             {!clicked && <S.SeeBtn onClick={handleClick}>See More...</S.SeeBtn>}
@@ -224,15 +229,11 @@ function QBox() {
 
                     {/* LAST QUESTION */}
                     {question == 3 &&
-                        <>
                             <H3>
                                 <TypeEfct
                                 text={['', 'You shall pass...for now']}
-                                onDone={() => {
-                                    setAboutWinner(true);
-                                }} />
+                                onDone={handleAboutWinner} />
                             </H3>
-                        </>
                     }
                 </S.Question_Box>
             }

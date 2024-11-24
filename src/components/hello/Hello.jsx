@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import * as S from './Hello_Style';
 import { useNavigate } from 'react-router-dom';
 import TypeEfct from '../TypeEfct.jsx';
+import useWinnerContext from '../../contexts/WinnerContext.js';
 
 function Hello() {
     const [showNext, setshowNext] = useState(false);
@@ -51,6 +52,11 @@ function Hello() {
             localStorage.setItem('skippable', true);
         }
     }, []);
+
+    // useEffect(() => {
+    //     const { setAboutWinner } = useWinnerContext();
+    //     localStorage.getItem('isAboutWinner') ? setAboutWinner(true) : '';
+    // }, [])
 
     const navigate = useNavigate();
     function handleClick() {
