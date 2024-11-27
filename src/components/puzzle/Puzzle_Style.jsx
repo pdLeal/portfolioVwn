@@ -5,13 +5,11 @@ export const Container = styled.section`
     aspect-ratio: 1;
     margin-inline: auto;
     display: grid;
-    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    grid-template: repeat(${props => props.$layout}, 1fr) / repeat(${props => props.$layout}, 1fr);
     background-color: #432929;
 
     `;
 export const Slot = styled.div`
-    /* transform: translateX(${props => props.$test}%);
-    transition: all 1s linear; */
     border: 1px dashed khaki;
     `;
 
