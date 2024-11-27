@@ -2,7 +2,6 @@ import React from 'react';
 import * as S from './Card_Style';
 
 function Card({
-  keyId,
   title,
   gitUrl,
   pageUrl,
@@ -11,7 +10,7 @@ function Card({
   text
 }) {
   return (
-    <S.Sub_Grid key={keyId}>
+    <S.Sub_Grid>
         <a href={pageUrl} target='_blank'><img src={img} alt={alt} /></a>
         <h3>{title}</h3>
         <p>{text}</p>

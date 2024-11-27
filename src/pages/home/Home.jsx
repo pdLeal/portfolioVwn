@@ -4,6 +4,7 @@ import * as S from './Home_Style';
 import QBox from '../../components/questionBox/QBox';
 import Card from '../../components/card/Card';
 import data from '../../data/Projetos.json';
+import Puzzle from '../../components/puzzle/Puzzle';
 import Footer from '../../components/footer/Footer'
 
 
@@ -19,11 +20,12 @@ function Home() {
         </S.About_Section>
         <S.Projects>
           <S.H2>Some Projects</S.H2>
-          <S.Grid>
+          <Puzzle />
+          {/* <S.Grid>
             {
               data.map(project => {
                 return <Card
-                        keyId={project.id}
+                        key={project.id}
                         title={project.title}
                         gitUrl={project.gitUrl}
                         pageUrl={project.pageUrl}
@@ -32,7 +34,7 @@ function Home() {
                         text={project.text} />
               })
             }
-          </S.Grid>
+          </S.Grid> */}
         </S.Projects>
       </S.Main>
       <Footer />
