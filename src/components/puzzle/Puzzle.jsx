@@ -89,16 +89,14 @@ function Puzzle() {
         gridLayout.map((slot) => {
           if (slot < numOfSlots) {
             return (
-              <S.Slot data-empty='false' data-position={slot} key={slot}>
-                <S.Piece onClick={e => {
+              <div className='slot' data-empty='false' data-position={slot} key={slot}>
+                <S.Piece data-piece={slot} onClick={e => {
                   moveToEmpty(e, canMove, setCanMove, lastClick, setLastClick);
-                }}>
-                  Piece {slot}
-                </S.Piece>
-              </S.Slot>
+                }}></S.Piece>
+              </div>
             )
           } else {
-            return <S.Slot data-empty='true' data-position={slot} key={slot}></S.Slot>
+            return <div data-empty='true' data-position={slot} key={slot}></div>
           }
         })
       }
