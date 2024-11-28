@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Container = styled.section`
     width: 80vw;
     aspect-ratio: 1;
+    padding: 8px;
     margin-inline: auto;
     display: grid;
     grid-template: repeat(${props => props.$layout}, 1fr) / repeat(${props => props.$layout}, 1fr);
@@ -69,7 +70,7 @@ export const Container = styled.section`
         [data-piece="15"] {
             background-position: 66% 100%;
         }
-        /* [data-piece="16"] { background-position: 100% 100%; } */
+        [data-piece="16"] { background-position: 100% 100%; }
     `;
 
 export const Piece = styled.div`
@@ -77,13 +78,4 @@ export const Piece = styled.div`
     background-image: url('/offerchallenge.png');
     background-size: 400%;
     background-repeat: no-repeat;
-
-    /* &:nth-child(1) { background-position: 0% 0%; 
-        border: 2px solid orangered} */
     `;
-
-
-export const Img = styled.img`
-    /* transform: scale(4);
-    transform-origin: ${props => props.$x}% ${props => props.$y}%; */
-`;

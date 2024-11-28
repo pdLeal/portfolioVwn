@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import * as S from './Puzzle_Style';
 
 function moveToEmpty(e, canMove, setCanMove, lastClick, setLastClick) {
@@ -70,9 +70,20 @@ function moveToEmpty(e, canMove, setCanMove, lastClick, setLastClick) {
 
 }
 
+function fisherYatesShuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+      // Escolha um índice aleatório entre 0 e i
+      const j = Math.floor(Math.random() * (i + 1));
+      // Troque os elementos array[i] e array[j]
+      [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
 function Puzzle() {
   const [canMove, setCanMove] = useState(['12', '15']);
   const [lastClick, setLastClick] = useState(0);
+  const [shuffledPieces, setShuffledPieces] = useState([]);
 
   const gridLayout = [];
   const numOfSlots = 16;
@@ -80,17 +91,22 @@ function Puzzle() {
     gridLayout.push(i);
   }
 
+ 
+  useEffect(() => {
+    setShuffledPieces(fisherYatesShuffle(gridLayout));
+  }, [])
+
 
 
   return (
     <S.Container $layout={Math.sqrt(numOfSlots)}>
 
       {
-        gridLayout.map((slot) => {
+        gridLayout.map((slot, i) => {
           if (slot < numOfSlots) {
             return (
               <div className='slot' data-empty='false' data-position={slot} key={slot}>
-                <S.Piece data-piece={slot} onClick={e => {
+                <S.Piece data-piece={shuffledPieces[i]} onClick={e => {
                   moveToEmpty(e, canMove, setCanMove, lastClick, setLastClick);
                 }}></S.Piece>
               </div>
