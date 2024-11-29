@@ -16,28 +16,41 @@ function moveToEmpty(e, canMove, setCanMove, lastClick, setLastClick) {
   const clickedElem = e.target;
   const emptyElem = document.querySelector('[data-empty=true]');
 
-  const positionInGrid = clickedElem.parentElement.dataset.position;
+  // const positionInGrid = clickedElem.parentElement.dataset.position;
 
-  if (!canMove.includes(positionInGrid)) {
-    return; // Impede que peças que não estão proximas se mexam
-  }
+  // if (!canMove.includes(positionInGrid)) {
+  //   return; // Impede que peças que não estão proximas se mexam
+  // }
 
-  // Determina as peças que podem se mover p/ o próximo espaço vazio
-  const numPosition = +positionInGrid;
-  const topSlot = `${numPosition - 4}`;
-  const bottomSlot = `${numPosition + 4}`;
-  const leftSlot = `${
-                      (numPosition - 1) == 4 ||
-                      (numPosition - 1) == 8 ||
-                      (numPosition - 1) == 12 ? '' : numPosition - 1
-                    }`;
-  const rightSlot = `${
-                      (numPosition + 1) == 5 ||
-                      (numPosition + 1) == 9 ||
-                      (numPosition + 1) == 13 ? '' : numPosition + 1
-                    }`;
-  const tempArray = [topSlot, bottomSlot, leftSlot, rightSlot];
-  setCanMove(tempArray);
+  // // Determina as peças que podem se mover p/ o próximo espaço vazio
+  // const numPosition = +positionInGrid;
+  // // const topSlot = `${numPosition - 3}`; 3x3 GRID
+  // // const bottomSlot = `${numPosition + 3}`;
+  // // const leftSlot = `${
+  // //                     (numPosition - 1) == 0 ||
+  // //                     (numPosition - 1) == 3 ||
+  // //                     (numPosition - 1) == 6 ? '' : numPosition - 1
+  // //                   }`;
+  // // const rightSlot = `${
+  // //                     (numPosition + 1) == 4 ||
+  // //                     (numPosition + 1) == 7 ||
+  // //                     (numPosition + 1) == 10 ? '' : numPosition + 1
+  // //                   }`;
+
+  // const topSlot = `${numPosition - 4}`; // 4x4 GRID
+  // const bottomSlot = `${numPosition + 4}`;
+  // const leftSlot = `${
+  //                     (numPosition - 1) == 4 ||
+  //                     (numPosition - 1) == 8 ||
+  //                     (numPosition - 1) == 12 ? '' : numPosition - 1
+  //                   }`;
+  // const rightSlot = `${
+  //                     (numPosition + 1) == 5 ||
+  //                     (numPosition + 1) == 9 ||
+  //                     (numPosition + 1) == 13 ? '' : numPosition + 1
+  //                   }`;
+  // const tempArray = [topSlot, bottomSlot, leftSlot, rightSlot];
+  // setCanMove(tempArray);
 
 
   // Calcula a posição do empty e do clicked
@@ -81,7 +94,7 @@ function fisherYatesShuffle(array) {
 }
 
 function Puzzle() {
-  const [canMove, setCanMove] = useState(['12', '15']);
+  const [canMove, setCanMove] = useState(['12', '15']); // '6', '8'
   const [lastClick, setLastClick] = useState(0);
   const [shuffledPieces, setShuffledPieces] = useState([]);
 

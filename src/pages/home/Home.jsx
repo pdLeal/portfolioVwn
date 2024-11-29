@@ -21,7 +21,7 @@ function Home() {
         <S.Projects>
           <S.H2>Some Projects</S.H2>
           <Puzzle />
-          <S.Grid>
+          {/* <S.Grid>
             {
               data.map(project => {
                 return <Card
@@ -34,7 +34,7 @@ function Home() {
                         text={project.text} />
               })
             }
-          </S.Grid>
+          </S.Grid> */}
         </S.Projects>
       </S.Main>
       <Footer />
