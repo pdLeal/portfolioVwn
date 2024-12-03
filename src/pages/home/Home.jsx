@@ -6,9 +6,12 @@ import Card from '../../components/card/Card';
 import data from '../../data/Projetos.json';
 import Puzzle from '../../components/puzzle/Puzzle';
 import Footer from '../../components/footer/Footer'
+import TypeEfct from '../../components/TypeEfct';
+import { Button } from '../../components/hello/Hello_Style';
 
 
 function Home() {
+  const [showRules, setShowRules] = useState(false);
 
   return (
     <>
@@ -19,8 +22,30 @@ function Home() {
           <QBox />
         </S.About_Section>
         <S.Projects>
-          <S.H2>Some Projects</S.H2>
+          <S.H2>Projects Puzzle</S.H2>
+          {!showRules && <button onClick={() => setShowRules(true)}>Rules</button>}
+
+          <S.Wrapper>
+
+            {showRules &&
+              <S.TextRules>
+                <TypeEfct text={['', 'A simple puzzle for simple projects...', "Just put the pieces together 'till the image makes sense!"]} />
+              </S.TextRules>
+            }
+
+            {showRules &&
+              <S.Modds>
+                <button>Hard Mode</button>
+                <button>Restart</button>
+              </S.Modds>
+            }
+
+          </S.Wrapper>
+
           <Puzzle />
+
+
+
           {/* <S.Grid>
             {
               data.map(project => {

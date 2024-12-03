@@ -53,11 +53,6 @@ function Hello() {
         }
     }, []);
 
-    // useEffect(() => {
-    //     const { setAboutWinner } = useWinnerContext();
-    //     localStorage.getItem('isAboutWinner') ? setAboutWinner(true) : '';
-    // }, [])
-
     const navigate = useNavigate();
     function handleClick() {
         navigate('/home');

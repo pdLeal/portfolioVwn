@@ -9,44 +9,10 @@ export const Container = styled.section`
     display: grid;
     grid-template: repeat(${props => props.$layout}, 1fr) / repeat(${props => props.$layout}, 1fr);
     gap: 2px;
-    border: solid 1px var(--primary-color);
+    border: solid 1px var(--primary-color); 
     box-shadow: 0px 0px 20px -8px var(--primary-color);
 
-        /* [data-piece="1"] { 3x3 GRID
-            background-position: 0% 0%;
-        }
-
-        [data-piece="2"] {
-            background-position: 50% 0%;
-        }
-
-        [data-piece="3"] {
-            background-position: 100% 0%;
-        }
-
-        [data-piece="4"] {
-            background-position: 0% 50%;
-        }
-
-        [data-piece="5"] {
-            background-position: 50% 50%; 
-        }
-
-        [data-piece="6"] {
-            background-position: 100% 50%;
-        }
-
-        [data-piece="7"] {
-            background-position: 0% 100%;
-        }
-
-        [data-piece="8"] {
-            background-position: 50% 100%;
-        }
-
-        [data-piece="9"] {
-            background-position: 100% 100%; 
-        } */
+        
 
         
         [data-piece="1"] {
@@ -120,3 +86,39 @@ export const Piece = styled.div`
     background-size: 400%;
     background-repeat: no-repeat;
     `;
+
+/* [data-piece="1"] { 3x3 GRID
+        background-position: 0% 0%;
+    }
+
+    [data-piece="2"] {
+        background-position: 50% 0%;
+    }
+
+    [data-piece="3"] {
+        background-position: 100% 0%;
+    }
+
+    [data-piece="4"] {
+        background-position: 0% 50%;
+    }
+
+    [data-piece="5"] {
+        background-position: 50% 50%; 
+    }
+
+    [data-piece="6"] {
+        background-position: 100% 50%;
+    }
+
+    [data-piece="7"] {
+        background-position: 0% 100%;
+    }
+
+    [data-piece="8"] {
+        background-position: 50% 100%;
+    }
+
+    [data-piece="9"] {
+        background-position: 100% 100%; 
+    } */
