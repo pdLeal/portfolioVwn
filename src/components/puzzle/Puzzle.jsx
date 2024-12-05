@@ -1,45 +1,49 @@
 import React, { useEffect, useState } from 'react'
 import * as S from './Puzzle_Style';
-import {checkClickCooldown, moveToEmpty, checkCanMove,  fisherYatesShuffle} from './helpers'
+import { checkClickCooldown, moveToEmpty, checkCanMove, fisherYatesShuffle } from './helpers';
+import data from '../../data/Projetos.json';
 
-function Puzzle() {
+function Puzzle({
+  gridLayout = 4,
+  isHardOn
+}) {
   const [canMove, setCanMove] = useState(['12', '15']); // '6', '8'
   const [lastClick, setLastClick] = useState(0);
   const [shuffledPieces, setShuffledPieces] = useState([]);
-  const [piecesPositions, setPiecesPositions] = useState([]);
+  const [pieceImg, setPieceImg] = useState('');
+  // const [piecesPositions, setPiecesPositions] = useState([]);
 
-  const gridLayout = [];
-  const numOfSlots = 16;
-  for (let i = 1; i <= numOfSlots; i++) {
-    gridLayout.push(i);
+  // Gera a grid e suas células
+  const grid = gridLayout * gridLayout;
+  const slots = [];
+  for (let i = 1; i <= grid; i++) {
+    slots.push(i);
   }
 
-
+  // Embaralha as peças ao iniciar a página e determina a imagem do puzzle
   useEffect(() => {
-    // if (localStorage.getItem('piecesPositions')) {
-    //   setPiecesPositions(localStorage.getItem('piecesPositions'));
+    const randomNumber = Math.floor(Math.random() * 4);
+    setPieceImg(data[randomNumber].img);
 
-    // } else {
-      setShuffledPieces(fisherYatesShuffle(gridLayout));
-      // localStorage.setItem('skippable', true);
+    setShuffledPieces(fisherYatesShuffle(slots));
 
-    // }
   }, [])
 
   return (
-    <S.Container $layout={Math.sqrt(numOfSlots)}>
+    <S.Container $layout={gridLayout}>
 
-      {gridLayout.map((slot, i) => {
-        if (slot < numOfSlots) {
+      {slots.map((slot, i) => { // Aloca as peças nas células da grid
+        if (slot < grid) {
           return (
             <div className='slot' data-empty='false' data-position={slot} key={slot}>
               <S.Piece
+                $imgUrl={pieceImg}
                 data-piece={shuffledPieces[i]}
                 onClick={e => {
 
                   checkClickCooldown(lastClick, setLastClick);
 
-                  checkCanMove(e, canMove, setCanMove);
+                  isHardOn && checkCanMove(e, canMove, setCanMove);
 
                   moveToEmpty(e);
                 }}
@@ -53,19 +57,15 @@ function Puzzle() {
       })
       }
 
-      {/* piecesPositions.length > 0 ? gridLayout.map((slot, i) => {
-        if (slot < numOfSlots) {
-          return (
-            <div className='slot' data-empty='false' data-position={slot} key={slot}>
-              <S.Piece data-piece={piecesPositions[i]} onClick={e => {
-                moveToEmpty(e, canMove, setCanMove, lastClick, setLastClick);
-              }}></S.Piece>
-            </div>
-          )
-        } else {
-          return <div data-empty='true' data-position={slot} key={slot}></div>
-        }
-      }) :  */}
+      {/* 
+       // if (localStorage.getItem('piecesPositions')) {
+    //   setPiecesPositions(localStorage.getItem('piecesPositions'));
+
+    // } else {
+       // localStorage.setItem('skippable', true);
+
+    // }
+       */}
 
     </S.Container>
   )

@@ -12,6 +12,12 @@ import { Button } from '../../components/hello/Hello_Style';
 
 function Home() {
   const [showRules, setShowRules] = useState(false);
+  const [hardModeIsOn, setHardModeIsOn] = useState(false);
+
+  function handleHardMode() {
+    setHardModeIsOn(!hardModeIsOn);
+    console.log(hardModeIsOn)
+  }
 
   return (
     <>
@@ -35,16 +41,16 @@ function Home() {
 
             {showRules &&
               <S.Modds>
-                <button>Hard Mode</button>
+                <button onClick={handleHardMode}>Hard Mode</button>
                 <button>Restart</button>
               </S.Modds>
             }
 
           </S.Wrapper>
 
-          <Puzzle />
-
-
+          <Puzzle 
+            isHardOn={hardModeIsOn}
+          />
 
           {/* <S.Grid>
             {

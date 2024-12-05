@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+
 export const Container = styled.section`
     width: 80vw;
     max-width: 700px;
@@ -82,7 +83,7 @@ export const Container = styled.section`
 
 export const Piece = styled.div`
     height: 100%;
-    background-image: url('/offerchallenge.png');
+    background-image: ${props => `url(${props.$imgUrl})`};
     background-size: 400%;
     background-repeat: no-repeat;
     `;

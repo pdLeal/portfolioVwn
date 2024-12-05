@@ -6,7 +6,7 @@ export function fisherYatesShuffle(array) {
       [array[i], array[j]] = [array[j], array[i]];
     }
     return array;
-  }
+}
 
 export function checkClickCooldown(lastClick, setLastClick) {
     // Bloqueia cliques consegcutivos ou em mais de uma peça em pouco tempo
@@ -19,6 +19,7 @@ export function checkClickCooldown(lastClick, setLastClick) {
         setLastClick(now);
     }
 }
+
 export function moveToEmpty(e) {
     const clickedElem = e.target;
     const emptyElem = document.querySelector('[data-empty=true]');
@@ -81,22 +82,14 @@ export function checkCanMove(e, canMove, setCanMove) {
     setCanMove(tempArray);
 
 }
+
     // testes localstorage
   
     // console.log(`Clicado: ${clickedElem.dataset.piece}, Vazio: ${emptyElem.dataset.position}`);
   
     // shuffledPieces && setPiecesPositions(shuffledPieces);
-  
-  
-  
-    // const positionInGrid = clickedElem.parentElement.dataset.position;
-  
-    // if (!canMove.includes(positionInGrid)) {
-    //   return; // Impede que peças que não estão proximas se mexam
-    // }
-  
+   
     // // Determina as peças que podem se mover p/ o próximo espaço vazio
-    // const numPosition = +positionInGrid;
     // // const topSlot = `${numPosition - 3}`; 3x3 GRID
     // // const bottomSlot = `${numPosition + 3}`;
     // // const leftSlot = `${
@@ -109,19 +102,4 @@ export function checkCanMove(e, canMove, setCanMove) {
     // //                     (numPosition + 1) == 7 ||
     // //                     (numPosition + 1) == 10 ? '' : numPosition + 1
     // //                   }`;
-  
-    // const topSlot = `${numPosition - 4}`; // 4x4 GRID
-    // const bottomSlot = `${numPosition + 4}`;
-    // const leftSlot = `${
-    //                     (numPosition - 1) == 4 ||
-    //                     (numPosition - 1) == 8 ||
-    //                     (numPosition - 1) == 12 ? '' : numPosition - 1
-    //                   }`;
-    // const rightSlot = `${
-    //                     (numPosition + 1) == 5 ||
-    //                     (numPosition + 1) == 9 ||
-    //                     (numPosition + 1) == 13 ? '' : numPosition + 1
-    //                   }`;
-    // const tempArray = [topSlot, bottomSlot, leftSlot, rightSlot];
-    // setCanMove(tempArray);
   
