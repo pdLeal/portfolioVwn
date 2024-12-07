@@ -27,6 +27,11 @@ export const Span = styled.span`
 
 export const Projects = styled.section`
     margin-top: 24px;
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
 `;
 
 export const H2 = styled.h2`

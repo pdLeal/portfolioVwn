@@ -14,6 +14,7 @@ import { PuzzleProvider } from '../../contexts/PuzzleContext';
 function Home() {
   const [hardModeIsOn, setHardModeIsOn] = useState(false);
   const [reloadPuzzle, setReloadPuzzle] = useState(true); // true/false doens't mattter, just needs to change to remount the whole comp
+  const [projectUrl, setProjectUrl] = useState('');
 
   function handleHardMode() {
     setHardModeIsOn(!hardModeIsOn);
@@ -29,7 +30,7 @@ function Home() {
         </S.About_Section>
         <S.Projects>
           <S.H2>Projects Puzzle</S.H2>
-          <PuzzleProvider value={{}}>
+          <PuzzleProvider value={{projectUrl, setProjectUrl}}>
             <S.Wrapper>
               <S.Rules>
                 <S.TextRules>
@@ -38,7 +39,7 @@ function Home() {
 
                 <Button onClick={handleHardMode}>Hard Mode</Button>
                 <Button onClick={()=> setReloadPuzzle(!reloadPuzzle)}>Restart</Button>
-                <Button>Peek Project</Button>
+                <Button><a href={projectUrl} target='_black'>Peek Project</a></Button>
               </S.Rules>
 
               <Puzzle

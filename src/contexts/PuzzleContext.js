@@ -1,8 +1,8 @@
 import { createContext, useContext } from "react";
 
 const PuzzleContext = createContext({
-    restart: false,
-    setRestart: () => {},
+    projectUrl: '',
+    setProjectUrl: () => {},
 });
 
 export default function usePuzzleContext() {

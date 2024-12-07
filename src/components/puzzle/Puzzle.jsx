@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import * as S from './Puzzle_Style';
 import { checkClickCooldown, moveToEmpty, checkCanMove, fisherYatesShuffle } from './helpers';
 import data from '../../data/Projetos.json';
+import usePuzzleContext from '../../contexts/PuzzleContext';
 
 function Puzzle({
   gridLayout = 4,
@@ -21,9 +22,12 @@ function Puzzle({
   }
 
   // Embaralha as peças ao iniciar a página e determina a imagem do puzzle
+  const {setProjectUrl} = usePuzzleContext();
   useEffect(() => {
     const randomNumber = Math.floor(Math.random() * 4);
     setPieceImg(data[randomNumber].img);
+
+    setProjectUrl(data[randomNumber].pageUrl); // Garante que o btn peek project abra a página correta
 
     setShuffledPieces(fisherYatesShuffle(slots));
 
