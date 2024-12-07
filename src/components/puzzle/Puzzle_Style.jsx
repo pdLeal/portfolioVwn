@@ -6,7 +6,6 @@ export const Container = styled.section`
     max-width: 700px;
     aspect-ratio: 1;
     padding: 8px;
-    margin-inline: auto;
     display: grid;
     grid-template: repeat(${props => props.$layout}, 1fr) / repeat(${props => props.$layout}, 1fr);
     gap: 2px;

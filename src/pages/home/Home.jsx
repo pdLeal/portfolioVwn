@@ -8,15 +8,15 @@ import Puzzle from '../../components/puzzle/Puzzle';
 import Footer from '../../components/footer/Footer'
 import TypeEfct from '../../components/TypeEfct';
 import { Button } from '../../components/hello/Hello_Style';
+import { PuzzleProvider } from '../../contexts/PuzzleContext';
 
 
 function Home() {
-  const [showRules, setShowRules] = useState(false);
   const [hardModeIsOn, setHardModeIsOn] = useState(false);
+  const [reloadPuzzle, setReloadPuzzle] = useState(true); // true/false doens't mattter, just needs to change to remount the whole comp
 
   function handleHardMode() {
     setHardModeIsOn(!hardModeIsOn);
-    console.log(hardModeIsOn)
   }
 
   return (
@@ -29,29 +29,25 @@ function Home() {
         </S.About_Section>
         <S.Projects>
           <S.H2>Projects Puzzle</S.H2>
-          {!showRules && <button onClick={() => setShowRules(true)}>Rules</button>}
+          <PuzzleProvider value={{}}>
+            <S.Wrapper>
+              <S.Rules>
+                <S.TextRules>
+                  A simple puzzle for simple projects. Just put the pieces together 'till the image makes sense!
+                </S.TextRules>
 
-          <S.Wrapper>
+                <Button onClick={handleHardMode}>Hard Mode</Button>
+                <Button onClick={()=> setReloadPuzzle(!reloadPuzzle)}>Restart</Button>
+                <Button>Peek Project</Button>
+              </S.Rules>
 
-            {showRules &&
-              <S.TextRules>
-                <TypeEfct text={['', 'A simple puzzle for simple projects...', "Just put the pieces together 'till the image makes sense!"]} />
-              </S.TextRules>
-            }
+              <Puzzle
+                isHardOn={hardModeIsOn}
+                key={reloadPuzzle}
+              />
 
-            {showRules &&
-              <S.Modds>
-                <button onClick={handleHardMode}>Hard Mode</button>
-                <button>Restart</button>
-              </S.Modds>
-            }
-
-          </S.Wrapper>
-
-          <Puzzle 
-            isHardOn={hardModeIsOn}
-          />
-
+            </S.Wrapper>
+          </PuzzleProvider>
           {/* <S.Grid>
             {
               data.map(project => {

@@ -16,7 +16,7 @@ export const Container = styled.div`
 export const H3 = styled.h3`
     font-size: clamp(1.5rem, 3vw + 0.5rem, 2.5rem);
     color: var(--primary-color);
-    text-shadow: 0px 0px 3px var(--primary-color);
+    text-shadow: 0px 0px 13px var(--primary-color);
     `;
 
 export const Wrapper = styled.div.attrs(props => ({

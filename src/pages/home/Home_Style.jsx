@@ -27,27 +27,6 @@ export const Span = styled.span`
 
 export const Projects = styled.section`
     margin-top: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-
-        & > button {
-            font-size: clamp(0.8rem, 2vw + 0.5rem, 1.3rem);
-            color: var(--primary-color);
-            text-shadow: 0px 0px 3px var(--primary-color);
-            cursor: pointer;
-            border: none;
-            background-color: transparent;
-            
-                &:hover,
-                &:focus-visible {
-                color: #66f666;
-                }
-                
-                &:active {
-                color: #2b6a2b;
-                }
-             }
 `;
 
 export const H2 = styled.h2`
@@ -58,22 +37,48 @@ export const H2 = styled.h2`
 export const Wrapper = styled.div`
     display: flex;
     justify-content: space-between;
+    gap: 24px;
+
+        @media screen and (max-width: 1080px) {
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                }
+
+`;
+
+export const Rules = styled.div`
+    padding-block: 8px;
+    display: grid;
+    grid-template-areas:
+                        'rules rules'
+                        'btn1 btn2'
+                        'btn3 btn4';
+    justify-content: center;
     align-items: center;
+    gap: 16px 8px;
+    border: 1px solid #ffff0099;
+
+        >:nth-child(2) {
+            grid-area: btn1;
+        }
+        >:nth-child(3) {
+            grid-area: btn2;
+        }
+        >:nth-child(4) {
+            grid-area: btn3;
+        }
+
+        @media screen and (max-width: 1080px) {
+            flex-wrap: wrap;
+            flex-direction: row;
+            }
 `;
 
 export const TextRules = styled(Tease)`
-    max-width: 80%;
-    margin-inline: 0;
-`;
-
-export const Modds = styled.div`
-    width: 16%;
-    min-height: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: #ff440060;
+    /* margin-inline: 0; */
+    font-size: clamp(1rem, 3vw + 0.5rem, 1.8rem);
+    grid-area: rules;
 `;
 
 // export const Grid = styled.div`
