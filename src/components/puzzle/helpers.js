@@ -1,9 +1,9 @@
 export function fisherYatesShuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
-      // Escolha um índice aleatório entre 0 e i
-      const j = Math.floor(Math.random() * (i + 1));
-      // Troque os elementos array[i] e array[j]
-      [array[i], array[j]] = [array[j], array[i]];
+        // Escolha um índice aleatório entre 0 e i
+        const j = Math.floor(Math.random() * (i + 1));
+        // Troque os elementos array[i] e array[j]
+        [array[i], array[j]] = [array[j], array[i]];
     }
     return array;
 }
@@ -56,11 +56,11 @@ export function moveToEmpty(e) {
 
 export function checkCanMove(e, canMove, setCanMove) {
     const clickedElem = e.target;
-    
+
     const positionInGrid = clickedElem.parentElement.dataset.position;
-  
+
     if (!canMove.includes(positionInGrid)) {
-    throw new Error("This piece cannot move!"); // Impede que peças que não estão proximas se mexam
+        throw new Error("This piece cannot move!"); // Impede que peças que não estão proximas se mexam
     }
 
     // Determina as peças que podem se mover p/ o próximo espaço vazio
@@ -68,38 +68,45 @@ export function checkCanMove(e, canMove, setCanMove) {
 
     const topSlot = `${numPosition - 4}`; // 4x4 GRID
     const bottomSlot = `${numPosition + 4}`;
-    const leftSlot = `${
-                        (numPosition - 1) == 4 ||
-                        (numPosition - 1) == 8 ||
-                        (numPosition - 1) == 12 ? '' : numPosition - 1
-                    }`;
-    const rightSlot = `${
-                        (numPosition + 1) == 5 ||
-                        (numPosition + 1) == 9 ||
-                        (numPosition + 1) == 13 ? '' : numPosition + 1
-                    }`;
+    const leftSlot = `${(numPosition - 1) == 4 ||
+        (numPosition - 1) == 8 ||
+        (numPosition - 1) == 12 ? '' : numPosition - 1
+        }`;
+    const rightSlot = `${(numPosition + 1) == 5 ||
+        (numPosition + 1) == 9 ||
+        (numPosition + 1) == 13 ? '' : numPosition + 1
+        }`;
     const tempArray = [topSlot, bottomSlot, leftSlot, rightSlot];
     setCanMove(tempArray);
 
 }
 
-    // testes localstorage
-  
-    // console.log(`Clicado: ${clickedElem.dataset.piece}, Vazio: ${emptyElem.dataset.position}`);
-  
-    // shuffledPieces && setPiecesPositions(shuffledPieces);
-   
-    // // Determina as peças que podem se mover p/ o próximo espaço vazio
-    // // const topSlot = `${numPosition - 3}`; 3x3 GRID
-    // // const bottomSlot = `${numPosition + 3}`;
-    // // const leftSlot = `${
-    // //                     (numPosition - 1) == 0 ||
-    // //                     (numPosition - 1) == 3 ||
-    // //                     (numPosition - 1) == 6 ? '' : numPosition - 1
-    // //                   }`;
-    // // const rightSlot = `${
-    // //                     (numPosition + 1) == 4 ||
-    // //                     (numPosition + 1) == 7 ||
-    // //                     (numPosition + 1) == 10 ? '' : numPosition + 1
-    // //                   }`;
-  
+
+export function checkWinner(e, savedPiecesPosition, setSavedPiecesPosition, setProjectWinner) { 
+    const clickedElemIndex = e.target.parentElement.dataset.position - 1;
+    const emptyElemIndex = document.querySelector('[data-empty=true]').dataset.position - 1;
+
+    const temp = [...savedPiecesPosition];
+    [temp[clickedElemIndex], temp[emptyElemIndex]] = [temp[emptyElemIndex], temp[clickedElemIndex]]
+    // Atualiza savedPiecesPosition e então checa p/ ver se as peças estão na ordem correta
+    setSavedPiecesPosition(temp);
+
+    if (JSON.stringify(temp) == JSON.stringify([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16])) {
+        console.log('won')
+        setProjectWinner(true);
+    } 
+
+}
+// // Determina as peças que podem se mover p/ o próximo espaço vazio
+// // const topSlot = `${numPosition - 3}`; 3x3 GRID
+// // const bottomSlot = `${numPosition + 3}`;
+// // const leftSlot = `${
+// //                     (numPosition - 1) == 0 ||
+// //                     (numPosition - 1) == 3 ||
+// //                     (numPosition - 1) == 6 ? '' : numPosition - 1
+// //                   }`;
+// // const rightSlot = `${
+// //                     (numPosition + 1) == 4 ||
+// //                     (numPosition + 1) == 7 ||
+// //                     (numPosition + 1) == 10 ? '' : numPosition + 1
+// //                   }`;

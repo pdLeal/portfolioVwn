@@ -15,6 +15,7 @@ function Home() {
   const [hardModeIsOn, setHardModeIsOn] = useState(false);
   const [reloadPuzzle, setReloadPuzzle] = useState(true); // true/false doens't mattter, just needs to change to remount the whole comp
   const [projectUrl, setProjectUrl] = useState('');
+  const [savedPiecesPosition, setSavedPiecesPosition] = useState([]);
 
   function handleHardMode() {
     setReloadPuzzle(!reloadPuzzle)
@@ -31,7 +32,7 @@ function Home() {
         </S.About_Section>
         <S.Projects>
           <S.H2>Projects Puzzle</S.H2>
-          <PuzzleProvider value={{projectUrl, setProjectUrl}}>
+          <PuzzleProvider value={{projectUrl, setProjectUrl, savedPiecesPosition, setSavedPiecesPosition}}>
             <S.Wrapper>
               <S.Rules>
                 <S.TextRules>

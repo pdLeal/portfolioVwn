@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import * as S from './Puzzle_Style';
-import { checkClickCooldown, moveToEmpty, checkCanMove, fisherYatesShuffle } from './helpers';
+import { checkClickCooldown, moveToEmpty, checkCanMove, fisherYatesShuffle, checkWinner } from './helpers';
 import data from '../../data/Projetos.json';
 import usePuzzleContext from '../../contexts/PuzzleContext';
+import useWinnerContext from '../../contexts/WinnerContext';
 
 function Puzzle({
   gridLayout = 4,
@@ -12,7 +13,7 @@ function Puzzle({
   const [lastClick, setLastClick] = useState(0);
   const [shuffledPieces, setShuffledPieces] = useState([]);
   const [pieceImg, setPieceImg] = useState('');
-  // const [piecesPositions, setPiecesPositions] = useState([]);
+  const {setProjectWinner} = useWinnerContext();
 
   // Gera a grid e suas células
   const grid = gridLayout * gridLayout;
@@ -22,17 +23,21 @@ function Puzzle({
   }
 
   // Embaralha as peças ao iniciar a página e determina a imagem do puzzle
-  const {setProjectUrl} = usePuzzleContext();
+  const { setProjectUrl, savedPiecesPosition, setSavedPiecesPosition } = usePuzzleContext();
   useEffect(() => {
     const randomNumber = Math.floor(Math.random() * 4);
     setPieceImg(data[randomNumber].img);
 
     setProjectUrl(data[randomNumber].pageUrl); // Garante que o btn peek project abra a página correta
-
-    setShuffledPieces(fisherYatesShuffle(slots));
-
+    
+    const shuffled = fisherYatesShuffle(slots);
+    setShuffledPieces(shuffled);
+    
+    setSavedPiecesPosition([...shuffled]);
   }, [])
 
+  
+  
   return (
     <S.Container $layout={gridLayout}>
 
@@ -50,6 +55,8 @@ function Puzzle({
                   isHardOn && checkCanMove(e, canMove, setCanMove);
 
                   moveToEmpty(e);
+
+                  checkWinner(e, savedPiecesPosition, setSavedPiecesPosition, setProjectWinner);
                 }}
               >
               </S.Piece>
@@ -60,17 +67,6 @@ function Puzzle({
         }
       })
       }
-
-      {/* 
-       // if (localStorage.getItem('piecesPositions')) {
-    //   setPiecesPositions(localStorage.getItem('piecesPositions'));
-
-    // } else {
-       // localStorage.setItem('skippable', true);
-
-    // }
-       */}
-
     </S.Container>
   )
 }
