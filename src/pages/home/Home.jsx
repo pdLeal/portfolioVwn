@@ -17,6 +17,7 @@ function Home() {
   const [projectUrl, setProjectUrl] = useState('');
 
   function handleHardMode() {
+    setReloadPuzzle(!reloadPuzzle)
     setHardModeIsOn(!hardModeIsOn);
   }
 
@@ -39,7 +40,7 @@ function Home() {
 
                 <Button onClick={handleHardMode}>Hard Mode</Button>
                 <Button onClick={()=> setReloadPuzzle(!reloadPuzzle)}>Restart</Button>
-                <Button><a href={projectUrl} target='_black'>Peek Project</a></Button>
+                <a href={projectUrl} target='_black'>Peek Answer</a>
               </S.Rules>
 
               <Puzzle
@@ -49,20 +50,6 @@ function Home() {
 
             </S.Wrapper>
           </PuzzleProvider>
-          {/* <S.Grid>
-            {
-              data.map(project => {
-                return <Card
-                        key={project.id}
-                        title={project.title}
-                        gitUrl={project.gitUrl}
-                        pageUrl={project.pageUrl}
-                        img={project.img}
-                        alt={project.alt}
-                        text={project.text} />
-              })
-            }
-          </S.Grid> */}
         </S.Projects>
       </S.Main>
       <Footer />

@@ -82,6 +82,7 @@ export const Container = styled.section`
 
 export const Piece = styled.div`
     height: 100%;
+    cursor: pointer;
     background-image: ${props => `url(${props.$imgUrl})`};
     background-size: 400%;
     background-repeat: no-repeat;
