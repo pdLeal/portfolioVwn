@@ -82,22 +82,30 @@ export function checkCanMove(e, canMove, setCanMove) {
 }
 
 
-export function checkWinner(e, savedPiecesPosition, setSavedPiecesPosition, setProjectWinner) { 
+export function savePosition(e, shuffledPieces, savedPiecesPosition, setSavedPiecesPosition, setProjectWinner) { 
     const clickedElemIndex = e.target.parentElement.dataset.position - 1;
     const emptyElemIndex = document.querySelector('[data-empty=true]').dataset.position - 1;
 
-    const temp = [...savedPiecesPosition];
+    let temp;
+    if(savedPiecesPosition.length == 0) {
+        temp = [...shuffledPieces]; 
+
+    } else {
+        temp = [...savedPiecesPosition];
+
+    }
+
     [temp[clickedElemIndex], temp[emptyElemIndex]] = [temp[emptyElemIndex], temp[clickedElemIndex]]
-    // Atualiza savedPiecesPosition e então checa p/ ver se as peças estão na ordem correta
+    
     setSavedPiecesPosition(temp);
 
-    if (JSON.stringify(temp) == JSON.stringify([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16])) {
-        console.log('won')
-        setProjectWinner(true);
-    } 
+    // if (JSON.stringify(temp) == JSON.stringify([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16])) {
+    //     console.log('won')
+    //     setProjectWinner(true);
+    // } 
 
 }
-// // Determina as peças que podem se mover p/ o próximo espaço vazio
+// // Determina as peças que podem se mover p/ o próximo espaço vazio numa grid 3x3
 // // const topSlot = `${numPosition - 3}`; 3x3 GRID
 // // const bottomSlot = `${numPosition + 3}`;
 // // const leftSlot = `${

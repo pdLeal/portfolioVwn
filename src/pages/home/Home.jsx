@@ -16,9 +16,16 @@ function Home() {
   const [reloadPuzzle, setReloadPuzzle] = useState(true); // true/false doens't mattter, just needs to change to remount the whole comp
   const [projectUrl, setProjectUrl] = useState('');
   const [savedPiecesPosition, setSavedPiecesPosition] = useState([]);
+  
+  function handleRestart() {
+    setReloadPuzzle(!reloadPuzzle);
+
+    setSavedPiecesPosition([])
+    localStorage.removeItem('piecesPosition');
+  }
 
   function handleHardMode() {
-    setReloadPuzzle(!reloadPuzzle)
+    handleRestart();
     setHardModeIsOn(!hardModeIsOn);
   }
 
@@ -40,7 +47,7 @@ function Home() {
                 </S.TextRules>
 
                 <Button onClick={handleHardMode}>Hard Mode</Button>
-                <Button onClick={()=> setReloadPuzzle(!reloadPuzzle)}>Restart</Button>
+                <Button onClick={handleRestart}>Restart</Button>
                 <a href={projectUrl} target='_black'>Peek Answer</a>
               </S.Rules>
 
