@@ -37,12 +37,18 @@ function Puzzle({
 
     setShuffledPieces(shuffled);
 
-    const saved = localStorage.getItem('piecesPosition');
+    // Recupera as posições e quais peças podem se mover do local storage
+    const savedPositions = localStorage.getItem('piecesPosition');
+    const savedCanMove = localStorage.getItem('canMove');
 
-    if (saved) {
-      setSavedPiecesPosition(JSON.parse(saved));
-      setShuffledPieces(JSON.parse(saved));
+    if (savedPositions) {
+      setSavedPiecesPosition(JSON.parse(savedPositions));
+      setShuffledPieces(JSON.parse(savedPositions));
 
+    }
+
+    if(savedCanMove) {
+      setCanMove(JSON.parse(savedCanMove));
     }
   }, [])
 
@@ -72,9 +78,15 @@ function Puzzle({
                 data-piece={shuffledPieces[i]}
                 onClick={e => {
 
-                  checkClickCooldown(lastClick, setLastClick);
+                  try {
+                    checkClickCooldown(lastClick, setLastClick);
+                    isHardOn && checkCanMove(e, canMove, setCanMove);
 
-                  isHardOn && checkCanMove(e, canMove, setCanMove);
+                  } catch (error) {
+                    console.error(error)
+                    return;
+                  }
+
 
                   moveToEmpty(e);
 
@@ -93,14 +105,20 @@ function Puzzle({
                 $imgUrl={pieceImg}
                 data-piece={shuffledPieces[i]}
                 onClick={e => {
+                  try {
+                    checkClickCooldown(lastClick, setLastClick);
+                    isHardOn && checkCanMove(e, canMove, setCanMove);
 
-                  checkClickCooldown(lastClick, setLastClick);
+                  } catch (error) {
+                    console.error(error)
+                    return;
+                  }
 
-                  isHardOn && checkCanMove(e, canMove, setCanMove);
 
                   moveToEmpty(e);
 
                   savePosition(e, shuffledPieces, savedPiecesPosition, setSavedPiecesPosition, setProjectWinner);
+
                 }}
               >
               </S.Piece>

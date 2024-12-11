@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Tease } from "../denied/Denied_Style.jsx";
+import { Button } from "../../components/hello/Hello_Style.jsx";
 
 export const Main = styled.main`
     margin-top: 24px;
@@ -107,4 +108,22 @@ export const Rules = styled.div`
 export const TextRules = styled(Tease)`
     font-size: clamp(1rem, 3vw + 0.5rem, 1.8rem);
     grid-area: rules;
+`;
+
+export const Btn = styled(Button)`
+    color: ${props => props.$hardModeIsOn ? 'red' : 'var(--primary-color)'};
+    text-shadow: 0px 0px 4px ${props => props.$hardModeIsOn ? 'red' : 'var(--primary-color)'};
+    box-shadow:  0px 0px 4px ${props => props.$hardModeIsOn ? 'red' : 'var(--primary-color)'};
+    border: solid 1px ${props => props.$hardModeIsOn ? 'red' : 'var(--primary-color)'};
+    
+        &:hover,
+        &:focus-visible {
+        color:#5cff9b;
+        border-color: #5cff9b;
+        }
+        
+        &:active {
+        color: #2b6a2b;
+        border-color: #2b6a2b;
+        }
 `;

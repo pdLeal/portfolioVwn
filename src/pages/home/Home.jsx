@@ -17,17 +17,30 @@ function Home() {
   const [projectUrl, setProjectUrl] = useState('');
   const [savedPiecesPosition, setSavedPiecesPosition] = useState([]);
   
+  
   function handleRestart() {
     setReloadPuzzle(!reloadPuzzle);
 
     setSavedPiecesPosition([])
     localStorage.removeItem('piecesPosition');
+    localStorage.removeItem('canMove');
   }
 
   function handleHardMode() {
     handleRestart();
     setHardModeIsOn(!hardModeIsOn);
+    if(!localStorage.getItem('hardModeIsOn')) {
+      localStorage.setItem('hardModeIsOn', true)
+    } else {
+      localStorage.removeItem('hardModeIsOn')
+    }
   }
+
+  useEffect(() => {
+    if(localStorage.getItem('hardModeIsOn')) {
+      setHardModeIsOn(true)
+    }
+  }, [])
 
   return (
     <>
@@ -46,8 +59,8 @@ function Home() {
                   A simple puzzle for simple projects. Just put the pieces together 'till the image makes sense!
                 </S.TextRules>
 
-                <Button onClick={handleHardMode}>Hard Mode</Button>
-                <Button onClick={handleRestart}>Restart</Button>
+                <S.Btn $hardModeIsOn={hardModeIsOn} onClick={handleHardMode}>Hard Mode</S.Btn>
+                <S.Btn onClick={handleRestart}>Restart</S.Btn>
                 <a href={projectUrl} target='_black'>Peek Answer</a>
               </S.Rules>
 

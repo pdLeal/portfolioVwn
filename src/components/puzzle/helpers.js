@@ -15,9 +15,8 @@ export function checkClickCooldown(lastClick, setLastClick) {
     if (now - lastClick < clickDelay) {
         throw new Error("Too many clicks in a short time!");
 
-    } else {
-        setLastClick(now);
     }
+        setLastClick(now);
 }
 
 export function moveToEmpty(e) {
@@ -77,10 +76,11 @@ export function checkCanMove(e, canMove, setCanMove) {
         (numPosition + 1) == 13 ? '' : numPosition + 1
         }`;
     const tempArray = [topSlot, bottomSlot, leftSlot, rightSlot];
+
     setCanMove(tempArray);
+    localStorage.setItem('canMove', JSON.stringify(tempArray));
 
 }
-
 
 export function savePosition(e, shuffledPieces, savedPiecesPosition, setSavedPiecesPosition, setProjectWinner) { 
     const clickedElemIndex = e.target.parentElement.dataset.position - 1;
@@ -105,6 +105,7 @@ export function savePosition(e, shuffledPieces, savedPiecesPosition, setSavedPie
     // } 
 
 }
+
 // // Determina as peças que podem se mover p/ o próximo espaço vazio numa grid 3x3
 // // const topSlot = `${numPosition - 3}`; 3x3 GRID
 // // const bottomSlot = `${numPosition + 3}`;
