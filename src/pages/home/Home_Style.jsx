@@ -65,6 +65,8 @@ export const Wrapper = styled.div`
     display: flex;
     justify-content: space-between;
     gap: 24px;
+    position: relative;
+    overflow: hidden;
 
         @media screen and (max-width: 1080px) {
                 flex-wrap: wrap;

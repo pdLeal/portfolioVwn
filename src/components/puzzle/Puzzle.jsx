@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import * as S from './Puzzle_Style';
-import { checkClickCooldown, moveToEmpty, checkCanMove, fisherYatesShuffle, savePosition } from './helpers';
+import { checkClickCooldown, moveToEmpty, checkCanMove, fisherYatesShuffle, savePosition, handleErrors } from './helpers';
 import data from '../../data/Projetos.json';
 import usePuzzleContext from '../../contexts/PuzzleContext';
 import useWinnerContext from '../../contexts/WinnerContext';
@@ -47,7 +47,7 @@ function Puzzle({
 
     }
 
-    if(savedCanMove) {
+    if (savedCanMove) {
       setCanMove(JSON.parse(savedCanMove));
     }
   }, [])
@@ -83,10 +83,9 @@ function Puzzle({
                     isHardOn && checkCanMove(e, canMove, setCanMove);
 
                   } catch (error) {
-                    console.error(error)
+                    handleErrors(e, error);
                     return;
                   }
-
 
                   moveToEmpty(e);
 
@@ -110,7 +109,7 @@ function Puzzle({
                     isHardOn && checkCanMove(e, canMove, setCanMove);
 
                   } catch (error) {
-                    console.error(error)
+                    handleErrors(e, error);
                     return;
                   }
 
@@ -127,6 +126,10 @@ function Puzzle({
         }
       })
       }
+
+      <S.ErrorMsg id='error'>
+        Hint: Clicking fast does not make you play better.
+      </S.ErrorMsg>
     </S.Container>
   )
 }

@@ -106,6 +106,28 @@ export function savePosition(e, shuffledPieces, savedPiecesPosition, setSavedPie
 
 }
 
+export function handleErrors(e, error) {
+    if (error.message == "Too many clicks in a short time!") {
+        const errorMsg = document.getElementById('error');
+        errorMsg.classList.add("showError");
+
+        setTimeout(() => {
+            errorMsg.classList.remove("showError");
+
+        }, 3500);
+
+      } else {
+        const clickedElem = e.target;
+        clickedElem.classList.add("shakePiece");
+
+        setTimeout(() => {
+            clickedElem.classList.remove("shakePiece");
+
+        }, 525);
+
+      }
+}
+
 // // Determina as peças que podem se mover p/ o próximo espaço vazio numa grid 3x3
 // // const topSlot = `${numPosition - 3}`; 3x3 GRID
 // // const bottomSlot = `${numPosition + 3}`;

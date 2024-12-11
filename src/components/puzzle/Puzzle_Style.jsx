@@ -1,5 +1,19 @@
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
 
+
+const shakeAnimation = keyframes`
+    0% { transform: translate(0, 0); }
+    10% { transform: translate(-2px, 0); }
+    20% { transform: translate(2px, 0); }
+    30% { transform: translate(0, 0); }
+    40% { transform: translate(0, 2px); }
+    50% { transform: translate(0, -2px); }
+    60% { transform: translate(0, 0); }
+    70% { transform: translate(-2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    90% { transform: translate(-2px, 2px); }
+    100% { transform: translate(0, 0); }
+`;
 
 export const Container = styled.section`
     width: 80vw;
@@ -11,9 +25,7 @@ export const Container = styled.section`
     gap: 2px;
     border: solid 1px var(--primary-color); 
     box-shadow: 0px 0px 20px -8px var(--primary-color);
-
-        
-
+    position: relative;
         
         [data-piece="1"] {
             background-position: 0% 0%;
@@ -78,6 +90,14 @@ export const Container = styled.section`
         [data-piece="16"] {
             background-position: 100% 100%;
         }
+
+        .showError {
+            transform: translateX(0%);
+        }
+
+        .shakePiece {
+            animation: ${shakeAnimation} 500ms forwards;
+        }
     `;
 
 export const Piece = styled.div`
@@ -87,6 +107,25 @@ export const Piece = styled.div`
     background-size: 400%;
     background-repeat: no-repeat;
     `;
+
+export const ErrorMsg = styled.p`
+    font-family: "VT323", monospace;
+    margin-inline: auto;
+    max-width: 80%;
+    padding: 0.2em;
+    text-align: center;
+    font-size: clamp(1rem, 2vw + 0.5rem, 1.5rem);
+    color: var(--primary-color);
+    text-shadow: 0px 0px 13px var(--primary-color);
+
+    position: absolute;
+    top: 8px;
+    right: 0;
+    transform: translateX(100%);
+    transition: transform 1000ms linear;
+    background-color: transparent;
+    backdrop-filter: blur(16px);
+`;
 
 /* [data-piece="1"] { 3x3 GRID
         background-position: 0% 0%;

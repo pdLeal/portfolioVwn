@@ -68,7 +68,6 @@ function Home() {
                 isHardOn={hardModeIsOn}
                 key={reloadPuzzle}
               />
-
             </S.Wrapper>
           </PuzzleProvider>
         </S.Projects>
