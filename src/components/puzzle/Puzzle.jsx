@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import * as S from './Puzzle_Style';
-import { checkClickCooldown, moveToEmpty, checkCanMove, fisherYatesShuffle, savePosition, handleErrors } from './helpers';
+import { checkClickCooldown, moveToEmpty, checkCanMove, fisherYatesShuffle, savePosition, handleErrors, checkIfWon } from './helpers';
 import data from '../../data/Projetos.json';
 import usePuzzleContext from '../../contexts/PuzzleContext';
 import useWinnerContext from '../../contexts/WinnerContext';
@@ -60,6 +60,8 @@ function Puzzle({
     }
 
     localStorage.setItem('piecesPosition', JSON.stringify(savedPiecesPosition));
+         
+    checkIfWon(savedPiecesPosition, setProjectWinner);
 
   }, [savedPiecesPosition])
 
@@ -89,7 +91,7 @@ function Puzzle({
 
                   moveToEmpty(e);
 
-                  savePosition(e, shuffledPieces, savedPiecesPosition, setSavedPiecesPosition, setProjectWinner);
+                  savePosition(e, shuffledPieces, savedPiecesPosition, setSavedPiecesPosition);
                 }}
               >
               </S.Piece>
@@ -116,8 +118,7 @@ function Puzzle({
 
                   moveToEmpty(e);
 
-                  savePosition(e, shuffledPieces, savedPiecesPosition, setSavedPiecesPosition, setProjectWinner);
-
+                  savePosition(e, shuffledPieces, savedPiecesPosition, setSavedPiecesPosition);
                 }}
               >
               </S.Piece>

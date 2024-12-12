@@ -16,7 +16,58 @@ export function checkClickCooldown(lastClick, setLastClick) {
         throw new Error("Too many clicks in a short time!");
 
     }
-        setLastClick(now);
+    setLastClick(now);
+}
+
+export function handleErrors(e, error) {
+    if (error.message == "Too many clicks in a short time!") {
+        const errorMsg = document.getElementById('error');
+        errorMsg.classList.add("showError");
+
+        setTimeout(() => {
+            errorMsg.classList.remove("showError");
+
+        }, 3500);
+
+    } else {
+        const clickedElem = e.target;
+        clickedElem.classList.add("shakePiece");
+
+        setTimeout(() => {
+            clickedElem.classList.remove("shakePiece");
+
+        }, 525);
+
+    }
+}
+
+export function checkCanMove(e, canMove, setCanMove) {
+    const clickedElem = e.target;
+
+    const positionInGrid = clickedElem.parentElement.dataset.position;
+
+    if (!canMove.includes(positionInGrid)) {
+        throw new Error("This piece cannot move!"); // Impede que peças que não estão proximas se mexam
+    }
+
+    // Determina as peças que podem se mover p/ o próximo espaço vazio
+    const numPosition = +positionInGrid;
+
+    const topSlot = `${numPosition - 4}`; // 4x4 GRID
+    const bottomSlot = `${numPosition + 4}`;
+    const leftSlot = `${(numPosition - 1) == 4 ||
+        (numPosition - 1) == 8 ||
+        (numPosition - 1) == 12 ? '' : numPosition - 1
+        }`;
+    const rightSlot = `${(numPosition + 1) == 5 ||
+        (numPosition + 1) == 9 ||
+        (numPosition + 1) == 13 ? '' : numPosition + 1
+        }`;
+    const tempArray = [topSlot, bottomSlot, leftSlot, rightSlot];
+
+    setCanMove(tempArray);
+    localStorage.setItem('canMove', JSON.stringify(tempArray));
+
 }
 
 export function moveToEmpty(e) {
@@ -53,42 +104,13 @@ export function moveToEmpty(e) {
 
 }
 
-export function checkCanMove(e, canMove, setCanMove) {
-    const clickedElem = e.target;
-
-    const positionInGrid = clickedElem.parentElement.dataset.position;
-
-    if (!canMove.includes(positionInGrid)) {
-        throw new Error("This piece cannot move!"); // Impede que peças que não estão proximas se mexam
-    }
-
-    // Determina as peças que podem se mover p/ o próximo espaço vazio
-    const numPosition = +positionInGrid;
-
-    const topSlot = `${numPosition - 4}`; // 4x4 GRID
-    const bottomSlot = `${numPosition + 4}`;
-    const leftSlot = `${(numPosition - 1) == 4 ||
-        (numPosition - 1) == 8 ||
-        (numPosition - 1) == 12 ? '' : numPosition - 1
-        }`;
-    const rightSlot = `${(numPosition + 1) == 5 ||
-        (numPosition + 1) == 9 ||
-        (numPosition + 1) == 13 ? '' : numPosition + 1
-        }`;
-    const tempArray = [topSlot, bottomSlot, leftSlot, rightSlot];
-
-    setCanMove(tempArray);
-    localStorage.setItem('canMove', JSON.stringify(tempArray));
-
-}
-
-export function savePosition(e, shuffledPieces, savedPiecesPosition, setSavedPiecesPosition, setProjectWinner) { 
+export function savePosition(e, shuffledPieces, savedPiecesPosition, setSavedPiecesPosition) {
     const clickedElemIndex = e.target.parentElement.dataset.position - 1;
     const emptyElemIndex = document.querySelector('[data-empty=true]').dataset.position - 1;
 
     let temp;
-    if(savedPiecesPosition.length == 0) {
-        temp = [...shuffledPieces]; 
+    if (savedPiecesPosition.length == 0) {
+        temp = [...shuffledPieces];
 
     } else {
         temp = [...savedPiecesPosition];
@@ -96,36 +118,36 @@ export function savePosition(e, shuffledPieces, savedPiecesPosition, setSavedPie
     }
 
     [temp[clickedElemIndex], temp[emptyElemIndex]] = [temp[emptyElemIndex], temp[clickedElemIndex]]
-    
+
     setSavedPiecesPosition(temp);
 
-    // if (JSON.stringify(temp) == JSON.stringify([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16])) {
-    //     console.log('won')
-    //     setProjectWinner(true);
-    // } 
+
 
 }
 
-export function handleErrors(e, error) {
-    if (error.message == "Too many clicks in a short time!") {
-        const errorMsg = document.getElementById('error');
-        errorMsg.classList.add("showError");
+export function checkIfWon(savedPiecesPosition, setProjectWinner) {
+    // Organiza o array e descobre o espaço vazio p/ comparação
+    const sortedPositions = savedPiecesPosition.filter(empty => empty != '').sort((a, b) => {
+        return a - b;
+    });
 
-        setTimeout(() => {
-            errorMsg.classList.remove("showError");
-
-        }, 3500);
-
-      } else {
-        const clickedElem = e.target;
-        clickedElem.classList.add("shakePiece");
-
-        setTimeout(() => {
-            clickedElem.classList.remove("shakePiece");
-
-        }, 525);
-
-      }
+    let missingNumber;
+    for (let i = 0; i < sortedPositions.length; i++) {
+        if (sortedPositions[i] !== i + 1) {
+            missingNumber = i + 1;
+           
+            sortedPositions.splice(i, 0, '');
+            break;
+        }
+    }
+    if (!missingNumber) {
+        sortedPositions.push(''); // Caso o último número esteja ausente
+    }
+    
+    if(JSON.stringify(savedPiecesPosition) == JSON.stringify(sortedPositions)) {
+        console.log('Won');
+        setProjectWinner(true);
+    }
 }
 
 // // Determina as peças que podem se mover p/ o próximo espaço vazio numa grid 3x3
