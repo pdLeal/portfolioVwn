@@ -125,7 +125,7 @@ export function savePosition(e, shuffledPieces, savedPiecesPosition, setSavedPie
 
 }
 
-export function checkIfWon(savedPiecesPosition, setProjectWinner) {
+export function checkIfWon(savedPiecesPosition, setProjectWinner, ref) {
     // Organiza o array e descobre o espaço vazio p/ comparação
     const sortedPositions = savedPiecesPosition.filter(empty => empty != '').sort((a, b) => {
         return a - b;
@@ -145,8 +145,13 @@ export function checkIfWon(savedPiecesPosition, setProjectWinner) {
     }
     
     if(JSON.stringify(savedPiecesPosition) == JSON.stringify(sortedPositions)) {
-        console.log('Won');
         setProjectWinner(true);
+        // localStorage.setItem('isProjectWinner', true);
+
+        setTimeout(() => {
+            ref.current.waitStop();
+        }, 10000)
+
     }
 }
 

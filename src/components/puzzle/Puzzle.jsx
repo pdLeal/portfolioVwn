@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import * as S from './Puzzle_Style';
 import { checkClickCooldown, moveToEmpty, checkCanMove, fisherYatesShuffle, savePosition, handleErrors, checkIfWon } from './helpers';
 import data from '../../data/Projetos.json';
 import usePuzzleContext from '../../contexts/PuzzleContext';
 import useWinnerContext from '../../contexts/WinnerContext';
+
+import { Fireworks } from '@fireworks-js/react'
 
 function Puzzle({
   gridLayout = 4,
@@ -13,7 +15,7 @@ function Puzzle({
   const [lastClick, setLastClick] = useState(0);
   const [shuffledPieces, setShuffledPieces] = useState([]);
   const [pieceImg, setPieceImg] = useState('');
-  const { setProjectWinner } = useWinnerContext();
+  const { projectWinner, setProjectWinner } = useWinnerContext();
 
   // Gera a grid e suas células
   const grid = gridLayout * gridLayout;
@@ -60,12 +62,67 @@ function Puzzle({
     }
 
     localStorage.setItem('piecesPosition', JSON.stringify(savedPiecesPosition));
-         
-    checkIfWon(savedPiecesPosition, setProjectWinner);
+
+    checkIfWon(savedPiecesPosition, setProjectWinner, ref);
 
   }, [savedPiecesPosition])
 
 
+
+  // testes
+  const ref = useRef(null);
+
+  const options = {
+    autoresize: true,
+    opacity: 0.2,
+    acceleration: 1,
+    friction: 0.99,
+    gravity: 1.5,
+    particles: 50,
+    traceLength: 3,
+    traceSpeed: 5,
+    explosion: 3,
+    intensity: 15,
+    flickering: 100,
+    lineStyle: 'round',
+    hue: {
+      min: 0,
+      max: 360
+    },
+    delay: {
+      min: 30,
+      max: 80
+    },
+    rocketsPoint: {
+      min: 0,
+      max: 100
+    },
+    lineWidth: {
+      explosion: {
+        min: 0.3,
+        max: 5
+      },
+      trace: {
+        min: 0.3,
+        max: 3
+      }
+    },
+    brightness: {
+      min: 100,
+      max: 100
+    },
+    decay: {
+      min: 0.005,
+      max: 0.015
+    },
+    mouse: {
+      click: false,
+      move: false,
+      max: 1
+    }
+  }
+
+  
 
   return (
     <S.Container $layout={gridLayout}>
@@ -127,6 +184,18 @@ function Puzzle({
         }
       })
       }
+
+      {projectWinner && <Fireworks
+        ref={ref}
+        options={options}
+        style={{
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          position: 'absolute'
+        }}
+      />}
 
       <S.ErrorMsg id='error'>
         Hint: Clicking fast does not make you play better.

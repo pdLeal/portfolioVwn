@@ -2,13 +2,10 @@ import React, { useState, useEffect } from 'react';
 import Header from '../../components/header/Header';
 import * as S from './Home_Style';
 import QBox from '../../components/questionBox/QBox';
-import Card from '../../components/card/Card';
-import data from '../../data/Projetos.json';
 import Puzzle from '../../components/puzzle/Puzzle';
-import Footer from '../../components/footer/Footer'
-import TypeEfct from '../../components/TypeEfct';
-import { Button } from '../../components/hello/Hello_Style';
+import Footer from '../../components/footer/Footer';
 import { PuzzleProvider } from '../../contexts/PuzzleContext';
+import useWinnerContext from '../../contexts/WinnerContext';
 
 
 function Home() {
@@ -16,12 +13,15 @@ function Home() {
   const [reloadPuzzle, setReloadPuzzle] = useState(true); // true/false doens't mattter, just needs to change to remount the whole comp
   const [projectUrl, setProjectUrl] = useState('');
   const [savedPiecesPosition, setSavedPiecesPosition] = useState([]);
-  
-  
+  const { setProjectWinner } = useWinnerContext();
+
+
+
   function handleRestart() {
     setReloadPuzzle(!reloadPuzzle);
 
-    setSavedPiecesPosition([])
+    setProjectWinner(false);
+    setSavedPiecesPosition([]);
     localStorage.removeItem('piecesPosition');
     localStorage.removeItem('canMove');
   }
@@ -29,7 +29,7 @@ function Home() {
   function handleHardMode() {
     handleRestart();
     setHardModeIsOn(!hardModeIsOn);
-    if(!localStorage.getItem('hardModeIsOn')) {
+    if (!localStorage.getItem('hardModeIsOn')) {
       localStorage.setItem('hardModeIsOn', true)
     } else {
       localStorage.removeItem('hardModeIsOn')
@@ -37,7 +37,7 @@ function Home() {
   }
 
   useEffect(() => {
-    if(localStorage.getItem('hardModeIsOn')) {
+    if (localStorage.getItem('hardModeIsOn')) {
       setHardModeIsOn(true)
     }
   }, [])
@@ -52,7 +52,7 @@ function Home() {
         </S.About_Section>
         <S.Projects>
           <S.H2>Projects Puzzle</S.H2>
-          <PuzzleProvider value={{projectUrl, setProjectUrl, savedPiecesPosition, setSavedPiecesPosition}}>
+          <PuzzleProvider value={{ projectUrl, setProjectUrl, savedPiecesPosition, setSavedPiecesPosition }}>
             <S.Wrapper>
               <S.Rules>
                 <S.TextRules>
