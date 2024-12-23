@@ -175,7 +175,8 @@ export const Video = styled.video`
     
 `;
 
-export const Test = styled.div`
+export const VideoWrapper = styled.div`
     position: absolute;
     inset: 0;
+    z-index: 99;
 `;

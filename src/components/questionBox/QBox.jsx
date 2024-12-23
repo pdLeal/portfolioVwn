@@ -217,14 +217,14 @@ function QBox() {
                     {/* END OF THIRD QUESTION */}
 
                     {question == 2.5 &&
-                        <S.Test>
+                        <S.VideoWrapper>
                             <S.Video autoPlay preload='true' onEnded={handleVideoEnd}>
                                 <source src={redBallons} type="video/mp4" />
                             </S.Video>
                             <audio autoPlay preload='true'>
                                 <source src={pennywiseLaught} type="audio/mp3" />
                             </audio>
-                        </S.Test>
+                        </S.VideoWrapper>
                     }
 
                     {/* LAST QUESTION */}
