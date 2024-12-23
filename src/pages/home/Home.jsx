@@ -13,7 +13,7 @@ function Home() {
   const [reloadPuzzle, setReloadPuzzle] = useState(true); // true/false doens't mattter, just needs to change to remount the whole comp
   const [projectUrl, setProjectUrl] = useState('');
   const [savedPiecesPosition, setSavedPiecesPosition] = useState([]);
-  const { setProjectWinner } = useWinnerContext();
+  const { projectWinner, setProjectWinner } = useWinnerContext();
 
 
 
@@ -55,13 +55,13 @@ function Home() {
           <PuzzleProvider value={{ projectUrl, setProjectUrl, savedPiecesPosition, setSavedPiecesPosition }}>
             <S.Wrapper>
               <S.Rules>
-                <S.TextRules>
-                  A simple puzzle for simple projects. Just put the pieces together 'till the image makes sense!
-                </S.TextRules>
+                {!projectWinner ? <S.TextRules>A simple puzzle for simple projects. Just put the pieces together 'till the image makes sense!</S.TextRules>
+                              : hardModeIsOn ? <S.TextRules>Oh, you are real good at this,aren't you?</S.TextRules>
+                                            : <S.TextRules>Congratulations! You can move on and see all the projects you want. Also, how about trying the hard difficulty? Show them how good you really are!</S.TextRules>}
 
                 <S.Btn $hardModeIsOn={hardModeIsOn} onClick={handleHardMode}>Hard Mode</S.Btn>
                 <S.Btn onClick={handleRestart}>Restart</S.Btn>
-                <a href={projectUrl} target='_black'>Peek Answer</a>
+                <a href={projectUrl} target='_blank'>Peek Answer</a>
               </S.Rules>
 
               <Puzzle

@@ -122,7 +122,7 @@ function Puzzle({
     }
   }
 
-  
+
 
   return (
     <S.Container $layout={gridLayout}>
@@ -185,17 +185,21 @@ function Puzzle({
       })
       }
 
-      {projectWinner && <Fireworks
-        ref={ref}
-        options={options}
-        style={{
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          position: 'absolute'
-        }}
-      />}
+      {projectWinner && <>
+        <Fireworks
+          ref={ref}
+          options={options}
+          style={{
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            position: 'absolute'
+          }}
+        />
+        <S.Congrats>WINNER!</S.Congrats>
+      </>}
+
 
       <S.ErrorMsg id='error'>
         Hint: Clicking fast does not make you play better.

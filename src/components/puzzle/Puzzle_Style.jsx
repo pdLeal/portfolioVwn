@@ -1,4 +1,4 @@
-import styled, {keyframes} from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 
 const shakeAnimation = keyframes`
@@ -26,6 +26,7 @@ export const Container = styled.section`
     border: solid 1px var(--primary-color); 
     box-shadow: 0px 0px 20px -8px var(--primary-color);
     position: relative;
+    overflow: hidden;
         
         [data-piece="1"] {
             background-position: 0% 0%;
@@ -108,6 +109,22 @@ export const Piece = styled.div`
     background-repeat: no-repeat;
     `;
 
+export const Congrats = styled.p`
+    width: 100%;
+    height: 100%;
+    font-family: "VT323", monospace;
+    font-size: clamp(2rem, 15vw + 0.5rem, 8rem);
+    font-weight: bold;
+    letter-spacing: .2em;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    color: black;
+    text-shadow: 0px 0px 4px var(--primary-color);
+`;
+
 export const ErrorMsg = styled.p`
     font-family: "VT323", monospace;
     margin-inline: auto;
@@ -117,7 +134,6 @@ export const ErrorMsg = styled.p`
     font-size: clamp(1rem, 2vw + 0.5rem, 1.5rem);
     color: var(--primary-color);
     text-shadow: 0px 0px 13px var(--primary-color);
-
     position: absolute;
     top: 8px;
     right: 0;

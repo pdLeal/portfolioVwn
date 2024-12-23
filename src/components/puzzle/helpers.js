@@ -146,7 +146,7 @@ export function checkIfWon(savedPiecesPosition, setProjectWinner, ref) {
     
     if(JSON.stringify(savedPiecesPosition) == JSON.stringify(sortedPositions)) {
         setProjectWinner(true);
-        // localStorage.setItem('isProjectWinner', true);
+        localStorage.setItem('isProjectWinner', true);
 
         setTimeout(() => {
             ref.current.waitStop();
