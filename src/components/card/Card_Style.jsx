@@ -17,4 +17,8 @@ export const Sub_Grid = styled.div`
         a:hover {
             color: red;
         }
+
+        img {
+            width: 100%;
+        }
 `;
