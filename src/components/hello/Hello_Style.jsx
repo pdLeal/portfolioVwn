@@ -9,6 +9,7 @@ export const Container = styled.div`
     align-items: center;
     row-gap: 96px;
     height: 100vh;
+    user-select: none;
     
     position: relative;
     `;
