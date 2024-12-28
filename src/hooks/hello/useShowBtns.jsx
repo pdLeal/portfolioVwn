@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 
-function useShowBtns(showNext) {
+function useShowBtns(timesMoved) {
+    
+    const [showNext, setshowNext] = useState(false);
     const [showBtn, setShowBtn] = useState(false);
     const [showWeakBtn, setShowWeakBtn] = useState(false);
     const [canSkip, setCanSkip] = useState(false);
@@ -11,7 +13,12 @@ function useShowBtns(showNext) {
     }, []);
 
 
-    const handleTypeDone = () => {
+    const handleTypeDone = (e) => {
+        if (timesMoved > 10 || (e.touches && count > 3)) {
+            setshowNext(true);
+            // Ensures the user must interact with the button before triggering the next message.
+        }
+
         if (!showNext) {
             setShowBtn(true);
 
@@ -21,7 +28,7 @@ function useShowBtns(showNext) {
         }
     }
 
-    return {showBtn, showWeakBtn, canSkip, handleTypeDone}
+    return {showNext, showBtn, showWeakBtn, canSkip, handleTypeDone}
 }
 
 export default useShowBtns

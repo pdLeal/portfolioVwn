@@ -10,8 +10,7 @@ function useUpdateBtnPosition() {
         x: 50,
         y: 65
     });
-    const [count, setCount] = useState(0);
-    const [showNext, setshowNext] = useState(false);
+    const [timesMoved, setTimesMoved] = useState(0);
     const [lastMoved, setLastMoved] = useState(0);
 
     const handleMouseMove = (e) => {
@@ -27,16 +26,11 @@ function useUpdateBtnPosition() {
             y: random()
         });
 
-        if (count > 10 || (e.touches && count > 3)) {
-            setshowNext(true);
-            // Ensures the user must interact with the button before triggering the next message.
-        } else {
-            setCount(prev => (prev + 1));
+        setTimesMoved(prev => (prev + 1));
 
-        }
     }
 
-    return { btnPosition, showNext, handleMouseMove }
+    return { btnPosition, timesMoved, handleMouseMove }
 
 }
 
