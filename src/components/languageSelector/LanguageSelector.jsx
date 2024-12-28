@@ -1,24 +1,25 @@
 import React from 'react';
 import * as S from './LanguageSelector_Style';
-import { Button } from "../hello/Hello_Style";
 import { useTranslation } from 'react-i18next';
 
-function LanguageSelector() {
-    const {i18n} = useTranslation();
-    const changeLanguage = (e) => {
-        const lng = e.target.dataset.lang;
-
-        i18n.changeLanguage(lng);
-    }
+function LanguageSelector({test}) {
+    const { i18n } = useTranslation();
+    const languages = ['en', 'br'];
 
     return (
         <S.Container>
-            <Button data-lang={'br'} onClick={e => {
-                changeLanguage(e);
-            }}>Português</Button>
-            <Button data-lang={'en'} onClick={e => {
-                changeLanguage(e);
-            }}>English</Button>
+            {
+                languages.map(lang => {
+                    return <S.Btn
+                        className={lang === i18n.language ? 'selected' : ''}
+                        key={lang}
+                        onClick={() => {
+                            i18n.changeLanguage(lang);
+                            test(prev => !prev)
+                        }}
+                    >{lang}</S.Btn>
+                })
+            }
         </S.Container>
     )
 }

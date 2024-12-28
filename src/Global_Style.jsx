@@ -28,7 +28,8 @@ const Global_Style = createGlobalStyle`
         --kvn-font: "VT323", monospace;
         --bg-color: #000;
         --primary-color: #0ded0d;
-        --hover-color: #a2eea2;
+        --redish: red;
+        --hover-color: #b4f7b4;
         --active-color: #2b6a2b;
         --typeSpeed: 5s;
         --delay: 1s;

@@ -22,7 +22,7 @@ i18next.use(LanguageDetector).use(initReactI18next).init({
             translation: {
                 skipBtn: 'Pular',
                 helloFromKVN: {
-                    line1: ['Oh! Olá! Desculpe, não tinha te visto aí...', 'Imagino que esteja aqui para ver o portifólio do Pedro, certo?', 'Mas antes, que tal um jogo?', 'Tudo que você precisa fazer é clicar no botão =)'],
+                    line1: ['Ah! Oi! Desculpe, não tinha te visto aí...', 'Imagino que esteja aqui para ver o portifólio do Pedro, certo?', 'Mas antes, que tal um jogo?', 'Tudo que você precisa fazer é clicar no botão =)'],
                     line2: ['Parece que você está tendo problemas em clicar no botão =S', 'Aqui, um botão que não vai fugir!']
                 },
                 clickBtn: 'Clique Aqui',

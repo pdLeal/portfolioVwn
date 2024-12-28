@@ -16,7 +16,7 @@ function useUpdateBtnPosition() {
 
     const handleMouseMove = (e) => {
         try {
-            checkCooldown(lastMoved, setLastMoved, 400);
+            checkCooldown(lastMoved, setLastMoved, 350);
             // Ensures the button doesn't "run away" too quickly, making it easier for users to click.
         } catch (error) {
             return;

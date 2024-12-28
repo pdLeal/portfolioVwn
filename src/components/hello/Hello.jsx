@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as S from './Hello_Style';
 import { useNavigate } from 'react-router-dom';
 import TypeEfct from '../TypeEfct.jsx';
@@ -23,11 +23,13 @@ function Hello() {
 
     const { line1, line2 } = t("helloFromKVN");
 
+    const [key, setKey] = useState(true);
+
 
     return (
         <>
-            <LanguageSelector/>
-            <S.Container>
+            <LanguageSelector test={setKey} />
+            <S.Container key={key}>
                 {(canSkip || showWeakBtn) && <S.SkipBtn onClick={handleClick}>{t('skipBtn')} {`>>>`}</S.SkipBtn>}
 
                 <S.H3>

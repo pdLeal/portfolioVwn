@@ -34,6 +34,7 @@ function Puzzle({
     setProjectUrl(data[randomNumber].pageUrl); // Garante que o btn peek project abra a página correta
 
     const shuffled = fisherYatesShuffle(slots);
+    console.log(shuffled)
     shuffled.pop();
     shuffled.push('');
 
