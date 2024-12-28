@@ -4,16 +4,29 @@ import { initReactI18next } from "react-i18next";
 
 i18next.use(LanguageDetector).use(initReactI18next).init({
     debug: true,
-    lng: "en",
+    fallbackLng: "en",
+    returnObjects: true,
     resources: {
         en: {
             translation: {
-                hello: "Hello",
+                skipBtn: 'Skip',
+                helloFromKVN: {
+                    line1: ['Oh! Hello! Sorry, didn\'t see you there...', 'I suppose you\'re here to see Pedro\'s portfolio, right?', 'But before, what about a game?', 'All you have to do is click the button =)'],
+                    line2: ['It seems you\'re having a hard time clicking the button =S', 'Here, a button that won\'t runaway!']
+                },
+                clickBtn: 'Click Me',
+                weakBtn: 'For the weak!',
             },
         },
         br: {
             translation: {
-                hello: "Olá",
+                skipBtn: 'Pular',
+                helloFromKVN: {
+                    line1: ['Oh! Olá! Desculpe, não tinha te visto aí...', 'Imagino que esteja aqui para ver o portifólio do Pedro, certo?', 'Mas antes, que tal um jogo?', 'Tudo que você precisa fazer é clicar no botão =)'],
+                    line2: ['Parece que você está tendo problemas em clicar no botão =S', 'Aqui, um botão que não vai fugir!']
+                },
+                clickBtn: 'Clique Aqui',
+                weakBtn: 'Para os fracos!',
             },
         }
     }

@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import * as S from './Hello_Style';
 import { useNavigate } from 'react-router-dom';
 import TypeEfct from '../TypeEfct.jsx';
-import useUpdateBtnPosition from './hooks/useUpdateBtnPosition.jsx';
-import useShowBtns from './hooks/useShowBtns.jsx';
+import useUpdateBtnPosition from '../../hooks/hello/useUpdateBtnPosition.jsx';
+import useShowBtns from '../../hooks/hello/useShowBtns.jsx';
+import { useTranslation } from 'react-i18next';
+import LanguageSelector from '../languageSelector/LanguageSelector.jsx';
 
 function Hello() {
     const { btnPosition, showNext, handleMouseMove } = useUpdateBtnPosition();
@@ -16,31 +18,40 @@ function Hello() {
         navigate('/home');
     }
 
+    // I18NEXT
+    const { t } = useTranslation();
+
+    const { line1, line2 } = t("helloFromKVN");
+
+
     return (
-        <S.Container>
-            {(canSkip || showWeakBtn) && <S.SkipBtn onClick={handleClick}>Skip {`>>>`}</S.SkipBtn>}
+        <>
+            <LanguageSelector/>
+            <S.Container>
+                {(canSkip || showWeakBtn) && <S.SkipBtn onClick={handleClick}>{t('skipBtn')} {`>>>`}</S.SkipBtn>}
 
-            <S.H3>
-                {!showNext && <TypeEfct text={['Oh! Hello! Sorry, didn\'t see you there...', 'I suppose you\'re here to see Pedro\'s portfolio, right?', 'But before, what about a game?', 'All you have to do is click the button =)']} onDone={handleTypeDone} />}
-                {/* */}
-                {showNext && <TypeEfct text={['It seems you\'re having a hard time clicking the button =S', 'Here, a button that won\'t runaway!']} onDone={handleTypeDone} />
-                }
-            </S.H3>
+                <S.H3>
+                    {!showNext && <TypeEfct text={line1} onDone={handleTypeDone} />}
 
-            {showBtn &&
-                <S.Wrapper
-                    $xPosition={btnPosition.x}
-                    $yPosition={btnPosition.y}
-                    onMouseMove={handleMouseMove}
-                    onTouchStart={handleMouseMove}
-                >
-                    <S.Button onClick={handleClick}>Click Me</S.Button>
-                </S.Wrapper>}
+                    {showNext && <TypeEfct text={line2} onDone={handleTypeDone} />
+                    }
+                </S.H3>
 
-            {showWeakBtn &&
-                <S.HelpBtn>For the weak!</S.HelpBtn>}
+                {showBtn &&
+                    <S.Wrapper
+                        $xPosition={btnPosition.x}
+                        $yPosition={btnPosition.y}
+                        onMouseMove={handleMouseMove}
+                        onTouchStart={handleMouseMove}
+                    >
+                        <S.Button onClick={handleClick}>{t('clickBtn')}</S.Button>
+                    </S.Wrapper>}
 
-        </S.Container>
+                {showWeakBtn &&
+                    <S.WeakBtn>{t('weakBtn')}</S.WeakBtn>}
+
+            </S.Container>
+        </>
     )
 }
 

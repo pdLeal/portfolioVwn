@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    font-family: "VT323", monospace;
+    font-family: var(--kvn-font);
     text-align: center;
     padding: 24px;
     display: flex;
@@ -48,17 +48,17 @@ export const Button = styled.button`
     
         &:hover,
         &:focus-visible {
-          color: #66f666;
-          border-color: #66f666;
+          color: var(--hover-color);
+          border-color: var(--hover-color);
         }
         
         &:active {
-          color: #2b6a2b;
-          border-color: #2b6a2b;
+          color: var(--active-color);
+          border-color: var(--active-color);
         }
 `;
 
-export const HelpBtn = styled(Button)`
+export const WeakBtn = styled(Button)`
   position: fixed;
   top: 65%;
 `;

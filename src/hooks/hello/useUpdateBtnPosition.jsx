@@ -1,18 +1,9 @@
 import { useState } from "react";
+import { checkCooldown } from "../../utils/checkCooldown";
 
 function random() { // Gives a number between 10 and 80
     return Math.floor(Math.random() * 71) + 10;
 };
-
-function checkMoveCooldown(lastMoved, setLastMoved) {
-    const moveDelay = 400;
-    const now = Date.now();
-    if (now - lastMoved < moveDelay) {
-        throw new Error("Can't move yet");
-
-    }
-    setLastMoved(now);
-}
 
 function useUpdateBtnPosition() {
     const [btnPosition, setBtnPosition] = useState({
@@ -24,16 +15,21 @@ function useUpdateBtnPosition() {
     const [lastMoved, setLastMoved] = useState(0);
 
     const handleMouseMove = (e) => {
-        checkMoveCooldown(lastMoved, setLastMoved);
+        try {
+            checkCooldown(lastMoved, setLastMoved, 400);
+            // Ensures the button doesn't "run away" too quickly, making it easier for users to click.
+        } catch (error) {
+            return;
+        }
 
         setBtnPosition({
             x: random(),
             y: random()
         });
 
-        if (count > 20 || (e.touches && count > 3)) {
+        if (count > 10 || (e.touches && count > 3)) {
             setshowNext(true);
-
+            // Ensures the user must interact with the button before triggering the next message.
         } else {
             setCount(prev => (prev + 1));
 

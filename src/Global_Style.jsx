@@ -6,7 +6,6 @@ const Global_Style = createGlobalStyle`
         font-family: "Ubuntu Mono", monospace;
         color: white;
         background-color: var(--bg-color);
-        backdrop-filter: blur(10px);
     }
 
     *, *::before, *::after {
@@ -26,8 +25,11 @@ const Global_Style = createGlobalStyle`
     }
 
     :root {
+        --kvn-font: "VT323", monospace;
         --bg-color: #000;
         --primary-color: #0ded0d;
+        --hover-color: #a2eea2;
+        --active-color: #2b6a2b;
         --typeSpeed: 5s;
         --delay: 1s;
     }
