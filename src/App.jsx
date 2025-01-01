@@ -22,15 +22,17 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Hello />} />
         <Route path="/home" element={<Home />} />
-
-        <Route element={<AboutProtector />}>
-          <Route path="/about" element={<About />} />
-        </Route>
+        <Route path="/inicio" element={<Home />} />
 
         <Route element={<ProjectProtector />}>
           <Route path="/projects" element={<Projects />} />
+          <Route path="/projetos" element={<Projects />} />
         </Route>
 
+        <Route element={<AboutProtector />}>
+          <Route path="/about" element={<About />} />
+          <Route path="/sobre" element={<About />} />
+        </Route>
 
         <Route path="/denied" element={<Denied />} />
         <Route path="*" element={<NotFount />} />

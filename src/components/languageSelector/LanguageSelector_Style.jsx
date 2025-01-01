@@ -9,7 +9,7 @@ export const Container = styled.div`
     align-items: center;
     gap: 16px;
     background-color: var(--bg-color);
-    position: fixed;
+    position: absolute;
     top: 0;
     z-index:1;
 

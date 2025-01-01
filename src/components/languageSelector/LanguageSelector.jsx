@@ -15,7 +15,7 @@ function LanguageSelector({test}) {
                         key={lang}
                         onClick={() => {
                             i18n.changeLanguage(lang);
-                            test(prev => !prev)
+                            // test(prev => !prev)
                         }}
                     >{lang}</S.Btn>
                 })

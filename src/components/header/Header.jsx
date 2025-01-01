@@ -1,25 +1,29 @@
-import React, { useState } from 'react';
+import React from 'react';
 import * as S from './Header_Style';
 import { Link, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 function Header() {
   const location = useLocation();
   const currentPage = location.pathname.substring(1);
 
-  const [isSelected, setIsSelected] = useState(currentPage);
-  const menuItens = ['home', 'projects', 'about'];
+  // I18NEXT
+  const { t, i18n } = useTranslation();
+
+  let menuItens = ['home', 'projects', 'about'];
+
 
   return (
     <nav>
       <S.Ul>
-        {menuItens.map((item) => {
-          if (isSelected === item) {
+        {menuItens.map((item, i) => {
+          if (currentPage === item) {
             return (
               <S.Li key={item}>
                 <Link className='glitch' to={`/${item}`}>
-                  <span aria-hidden='true'>{item}</span>
-                  {item}
-                  <span aria-hidden='true'>{item}</span>
+                  <span aria-hidden='true'>{i18n.language === "en" ? item : t("menuItens")[i]}</span>
+                  {i18n.language === "en" ? item : t("menuItens")[i]}
+                  <span aria-hidden='true'>{i18n.language === "en" ? item : t("menuItens")[i]}</span>
                 </Link>
               </S.Li>
             );
@@ -27,10 +31,9 @@ function Header() {
           } else {
             return (
               <S.Li key={item}>
-                <Link to={`/${item}`}>{item}</Link>
+                <Link to={`/${item}`}>{i18n.language === "en" ? item : t("menuItens")[i]}</Link>
               </S.Li>
             );
-
           }
         })}
       </S.Ul>

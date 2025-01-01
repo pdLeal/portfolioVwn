@@ -6,6 +6,7 @@ import Puzzle from '../../components/puzzle/Puzzle';
 import Footer from '../../components/footer/Footer';
 import { PuzzleProvider } from '../../contexts/PuzzleContext';
 import useWinnerContext from '../../contexts/WinnerContext';
+import LanguageSelector from '../../components/languageSelector/LanguageSelector';
 
 
 function Home() {
@@ -44,6 +45,7 @@ function Home() {
 
   return (
     <>
+      <LanguageSelector />
       <Header />
       <S.Main>
         <S.About_Section>
