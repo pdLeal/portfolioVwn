@@ -2,6 +2,7 @@ import React from 'react';
 import * as S from './Header_Style';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import LanguageSelector from '../../components/languageSelector/LanguageSelector';
 
 function Header() {
   const location = useLocation();
@@ -14,6 +15,8 @@ function Header() {
 
 
   return (
+    <>
+    <LanguageSelector />
     <nav>
       <S.Ul>
         {menuItens.map((item, i) => {
@@ -38,6 +41,7 @@ function Header() {
         })}
       </S.Ul>
     </nav>
+    </>
   )
 }
 

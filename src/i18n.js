@@ -21,7 +21,7 @@ i18next.use(LanguageDetector).use(initReactI18next).init({
                 menuItens: ['home', 'projects', 'about'],
             },
         },
-        br: {
+        "pt-BR": {
             translation: {
               // HELLO COMP 
                 skipBtn: 'Pular',

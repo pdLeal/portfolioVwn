@@ -2,9 +2,9 @@ import React from 'react';
 import * as S from './LanguageSelector_Style';
 import { useTranslation } from 'react-i18next';
 
-function LanguageSelector({test}) {
+function LanguageSelector() {
     const { i18n } = useTranslation();
-    const languages = ['en', 'br'];
+    const languages = ['en', 'pt-BR'];
 
     return (
         <S.Container>
@@ -15,9 +15,8 @@ function LanguageSelector({test}) {
                         key={lang}
                         onClick={() => {
                             i18n.changeLanguage(lang);
-                            // test(prev => !prev)
                         }}
-                    >{lang}</S.Btn>
+                    >{lang === "pt-BR" ? "br" : lang}</S.Btn>
                 })
             }
         </S.Container>
