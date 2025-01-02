@@ -22,10 +22,6 @@ export const About_Section = styled.section`
         }
 `;
 
-export const Span = styled.span`
-    text-decoration: line-through 0.15em var(--primary-color);
-`;
-
 export const Projects = styled.section`
     margin-top: 24px;
 

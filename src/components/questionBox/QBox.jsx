@@ -5,14 +5,15 @@ import TypeEfct from '../TypeEfct.jsx';
 import redBallons from '../../assets/you_float_too.mp4';
 import pennywiseLaught from '../../assets/PennywiseLaugh.mp3';
 import useWinnerContext from '../../contexts/WinnerContext.js';
+import useHandleAnimation from '../../hooks/qBox/useHandleAnimation.jsx';
+import useHandleAnswers from '../../hooks/qBox/useHandleAnswers.jsx';
 
 function QBox() {
-
     const [clicked, setClicked] = useState(false);
-    const [animationIsDone, setAnimationIsDone] = useState(false);
     const [typingIsDone, setTypingIsDone] = useState(false);
-    const [question, setQuestion] = useState(0); // all .5 are responses to the user
-    const [isQuestion, setIsQuestion] = useState(true);
+    const { animationIsDone, AnimationRef } = useHandleAnimation(clicked);
+    const { question, isQuestion, setQuestion, setIsQuestion, firstAnswer  } = useHandleAnswers(setTypingIsDone);
+
     const [giveHint, setGiveHint] = useState(false);
 
     const [secondAnswer, setSecondAnswer] = useState(
@@ -27,24 +28,9 @@ function QBox() {
         </span>);
 
     // referências ligadas às animações
-    const ConfirmRef = useRef(null);
-    useEffect(() => {  // fica de olho na animação da qBox e ao fim habilita a primeira pergunta
-        const node = ConfirmRef.current;
-        if (node) {
-            function handleAnimationEnd() {
-                setAnimationIsDone(true);
-            };
-
-            node.addEventListener('animationend', handleAnimationEnd);
-
-            return () => {
-                node.removeEventListener('animationend', handleAnimationEnd);
-            };
-        }
-    }, [clicked]);
-
     useEffect(() => {  // fica de olho na animação das transições e habilita a próxima pergunta
-        const node = ConfirmRef.current;
+        const node = AnimationRef.current;
+
         if (node) {
             function handleAnimationEnd() {
                 setTimeout(() => {
@@ -82,22 +68,6 @@ function QBox() {
 
 
     // funções
-    function handleClick() {
-        setClicked(true);
-    }
-
-    function handleTyping() {
-        setTypingIsDone(true);
-    }
-
-    function handleFirstAnswer() {
-        setTimeout(() => { // cria um pequeno atraso para melhor experiência do usuário
-            setQuestion(0.5);
-            setIsQuestion(false);
-            setTypingIsDone(false);
-        }, 500);
-    }
-
     function handleFakeAnswers() {
         setGiveHint(true);
     }
@@ -138,23 +108,23 @@ function QBox() {
 
     return (
         <S.Container>
-            {!clicked && <S.SeeBtn onClick={handleClick}>See More...</S.SeeBtn>}
+            {!clicked && <S.SeeBtn onClick={() => setClicked(true)}>See More...</S.SeeBtn>}
 
             {clicked &&
-                <S.Question_Box $display={isQuestion} ref={ConfirmRef}>
+                <S.Question_Box $display={isQuestion} ref={AnimationRef}>
 
                     {/* FIRST QUESTION */}
                     {(animationIsDone && question == 0) &&
                         <>
                             <H3>
-                                <TypeEfct text={['', 'So here we are again, uh? If you wanna know more about him, you\'ll have to answer some questions of mine, do you agree?']} onDone={handleTyping} />
+                                <TypeEfct text={['', 'So here we are again, uh? If you wanna know more about him, you\'ll have to answer some questions of mine, do you agree?']} onDone={() => setTypingIsDone(true)} />
                             </H3>
 
                             {typingIsDone &&
                                 <S.Anwsers $options={2}>
                                     <S.Input type="radio" id="yes" name='agreed' />
                                     <S.Label htmlFor="yes">Yes</S.Label>
-                                    <S.Input onChange={handleFirstAnswer} type="radio" id="no" name='agreed' />
+                                    <S.Input onChange={firstAnswer} type="radio" id="no" name='agreed' />
                                     <S.Label htmlFor="no">No</S.Label>
                                 </S.Anwsers>
                             }
@@ -164,7 +134,7 @@ function QBox() {
                     {/* END OF FIRST QUESTION */}
 
                     {question == 0.5 &&
-                        <S.Confirmation_Statement ref={ConfirmRef}>
+                        <S.Confirmation_Statement ref={AnimationRef}>
                             CHALLENGE ACCEPTED
                         </S.Confirmation_Statement>
                     }
@@ -173,7 +143,7 @@ function QBox() {
                     {question == 1 &&
                         <>
                             <H3>
-                                <TypeEfct text={['', 'First Question: What is the answer to The Ultimate Question of Life, The Universe and Everything?']} onDone={handleTyping} />
+                                <TypeEfct text={['', 'First Question: What is the answer to The Ultimate Question of Life, The Universe and Everything?']} onDone={() => setTypingIsDone(true)} />
                             </H3>
                             {giveHint &&
                                 <S.Para>Hint: the answer is inside {secondAnswer}</S.Para>}
@@ -195,7 +165,7 @@ function QBox() {
                     {/* END OF SECOND QUESTION */}
 
                     {question == 1.5 &&
-                        <S.Confirmation_Statement ref={ConfirmRef}>
+                        <S.Confirmation_Statement ref={AnimationRef}>
                             YO-HO-HOOOW!
                         </S.Confirmation_Statement>
                     }
@@ -204,7 +174,7 @@ function QBox() {
                     {question == 2 &&
                         <>
                             <H3>
-                                <TypeEfct text={['', 'Complete the sentence: We all float...']} onDone={handleTyping} /> 
+                                <TypeEfct text={['', 'Complete the sentence: We all float...']} onDone={() => setTypingIsDone(true)} />
                             </H3>
 
                             {typingIsDone &&
@@ -229,11 +199,11 @@ function QBox() {
 
                     {/* LAST QUESTION */}
                     {question == 3 &&
-                            <H3>
-                                <TypeEfct
+                        <H3>
+                            <TypeEfct
                                 text={['', 'You shall pass...for now']}
                                 onDone={handleAboutWinner} />
-                            </H3>
+                        </H3>
                     }
                 </S.Question_Box>
             }

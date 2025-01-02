@@ -6,6 +6,7 @@ import Puzzle from '../../components/puzzle/Puzzle';
 import Footer from '../../components/footer/Footer';
 import { PuzzleProvider } from '../../contexts/PuzzleContext';
 import useWinnerContext from '../../contexts/WinnerContext';
+import { useTranslation } from 'react-i18next';
 
 
 function Home() {
@@ -42,12 +43,15 @@ function Home() {
     }
   }, [])
 
+  // I18NEXT
+  const {t} = useTranslation();
+
   return (
     <>
       <Header />
       <S.Main>
         <S.About_Section>
-          <p>Hello! I'm Pedro and for the last year I've been studying so I can become a front-end developer. I have to admit that my own designs leave a LOT to disere, but I'm certain I can code <S.Span>almost</S.Span> anything you can came up with!</p>
+          <p>{t("homeAbout")}</p>
           <QBox />
         </S.About_Section>
         <S.Projects>
