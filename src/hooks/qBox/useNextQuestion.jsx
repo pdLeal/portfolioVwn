@@ -1,22 +1,24 @@
 import { useEffect, useRef, useState } from "react";
+import useWinnerContext from "../../contexts/WinnerContext";
 
 function useNextQuestion(clicked, setTypingIsDone) {
     const [question, setQuestion] = useState(0);
     const [isQuestion, setIsQuestion] = useState(true);
     const [secondAnswer, setSecondAnswer] = useState(false);
+    const { setAboutWinner } = useWinnerContext();
 
     const AnimationRef = useRef(null);
-    useEffect(() => {  // fica de olho na animação da qBox e ao fim habilita a primeira pergunta
+    useEffect(() => {  // Monitor the qBox animations and activate the questions after each transition
         const node = AnimationRef.current;
 
         if (node) {
             function handleAnimationEnd() {
                 setTimeout(() => {
                     setQuestion(prev => prev === 0 ? prev + 1 : prev);
-                    setIsQuestion(true); // Importante pra lidar com o fim do confirmation statment
+                    setIsQuestion(true);
 
                 }, 1000);
-                
+
             };
 
             node.addEventListener('animationend', handleAnimationEnd);
@@ -29,9 +31,8 @@ function useNextQuestion(clicked, setTypingIsDone) {
 
 
     const handleAnswer = () => {
-        setTimeout(() => { // cria um pequeno atraso para melhor experiência do usuário
+        setTimeout(() => { // Creates a small delay for better user experience
             setQuestion(prev => prev + 1);
-
             setIsQuestion(false);
             setTypingIsDone(false);
         }, 500);
@@ -41,7 +42,26 @@ function useNextQuestion(clicked, setTypingIsDone) {
         setSecondAnswer(true);
     }
 
-    return { question, isQuestion, AnimationRef, handleAnswer, setQuestion, setIsQuestion, secondAnswer, handleFirstClick }
+    const handleInputText = (e) => {
+        const answer = e.target.value.toLowerCase();
+        if (answer == 'down here') {
+            e.target.classList.add('rightAnswer');
+            e.target.setAttribute('disabled', '');
+            handleAnswer();
+        }
+    }
+
+
+    const handleVideoEnd = () => {
+        setIsQuestion(true);
+    };
+
+    function handleAboutWinner() {
+        setAboutWinner(true);
+        localStorage.setItem('isAboutWinner', true);
+    }
+
+    return { AnimationRef, question, isQuestion, secondAnswer, handleAnswer, handleFirstClick, handleInputText, handleVideoEnd, handleAboutWinner }
 }
 
 export default useNextQuestion

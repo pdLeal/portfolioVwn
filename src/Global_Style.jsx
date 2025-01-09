@@ -29,6 +29,7 @@ const Global_Style = createGlobalStyle`
         --bg-color: #000;
         --primary-color: #0ded0d;
         --redish: red;
+        --blueish: blue;
         --hover-color: #b4f7b4;
         --active-color: #2b6a2b;
         --typeSpeed: 5s;

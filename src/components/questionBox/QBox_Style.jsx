@@ -3,7 +3,7 @@ import styled, { keyframes } from "styled-components";
 import { Button, H3 } from '../hello/Hello_Style';
 
 export const Container = styled.div`
-    font-family: "VT323", monospace;
+    font-family: var(--kvn-font);
     width: 100%;
     height: 100%;
     
@@ -12,7 +12,7 @@ export const Container = styled.div`
     align-items: center;
     `;
 
-export const SeeBtn = styled(Button)`
+export const See_Btn = styled(Button)`
         border: none;
         box-shadow: none;
         `;
@@ -50,7 +50,7 @@ export const Question_Box = styled.div`
     height: 0;
     
     ${props => {
-        if (props.$display) {
+        if (props.$display) { // if(isQuestion) {...}
             return `
             display: grid;
             grid-template-rows: max-content auto;`
@@ -67,13 +67,12 @@ export const Question_Box = styled.div`
     animation: ${grow} 3s 250ms ease-in-out forwards;
 
     .rightAnswer {
-            color: red;
+            color: var(--redish);
             text-shadow: 0px 0px 10px red;
         }
 `;
 
 export const Anwsers = styled.div`
-    
     
         ${props => {
         if (props.$options == 2) {
@@ -83,12 +82,12 @@ export const Anwsers = styled.div`
             align-self: center;
 
             & > :nth-child(2) {
-                color: blue;
+                color: var(--blueish);
                 text-shadow: 0px 0px 10px blue;
             }
             
             & > :last-child {
-                color: red;
+                color: var(--redish);
                 text-shadow: 0px 0px 10px red;
         }
             `;
@@ -99,7 +98,7 @@ export const Anwsers = styled.div`
             grid-template-columns: repeat(2, 1fr);
             justify-items: start;
             column-gap: 16px;
-            color: blue;
+            color: var(--blueish);
             text-shadow: 0px 0px 10px blue;
             `;
         }
@@ -107,6 +106,7 @@ export const Anwsers = styled.div`
 `;
 
 export const Label = styled.label`
+    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -142,7 +142,7 @@ const goBig = keyframes`
     }
 `;
 
-export const Confirmation_Statement = styled(H3)`
+export const Question_Transition = styled(H3)`
     transform: scale(0) rotate(0deg);
     animation: ${goBig} 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 `;
@@ -152,14 +152,14 @@ export const Para = styled.p`
     gap: 8px;
 `;
 
-export const TextInput = styled.input`
+export const Text_Input = styled.input`
     width: 90%;
     margin-inline: auto;
     padding-inline: 8px;
-    font-family: "VT323", monospace;
+    font-family: inherit;
     font-size: clamp(1.5rem, 3vw + 0.5rem, 2.5rem);
     line-height:1.5em;
-    color: blue;
+    color: var(--blueish);
     align-self: center;
     background-color: transparent;
     border: solid 1px var(--primary-color);
@@ -175,7 +175,7 @@ export const Video = styled.video`
     
 `;
 
-export const VideoWrapper = styled.div`
+export const Video_Wrapper = styled.div`
     position: fixed;
     inset: 0;
     z-index: 99;
