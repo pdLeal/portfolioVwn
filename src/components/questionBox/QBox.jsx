@@ -3,8 +3,10 @@ import * as S from './QBox_Style';
 import { H3 } from '../hello/Hello_Style';
 import TypeEfct from '../TypeEfct.jsx';
 import redBallons from '../../assets/you_float_too.mp4';
+import redBallonsBr from '../../assets/you_float_too_br.mp4';
 import pennywiseLaught from '../../assets/PennywiseLaugh.mp3';
 import useNextQuestion from '../../hooks/qBox/useNextQuestion.jsx';
+import { useTranslation } from 'react-i18next';
 
 function QBox() {
     const [clicked, setClicked] = useState(false);
@@ -12,7 +14,7 @@ function QBox() {
     const [giveHint, setGiveHint] = useState(false);
 
     const { AnimationRef, question, isQuestion, secondAnswer, handleAnswer, handleFirstClick, handleInputText, handleVideoEnd, handleAboutWinner } = useNextQuestion(clicked, setTypingIsDone)
-    
+
     // Input-text auto-focus
     const inputRef = useRef(null);
 
@@ -22,9 +24,15 @@ function QBox() {
         }
     }, [typingIsDone]);
 
+    // I18NEXT
+    const { t, i18n } = useTranslation();
+    const { question1, question2, question3, question4 } = t("AN0X1Aquestions");
+    const { q1_a1, q1_a2, q2_a1, q2_a2, q2_a3, q2_a4 } = t("anwsers");
+    const lang = i18n.language;
+
     return (
         <S.Container>
-            {!clicked && <S.See_Btn onClick={() => setClicked(true)}>See More...</S.See_Btn>}
+            {!clicked && <S.See_Btn onClick={() => setClicked(true)}>{t("seeBtn")}</S.See_Btn>}
 
             {clicked &&
                 <S.Question_Box $display={isQuestion} ref={AnimationRef}>
@@ -33,15 +41,15 @@ function QBox() {
                     {(question == 1 && isQuestion) &&
                         <>
                             <H3>
-                                <TypeEfct text={['', 'So here we are again, uh? If you wanna know more about him, you\'ll have to answer some questions of mine, do you agree?']} onDone={() => setTypingIsDone(true)} />
+                                <TypeEfct text={question1} onDone={() => setTypingIsDone(true)} />
                             </H3>
 
                             {typingIsDone &&
                                 <S.Anwsers $options={2}>
                                     <S.Input type="radio" id="yes" name='agreed' />
-                                    <S.Label htmlFor="yes">Yes</S.Label>
+                                    <S.Label htmlFor="yes">{q1_a1}</S.Label>
                                     <S.Input onChange={handleAnswer} type="radio" id="no" name='agreed' />
-                                    <S.Label htmlFor="no">No</S.Label>
+                                    <S.Label htmlFor="no">{q1_a2}</S.Label>
                                 </S.Anwsers>
                             }
                         </>
@@ -50,36 +58,34 @@ function QBox() {
                     {/* END OF FIRST QUESTION */}
 
                     {(question == 2 && !isQuestion) &&
-                        <S.Question_Transition ref={AnimationRef}>
-                            CHALLENGE ACCEPTED
-                        </S.Question_Transition>
+                        <S.Question_Transition ref={AnimationRef}>{t("transition")}</S.Question_Transition>
                     }
 
                     {/* SECOND QUESTION */}
                     {(question == 2 && isQuestion) &&
                         <>
                             <H3>
-                                <TypeEfct text={['', 'First Question: What is the answer to The Ultimate Question of Life, The Universe and Everything?']} onDone={() => setTypingIsDone(true)} />
+                                <TypeEfct text={question2} onDone={() => setTypingIsDone(true)} />
                             </H3>
                             {giveHint &&
-                                <S.Para>Hint: the answer is inside {!secondAnswer
-                                    ? <span onClick={handleFirstClick}>you</span>
+                                <p>{t("hint")} {!secondAnswer
+                                    ? <span onClick={handleFirstClick}>{t("hintSpan")}</span>
                                     : <span style={{ color: 'red', display: 'inline-block' }}>
                                         <S.Input onInput={handleAnswer} type="radio" id="yep" name='notIt' />
                                         <S.Label htmlFor="yep">42</S.Label>
                                     </span>}
-                                </S.Para>}
+                                </p>}
 
                             {typingIsDone &&
                                 <S.Anwsers $options={4}>
-                                    <S.Input onChange={() => setGiveHint(true)} type="radio" id="towels" name='notIt' />
-                                    <S.Label htmlFor="towels">Towels</S.Label>
-                                    <S.Input onChange={() => setGiveHint(true)} type="radio" id="love" name='notIt' />
-                                    <S.Label htmlFor="love">Love</S.Label>
-                                    <S.Input onChange={() => setGiveHint(true)} type="radio" id="evolution" name='notIt' />
-                                    <S.Label htmlFor="evolution">Evolution</S.Label>
                                     <S.Input onChange={() => setGiveHint(true)} type="radio" id="god" name='notIt' />
-                                    <S.Label htmlFor="god">God</S.Label>
+                                    <S.Label htmlFor="god">{q2_a1}</S.Label>
+                                    <S.Input onChange={() => setGiveHint(true)} type="radio" id="love" name='notIt' />
+                                    <S.Label htmlFor="love">{q2_a2}</S.Label>
+                                    <S.Input onChange={() => setGiveHint(true)} type="radio" id="towels" name='notIt' />
+                                    <S.Label htmlFor="towels">{q2_a3}</S.Label>
+                                    <S.Input onChange={() => setGiveHint(true)} type="radio" id="evolution" name='notIt' />
+                                    <S.Label htmlFor="evolution">{q2_a4}</S.Label>
                                 </S.Anwsers>
                             }
                         </>
@@ -96,11 +102,13 @@ function QBox() {
                     {(question == 3 && isQuestion) &&
                         <>
                             <H3>
-                                <TypeEfct text={['', 'Complete the sentence: We all float...']} onDone={() => setTypingIsDone(true)} />
+                                <TypeEfct text={question3} onDone={() => setTypingIsDone(true)} />
                             </H3>
 
                             {typingIsDone &&
-                                <S.Text_Input onChange={handleInputText} type="text" ref={inputRef} />
+                                <S.Text_Input onChange={(e) => {
+                                    handleInputText(e, lang)
+                                }} type="text" ref={inputRef} />
                             }
 
 
@@ -111,7 +119,7 @@ function QBox() {
                     {(question == 4 && !isQuestion) &&
                         <S.Video_Wrapper>
                             <S.Video autoPlay preload='true' onEnded={handleVideoEnd}>
-                                <source src={redBallons} type="video/mp4" />
+                                <source src={lang === "en" ? redBallons : redBallonsBr} type="video/mp4" />
                             </S.Video>
                             <audio autoPlay preload='true'>
                                 <source src={pennywiseLaught} type="audio/mp3" />
@@ -123,7 +131,7 @@ function QBox() {
                     {(question == 4 && isQuestion) &&
                         <H3>
                             <TypeEfct
-                                text={['', 'You shall pass...for now']}
+                                text={question4}
                                 onDone={handleAboutWinner} />
                         </H3>
                     }

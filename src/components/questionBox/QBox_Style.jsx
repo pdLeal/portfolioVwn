@@ -147,11 +147,6 @@ export const Question_Transition = styled(H3)`
     animation: ${goBig} 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 `;
 
-export const Para = styled.p`
-    display: flex;
-    gap: 8px;
-`;
-
 export const Text_Input = styled.input`
     width: 90%;
     margin-inline: auto;

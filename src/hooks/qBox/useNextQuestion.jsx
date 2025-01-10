@@ -42,9 +42,10 @@ function useNextQuestion(clicked, setTypingIsDone) {
         setSecondAnswer(true);
     }
 
-    const handleInputText = (e) => {
-        const answer = e.target.value.toLowerCase();
-        if (answer == 'down here') {
+    const handleInputText = (e, lang) => {
+        const userAnswer = e.target.value.toLowerCase();
+        const rightAnswer = lang == "en" ? "down here" : "aqui embaixo";
+        if (userAnswer == rightAnswer) {
             e.target.classList.add('rightAnswer');
             e.target.setAttribute('disabled', '');
             handleAnswer();
@@ -56,7 +57,7 @@ function useNextQuestion(clicked, setTypingIsDone) {
         setIsQuestion(true);
     };
 
-    function handleAboutWinner() {
+    const handleAboutWinner = () => {
         setAboutWinner(true);
         localStorage.setItem('isAboutWinner', true);
     }
