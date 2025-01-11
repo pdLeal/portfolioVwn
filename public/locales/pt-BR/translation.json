@@ -1,0 +1,53 @@
+{
+    "skipBtn": "Pular",
+    "helloFromAN0X1A": {
+        "line1": [
+            "Ah! Oi! Desculpe, não tinha te visto aí...",
+            "Imagino que esteja aqui para ver o portifólio do Pedro, certo?",
+            "Mas antes, que tal um jogo?",
+            "Tudo que você precisa fazer é clicar no botão =)"
+        ],
+        "line2": [
+            "Parece que você está tendo problemas em clicar no botão =S",
+            "Aqui, um botão que não vai fugir!"
+        ]
+    },
+    "clickBtn": "Clique Aqui",
+    "weakBtn": "Para os fracos!",
+    "menuItens": [
+        "início",
+        "projetos",
+        "sobre"
+    ],
+    "homeAbout": "Olá! Me chamo Pedro e, nos últimos anos, estou em uma jornada incrível de aprendizado para me tornar um desenvolvedor front-end. Preciso admitir que design não é o meu forte, mas tenho confiança de que consigo transformar praticamente qualquer ideia em realidade com código!",
+    "seeBtn": "Ver mais...",
+    "AN0X1Aquestions": {
+        "question1": [
+            "",
+            "Então, é você de novo, hein? Se você está tão ansioso para saber mais sobre ele, primeiro terá que responder algumas das minhas perguntas. Combinado?"
+        ],
+        "question2": [
+            "",
+            "Primeira Pergunta: Qual a resposta para A Questão Fundamental da Vida, Universo e Tudo Mais?"
+        ],
+        "question3": [
+            "",
+            "Complete a frase: Nós todos flutuamos..."
+        ],
+        "question4": [
+            "",
+            "Você pode passar...por enquanto."
+        ]
+    },
+    "anwsers": {
+        "q1_a1": "Sim",
+        "q1_a2": "Não",
+        "q2_a1": "Deus",
+        "q2_a2": "Amor",
+        "q2_a3": "Toalhas",
+        "q2_a4": "Evolução"
+    },
+    "hint": "Dica: a resposta está dentro de",
+    "hintSpan": "você",
+    "transition": "DESAFIO ACEITO"
+}

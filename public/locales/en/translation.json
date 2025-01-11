@@ -1,0 +1,53 @@
+{
+    "skipBtn": "Skip",
+    "helloFromAN0X1A": {
+        "line1": [
+            "Oh! Hello! Sorry, didn't see you there...",
+            "I suppose you're here to see Pedro's portfolio, right?",
+            "But before, what about a game?",
+            "All you have to do is click the button =)"
+        ],
+        "line2": [
+            "It seems you're having a hard time clicking the button =S",
+            "Here, a button that won't runaway!"
+        ]
+    },
+    "clickBtn": "Click Me",
+    "weakBtn": "For the weak!",
+    "menuItens": [
+        "home",
+        "projects",
+        "about"
+    ],
+    "homeAbout": "Hi there! I'm Pedro, and I've been on an exciting journey over the past couple of years, learning everything I can to become a front-end developer. While I’ll admit that designing isn’t my strongest suit, I’m confident I can bring just about any idea you have to life through code!",
+    "seeBtn": "See More...",
+    "AN0X1Aquestions": {
+        "question1": [
+            "",
+            "So, it's you again, huh? If you're so eager to know more about him, you'll first have to humor me by answering a few of my questions. Deal?"
+        ],
+        "question2": [
+            "",
+            "First Question: What is the answer to The Ultimate Question of Life, The Universe and Everything?"
+        ],
+        "question3": [
+            "",
+            "Complete the sentence: We all float..."
+        ],
+        "question4": [
+            "",
+            "You shall pass...for now."
+        ]
+    },
+    "anwsers": {
+        "q1_a1": "Yes",
+        "q1_a2": "No",
+        "q2_a1": "God",
+        "q2_a2": "Love",
+        "q2_a3": "Towels",
+        "q2_a4": "Evolution"
+    },
+    "hint": "Hint: the answer is inside",
+    "hintSpan": "you",
+    "transition": "CHALLENGE ACCEPTED"
+}

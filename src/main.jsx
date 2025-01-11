@@ -7,8 +7,10 @@ import './i18n.js';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   // <React.StrictMode>
-    <BrowserRouter>
+  <BrowserRouter>
+    <React.Suspense fallback="Loading...">
       <App />
-    </BrowserRouter>
+    </React.Suspense>
+  </BrowserRouter>
   // </React.StrictMode>
 )
