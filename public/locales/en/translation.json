@@ -49,5 +49,14 @@
     },
     "hint": "Hint: the answer is inside",
     "hintSpan": "you",
-    "transition": "CHALLENGE ACCEPTED"
+    "transition": "CHALLENGE ACCEPTED",
+    "puzzleName": "Projects Puzzle",
+    "puzzleDescription": {
+        "instruction": "A simple puzzle for simple projects. Just click the pieces and sort them out until the image makes sense. Easy enough, right? Even your can could do it!",
+        "hardCongrats": "Oh, you are real good at this,aren't you?",
+        "congrats": "Congratulations! You can move on and see all the projects you want. Also, how about trying the hard difficulty? Show them how good you really are!"
+    },
+    "hardBtn": "Hard Mode",
+    "restartBtn": "Restart",
+    "peekBtn": "Peek Answer"
 }

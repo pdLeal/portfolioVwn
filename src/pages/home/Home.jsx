@@ -45,6 +45,7 @@ function Home() {
 
   // I18NEXT
   const {t} = useTranslation();
+  const {instruction, hardCongrats, congrats} = t("puzzleDescription")
 
   return (
     <>
@@ -55,17 +56,17 @@ function Home() {
           <QBox />
         </S.About_Section>
         <S.Projects>
-          <S.H2>Projects Puzzle</S.H2>
+          <S.H2>{t("puzzleName")}</S.H2>
           <PuzzleProvider value={{ projectUrl, setProjectUrl, savedPiecesPosition, setSavedPiecesPosition }}>
             <S.Wrapper>
               <S.Rules>
-                {!projectWinner ? <S.TextRules>A simple puzzle for simple projects. Just put the pieces together 'till the image makes sense!</S.TextRules>
-                              : hardModeIsOn ? <S.TextRules>Oh, you are real good at this,aren't you?</S.TextRules>
-                                            : <S.TextRules>Congratulations! You can move on and see all the projects you want. Also, how about trying the hard difficulty? Show them how good you really are!</S.TextRules>}
+                {!projectWinner ? <S.TextRules>{instruction}</S.TextRules>
+                              : hardModeIsOn ? <S.TextRules>{hardCongrats}</S.TextRules>
+                                            : <S.TextRules>{congrats}</S.TextRules>}
 
-                <S.Btn $hardModeIsOn={hardModeIsOn} onClick={handleHardMode}>Hard Mode</S.Btn>
-                <S.Btn onClick={handleRestart}>Restart</S.Btn>
-                <a href={projectUrl} target='_blank'>Peek Answer</a>
+                <S.Btn $hardModeIsOn={hardModeIsOn} onClick={handleHardMode}>{t("hardBtn")}</S.Btn>
+                <S.Btn onClick={handleRestart}>{t("restartBtn")}</S.Btn>
+                <a href={projectUrl} target='_blank'>{t("peekBtn")}</a>
               </S.Rules>
 
               <Puzzle

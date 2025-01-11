@@ -49,5 +49,14 @@
     },
     "hint": "Dica: a resposta está dentro de",
     "hintSpan": "você",
-    "transition": "DESAFIO ACEITO"
+    "transition": "DESAFIO ACEITO",
+    "puzzleName": "Quebra-Cabeça de Projetos",
+    "puzzleDescription": {
+        "instruction": "Um quebra-cabeças simples para projetos simples. É só clicar nas peças e arrumá-las até a imagem fazer sentido. Fácil não é mesmo? Até você consegue fazer isso!",
+        "hardCongrats": "Quem diria, você é bom mesmo hein?",
+        "congrats": "Parabéns! Você pode seguir em frente e ver todos os projetos que quiser. Além disso, que tal tentar no modo difícil? Mostre a eles o quão bom você é!"
+    },
+    "hardBtn": "Difícil",
+    "restartBtn": "Recomeçar",
+    "peekBtn": "Espiar Resposta"
 }

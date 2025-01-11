@@ -69,8 +69,8 @@ function Puzzle({
 
 
 
-  // testes
-  const ref = useRef(null);
+  // Fireworks
+  const fireRef = useRef(null);
 
   const options = {
     autoresize: true,
@@ -187,7 +187,7 @@ function Puzzle({
 
       {projectWinner && <>
         <Fireworks
-          ref={ref}
+          ref={fireRef}
           options={options}
           style={{
             top: 0,
@@ -197,7 +197,7 @@ function Puzzle({
             position: 'absolute'
           }}
         />
-        <S.Congrats>WINNER!</S.Congrats>
+        <S.Congrats>YOU WIN!</S.Congrats>
       </>}
 
 
