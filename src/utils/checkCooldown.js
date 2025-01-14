@@ -1,7 +1,6 @@
 export function checkCooldown(lastTriggered, setLastTriggered, delay, msg = '') {
-    const cooldown = delay;
     const now = Date.now();
-    if (now - lastTriggered < cooldown) {
+    if (now - lastTriggered < delay) {
         throw new Error(msg);
 
     }

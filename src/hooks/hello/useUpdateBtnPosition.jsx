@@ -13,7 +13,7 @@ function useUpdateBtnPosition() {
     const [timesMoved, setTimesMoved] = useState(0);
     const [lastMoved, setLastMoved] = useState(0);
 
-    const handleMouseMove = (e) => {
+    const handleMouseMove = () => {
         try {
             checkCooldown(lastMoved, setLastMoved, 350);
             // Ensures the button doesn't "run away" too quickly, making it easier for users to click.

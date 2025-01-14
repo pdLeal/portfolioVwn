@@ -7,20 +7,8 @@ export function fisherYatesShuffle(array) {
     }
     return array;
 }
-
-export function checkClickCooldown(lastClick, setLastClick) {
-    // Bloqueia cliques consegcutivos ou em mais de uma peça em pouco tempo
-    const clickDelay = 510;
-    const now = Date.now();
-    if (now - lastClick < clickDelay) {
-        throw new Error("Too many clicks in a short time!");
-
-    }
-    setLastClick(now);
-}
-
 export function handleErrors(e, error) {
-    if (error.message == "Too many clicks in a short time!") {
+    if (error.message == "Too many clicks!") {
         const errorMsg = document.getElementById('error');
         errorMsg.classList.add("showError");
 

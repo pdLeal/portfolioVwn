@@ -8,7 +8,6 @@ export const Container = styled.div`
     justify-content: space-around;
     align-items: center;
     gap: 16px;
-    background-color: var(--bg-color);
     position: absolute;
     top: 0;
     z-index:1;
@@ -19,6 +18,10 @@ export const Container = styled.div`
                 box-shadow:  0px 0px 4px var(--redish);
                 border-color: var(--redish);
             }
+
+        @media screen and (max-width: 564px) {
+            flex-direction: column;
+        }
 `;
 
 export const Btn = styled(Button)`

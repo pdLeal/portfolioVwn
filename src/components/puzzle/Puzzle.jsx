@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import * as S from './Puzzle_Style';
-import { checkClickCooldown, moveToEmpty, checkCanMove, fisherYatesShuffle, savePosition, handleErrors, checkIfWon } from './helpers';
+import { moveToEmpty, checkCanMove, fisherYatesShuffle, savePosition, handleErrors, checkIfWon } from './helpers';
+import { checkCooldown } from '../../utils/checkCooldown';
 import data from '../../data/Projetos.json';
 import usePuzzleContext from '../../contexts/PuzzleContext';
 import useWinnerContext from '../../contexts/WinnerContext';
@@ -11,24 +12,25 @@ function Puzzle({
   gridLayout = 4,
   isHardOn
 }) {
-  const [canMove, setCanMove] = useState(['12', '15']); // '6', '8'
   const [lastClick, setLastClick] = useState(0);
-  const [shuffledPieces, setShuffledPieces] = useState([]);
-  const [pieceImg, setPieceImg] = useState('');
+  
   const { projectWinner, setProjectWinner } = useWinnerContext();
-
+  
   // Gera a grid e suas células
   const grid = gridLayout * gridLayout;
   const slots = [];
   for (let i = 1; i <= grid; i++) {
     slots.push(i);
   }
-
+  
   // Embaralha as peças ao iniciar a página e determina a imagem do puzzle
+  const [shuffledPieces, setShuffledPieces] = useState([]);
+  const [canMove, setCanMove] = useState(['12', '15']); // '6', '8'
+  const [pieceImg, setPieceImg] = useState('');
   const { setProjectUrl, savedPiecesPosition, setSavedPiecesPosition } = usePuzzleContext();
 
   useEffect(() => {
-    const randomNumber = Math.floor(Math.random() * 4);
+    const randomNumber = Math.floor(Math.random() * 4); // Determina qual projeto sera mostrado ao carregar a página
     setPieceImg(data[randomNumber].img);
 
     setProjectUrl(data[randomNumber].pageUrl); // Garante que o btn peek project abra a página correta
@@ -40,12 +42,12 @@ function Puzzle({
     setShuffledPieces(shuffled);
 
     // Recupera as posições e quais peças podem se mover do local storage
-    const savedPositions = localStorage.getItem('piecesPosition');
+    const storagePositions = localStorage.getItem('piecesPosition');
     const savedCanMove = localStorage.getItem('canMove');
 
-    if (savedPositions) {
-      setSavedPiecesPosition(JSON.parse(savedPositions));
-      setShuffledPieces(JSON.parse(savedPositions));
+    if (storagePositions) {
+      setSavedPiecesPosition(JSON.parse(storagePositions));
+      setShuffledPieces(JSON.parse(storagePositions));
 
     }
 
@@ -55,7 +57,7 @@ function Puzzle({
   }, [])
 
   const [isMounted, setIsMounted] = useState(false);
-  useEffect(() => {
+  useEffect(() => { // checa se venceu sempre q as posições das peças mudam
     if (!isMounted) {
       setIsMounted(true);
       return;
@@ -63,7 +65,7 @@ function Puzzle({
 
     localStorage.setItem('piecesPosition', JSON.stringify(savedPiecesPosition));
 
-    checkIfWon(savedPiecesPosition, setProjectWinner, ref);
+    checkIfWon(savedPiecesPosition, setProjectWinner, fireRef);
 
   }, [savedPiecesPosition])
 
@@ -129,7 +131,7 @@ function Puzzle({
 
       {slots.map((slot, i) => { // Aloca as peças nas células da grid
 
-        if (savedPiecesPosition.length == 0 && shuffledPieces[i] != '') {
+        if ( shuffledPieces[i] != '') {
           return (
             <div className='slot' data-empty='false' data-position={slot} key={slot}>
               <S.Piece
@@ -138,7 +140,7 @@ function Puzzle({
                 onClick={e => {
 
                   try {
-                    checkClickCooldown(lastClick, setLastClick);
+                    checkCooldown(lastClick, setLastClick, 510, "Too many clicks!");
                     isHardOn && checkCanMove(e, canMove, setCanMove);
 
                   } catch (error) {
@@ -154,34 +156,9 @@ function Puzzle({
               </S.Piece>
             </div>
           )
-        } else if (shuffledPieces[i] == '') {
-          return <div data-empty='true' data-position={slot} key={slot}></div>
         } else {
-          return (
-            <div className='slot' data-empty='false' data-position={slot} key={slot}>
-              <S.Piece
-                $imgUrl={pieceImg}
-                data-piece={shuffledPieces[i]}
-                onClick={e => {
-                  try {
-                    checkClickCooldown(lastClick, setLastClick);
-                    isHardOn && checkCanMove(e, canMove, setCanMove);
-
-                  } catch (error) {
-                    handleErrors(e, error);
-                    return;
-                  }
-
-
-                  moveToEmpty(e);
-
-                  savePosition(e, shuffledPieces, savedPiecesPosition, setSavedPiecesPosition);
-                }}
-              >
-              </S.Piece>
-            </div>
-          )
-        }
+          return <div data-empty='true' data-position={slot} key={slot}></div>
+        } 
       })
       }
 
