@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { checkCooldown } from "../../utils/checkCooldown";
+import checkCooldown from "../../utils/checkCooldown";
 
 function random() { // Gives a number between 10 and 80
     return Math.floor(Math.random() * 71) + 10;

@@ -1,63 +1,31 @@
 import React, { useEffect, useRef, useState } from 'react'
 import * as S from './Puzzle_Style';
-import { moveToEmpty, checkCanMove, fisherYatesShuffle, savePosition, handleErrors, checkIfWon } from './helpers';
-import { checkCooldown } from '../../utils/checkCooldown';
-import data from '../../data/Projetos.json';
-import usePuzzleContext from '../../contexts/PuzzleContext';
+import { moveToEmpty, checkCanMove, savePosition, handleErrors, checkIfWon } from './helpers';
+import useBoardShuffler from '../../hooks/puzzle/useBoardShuffler';
+import checkCooldown from '../../utils/checkCooldown';
+import usePuzzleContext, { PuzzleProvider } from '../../contexts/PuzzleContext';
 import useWinnerContext from '../../contexts/WinnerContext';
 
 import { Fireworks } from '@fireworks-js/react'
+import { useTranslation } from 'react-i18next';
 
-function Puzzle({
-  gridLayout = 4,
-  isHardOn
-}) {
-  const [lastClick, setLastClick] = useState(0);
-  
+function PuzzleBoard() {
   const { projectWinner, setProjectWinner } = useWinnerContext();
   
-  // Gera a grid e suas células
-  const grid = gridLayout * gridLayout;
-  const slots = [];
-  for (let i = 1; i <= grid; i++) {
-    slots.push(i);
-  }
-  
-  // Embaralha as peças ao iniciar a página e determina a imagem do puzzle
-  const [shuffledPieces, setShuffledPieces] = useState([]);
+  const { savedPiecesPosition, setSavedPiecesPosition, hardModeIsOn } = usePuzzleContext();
+  // fim dos contextos
+
+
+  const{ slots, shuffledPieces, pieceImg } = useBoardShuffler();
+
+
   const [canMove, setCanMove] = useState(['12', '15']); // '6', '8'
-  const [pieceImg, setPieceImg] = useState('');
-  const { setProjectUrl, savedPiecesPosition, setSavedPiecesPosition } = usePuzzleContext();
 
-  useEffect(() => {
-    const randomNumber = Math.floor(Math.random() * 4); // Determina qual projeto sera mostrado ao carregar a página
-    setPieceImg(data[randomNumber].img);
+  const [lastClick, setLastClick] = useState(0);
 
-    setProjectUrl(data[randomNumber].pageUrl); // Garante que o btn peek project abra a página correta
-
-    const shuffled = fisherYatesShuffle(slots);
-    shuffled.pop();
-    shuffled.push('');
-
-    setShuffledPieces(shuffled);
-
-    // Recupera as posições e quais peças podem se mover do local storage
-    const storagePositions = localStorage.getItem('piecesPosition');
-    const savedCanMove = localStorage.getItem('canMove');
-
-    if (storagePositions) {
-      setSavedPiecesPosition(JSON.parse(storagePositions));
-      setShuffledPieces(JSON.parse(storagePositions));
-
-    }
-
-    if (savedCanMove) {
-      setCanMove(JSON.parse(savedCanMove));
-    }
-  }, [])
 
   const [isMounted, setIsMounted] = useState(false);
-  useEffect(() => { // checa se venceu sempre q as posições das peças mudam
+  useEffect(() => {
     if (!isMounted) {
       setIsMounted(true);
       return;
@@ -127,11 +95,11 @@ function Puzzle({
 
 
   return (
-    <S.Container $layout={gridLayout}>
+    <S.Container $layout={4}>
 
       {slots.map((slot, i) => { // Aloca as peças nas células da grid
 
-        if ( shuffledPieces[i] != '') {
+        if (shuffledPieces[i] != '') {
           return (
             <div className='slot' data-empty='false' data-position={slot} key={slot}>
               <S.Piece
@@ -140,8 +108,8 @@ function Puzzle({
                 onClick={e => {
 
                   try {
-                    checkCooldown(lastClick, setLastClick, 510, "Too many clicks!");
-                    isHardOn && checkCanMove(e, canMove, setCanMove);
+                    checkCooldown(lastClick, setLastClick, 350, "Too many clicks!");
+                    hardModeIsOn && checkCanMove(e, canMove, setCanMove);
 
                   } catch (error) {
                     handleErrors(e, error);
@@ -158,7 +126,7 @@ function Puzzle({
           )
         } else {
           return <div data-empty='true' data-position={slot} key={slot}></div>
-        } 
+        }
       })
       }
 
@@ -182,6 +150,68 @@ function Puzzle({
         Hint: Clicking fast does not make you play better.
       </S.ErrorMsg>
     </S.Container>
+  )
+}
+
+function Puzzle() {
+  // context
+
+  const [savedPiecesPosition, setSavedPiecesPosition] = useState([]);
+  const [projectUrl, setProjectUrl] = useState('');
+  const [hardModeIsOn, setHardModeIsOn] = useState(false);
+
+  // end context
+
+  const [reloadPuzzleBoard, setReloadPuzzleBoard] = useState(true); // true/false doens't mattter, just needs to change to remount the whole comp
+
+  const { projectWinner, setProjectWinner } = useWinnerContext();
+
+
+
+  function handleRestart() {
+    setReloadPuzzleBoard(!reloadPuzzleBoard);
+
+    setProjectWinner(false);
+    setSavedPiecesPosition([]);
+    localStorage.removeItem('piecesPosition');
+    localStorage.removeItem('canMove');
+  }
+
+  function handleHardMode() {
+    handleRestart();
+    setHardModeIsOn(!hardModeIsOn);
+    if (!localStorage.getItem('hardModeIsOn')) {
+      localStorage.setItem('hardModeIsOn', true)
+    } else {
+      localStorage.removeItem('hardModeIsOn')
+    }
+  }
+
+  useEffect(() => {
+    if (localStorage.getItem('hardModeIsOn')) {
+      setHardModeIsOn(true)
+    }
+  }, [])
+
+  const { t } = useTranslation();
+  const { instruction, hardCongrats, congrats } = t("puzzleDescription")
+
+  return (
+    <PuzzleProvider value={{ savedPiecesPosition, setSavedPiecesPosition, setProjectUrl, hardModeIsOn }}>
+      <S.Wrapper>
+        <S.Rules>
+          {!projectWinner ? <S.TextRules>{instruction}</S.TextRules>
+            : hardModeIsOn ? <S.TextRules>{hardCongrats}</S.TextRules>
+              : <S.TextRules>{congrats}</S.TextRules>}
+
+          <S.Btn $hardModeIsOn={hardModeIsOn} onClick={handleHardMode}>{t("hardBtn")}</S.Btn>
+          <S.Btn onClick={handleRestart}>{t("restartBtn")}</S.Btn>
+          <a href={projectUrl} target='_blank'>{t("peekBtn")}</a>
+        </S.Rules>
+
+        <PuzzleBoard key={reloadPuzzleBoard} />
+      </S.Wrapper>
+    </PuzzleProvider>
   )
 }
 

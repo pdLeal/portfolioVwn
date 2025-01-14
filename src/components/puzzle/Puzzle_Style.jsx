@@ -1,4 +1,6 @@
 import styled, { keyframes } from "styled-components";
+import { Tease } from "../../pages/denied/Denied_Style.jsx";
+import { Button } from "../../components/hello/Hello_Style.jsx";
 
 
 const shakeAnimation = keyframes`
@@ -141,6 +143,103 @@ export const ErrorMsg = styled.p`
     transition: transform 1000ms linear;
     background-color: transparent;
     backdrop-filter: blur(16px);
+`;
+
+// TESTE DE WHOLE
+export const Wrapper = styled.div`
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    position: relative;
+    overflow: hidden;
+
+        @media screen and (max-width: 1080px) {
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                }
+
+`;
+
+export const Rules = styled.div`
+    font-family: "VT323", monospace;
+    padding-block: 8px;
+    display: grid;
+    grid-template-areas:
+                        'rules rules'
+                        'btn1 btn2'
+                        'btn3 .';
+    justify-content: center;
+    align-items: center;
+    gap: 16px 8px;
+
+        >:nth-child(2) {
+            grid-area: btn1;
+        }
+        >:nth-child(3) {
+            grid-area: btn2;
+        }
+        >:nth-child(4) {
+            grid-area: btn3;
+        }
+
+        a {
+            text-align: center;
+            text-decoration: none;
+            font-size: clamp(0.8rem, 2vw + 0.5rem, 1.8rem);
+            color: var(--primary-color);
+            text-shadow: 0px 0px 4px var(--primary-color);
+            box-shadow:  0px 0px 4px var(--primary-color);
+            padding: 0.225em 0.8em;
+            cursor: pointer;
+            border: solid 1px var(--primary-color);
+            border-left: solid 3px;
+            border-radius: 5px;
+            background-color: transparent;
+            
+                &:hover,
+                &:focus-visible {
+                color: #66f666;
+                border-color: #66f666;
+                }
+                
+                &:active {
+                color: #2b6a2b;
+                border-color: #2b6a2b;
+                }
+            }
+
+        @media screen and (max-width: 1080px) {
+            grid-template-areas:
+                        'rules rules'
+                        'btn1 btn1'
+                        'btn2 btn2'
+                        'btn3 btn3';
+            }
+`;
+
+export const TextRules = styled(Tease)`
+    max-width: 560px;
+    font-size: clamp(1rem, 3vw + 0.5rem, 1.8rem);
+    grid-area: rules;
+`;
+
+export const Btn = styled(Button)`
+    color: ${props => props.$hardModeIsOn ? 'red' : 'var(--primary-color)'};
+    text-shadow: 0px 0px 4px ${props => props.$hardModeIsOn ? 'red' : 'var(--primary-color)'};
+    box-shadow:  0px 0px 4px ${props => props.$hardModeIsOn ? 'red' : 'var(--primary-color)'};
+    border: solid 1px ${props => props.$hardModeIsOn ? 'red' : 'var(--primary-color)'};
+    
+        &:hover,
+        &:focus-visible {
+        color:#5cff9b;
+        border-color: #5cff9b;
+        }
+        
+        &:active {
+        color: #2b6a2b;
+        border-color: #2b6a2b;
+        }
 `;
 
 /* [data-piece="1"] { 3x3 GRID
