@@ -16,23 +16,8 @@ function useBoardShuffler(gridLayout = 4) {
         slots.push(i);
     }
 
-
     useEffect(() => {
         if (slots.includes("")) return; // Prevents a bug that creates 2 empty slots
-
-        // Shuffles the pieces every time the comp renders
-        const shuffled = fisherYatesShuffle(slots);
-        shuffled.pop();
-        shuffled.push('');
-
-        setShuffledPieces(shuffled);
-
-        // Determines the project puzzle
-        const randomProject = Math.floor(Math.random() * data.length);
-
-        setPieceImg(data[randomProject].img);
-        setProjectUrl(data[randomProject].pageUrl);
-
 
         // Retrieves the positions and which pieces can move from local storage
         const savedPositions = localStorage.getItem('piecesPosition');
@@ -42,11 +27,25 @@ function useBoardShuffler(gridLayout = 4) {
             setSavedPiecesPosition(JSON.parse(savedPositions));
             setShuffledPieces(JSON.parse(savedPositions));
 
+        } else { // Shuffles the pieces every time the comp renders if the user didn't played yet
+            const shuffled = fisherYatesShuffle(slots);
+            shuffled.pop();
+            shuffled.push('');
+
+            setShuffledPieces(shuffled);
+
         }
 
         if (savedCanMove) {
             setCanMove(JSON.parse(savedCanMove));
         }
+
+        // Determines the project puzzle
+        const randomProject = Math.floor(Math.random() * data.length);
+
+        setPieceImg(data[randomProject].img);
+        setProjectUrl(data[randomProject].pageUrl);
+
     }, [])
 
     return { slots, shuffledPieces, pieceImg }

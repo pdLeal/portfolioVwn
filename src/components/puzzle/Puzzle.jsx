@@ -1,37 +1,24 @@
 import React, { useEffect, useRef, useState } from 'react'
 import * as S from './Puzzle_Style';
-import { moveToEmpty, checkCanMove, savePosition, handleErrors, checkIfWon } from './helpers';
+import { moveToEmpty, checkCanMove, handleErrors } from './helpers';
 import useBoardShuffler from '../../hooks/puzzle/useBoardShuffler';
 import checkCooldown from '../../utils/checkCooldown';
 import usePuzzleContext, { PuzzleProvider } from '../../contexts/PuzzleContext';
 import useWinnerContext from '../../contexts/WinnerContext';
+import useSavePoint from '../../hooks/puzzle/useSavePoint';
 
 import { Fireworks } from '@fireworks-js/react'
 import { useTranslation } from 'react-i18next';
 
 function PuzzleBoard() {
   const { projectWinner, setProjectWinner } = useWinnerContext();
-  
   const { savedPiecesPosition, setSavedPiecesPosition, canMove, setCanMove, hardModeIsOn } = usePuzzleContext();
-  // fim dos contextos
 
-  const{ slots, shuffledPieces, pieceImg } = useBoardShuffler();
+  const { slots, shuffledPieces, pieceImg } = useBoardShuffler();
+
+  const { savePosition } = useSavePoint();
+
   const [lastClick, setLastClick] = useState(0);
-
-  const [isMounted, setIsMounted] = useState(false);
-  useEffect(() => {
-    if (!isMounted) { // Most of the time prevents a bug where all the pieces are the same
-      setIsMounted(true);
-      return;
-    }
-
-    localStorage.setItem('piecesPosition', JSON.stringify(savedPiecesPosition));
-
-    checkIfWon(savedPiecesPosition, setProjectWinner, fireRef);
-
-  }, [savedPiecesPosition])
-
-
 
   // Fireworks
   const fireRef = useRef(null);
@@ -102,7 +89,7 @@ function PuzzleBoard() {
                 onClick={e => {
 
                   try {
-                    checkCooldown(lastClick, setLastClick, 350, "Too many clicks!");
+                    checkCooldown(lastClick, setLastClick, 550, "Too many clicks!");
                     hardModeIsOn && checkCanMove(e, canMove, setCanMove);
 
                   } catch (error) {

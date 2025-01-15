@@ -83,56 +83,6 @@ export function moveToEmpty(e) {
 
 }
 
-export function savePosition(e, shuffledPieces, savedPiecesPosition, setSavedPiecesPosition) {
-    const clickedElemIndex = e.target.parentElement.dataset.position - 1;
-    const emptyElemIndex = document.querySelector('[data-empty=true]').dataset.position - 1;
-
-    let temp;
-    if (savedPiecesPosition.length == 0) {
-        temp = [...shuffledPieces];
-
-    } else {
-        temp = [...savedPiecesPosition];
-
-    }
-
-    [temp[clickedElemIndex], temp[emptyElemIndex]] = [temp[emptyElemIndex], temp[clickedElemIndex]]
-
-    setSavedPiecesPosition(temp);
-
-
-
-}
-
-export function checkIfWon(savedPiecesPosition, setProjectWinner, ref) {
-    // Organiza o array e descobre o espaço vazio p/ comparação
-    const sortedPositions = savedPiecesPosition.filter(empty => empty != '').sort((a, b) => {
-        return a - b;
-    });
-
-    let missingNumber;
-    for (let i = 0; i < sortedPositions.length; i++) {
-        if (sortedPositions[i] !== i + 1) {
-            missingNumber = i + 1;
-           
-            sortedPositions.splice(i, 0, '');
-            break;
-        }
-    }
-    if (!missingNumber) {
-        sortedPositions.push(''); // Caso o último número esteja ausente
-    }
-    
-    if(JSON.stringify(savedPiecesPosition) == JSON.stringify(sortedPositions)) {
-        setProjectWinner(true);
-        localStorage.setItem('isProjectWinner', true);
-
-        setTimeout(() => {
-            ref.current.waitStop();
-        }, 10000)
-
-    }
-}
 
 // // Determina as peças que podem se mover p/ o próximo espaço vazio numa grid 3x3
 // // const topSlot = `${numPosition - 3}`; 3x3 GRID
