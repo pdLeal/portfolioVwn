@@ -12,17 +12,11 @@ import { useTranslation } from 'react-i18next';
 function PuzzleBoard() {
   const { projectWinner, setProjectWinner } = useWinnerContext();
   
-  const { savedPiecesPosition, setSavedPiecesPosition, hardModeIsOn } = usePuzzleContext();
+  const { savedPiecesPosition, setSavedPiecesPosition, canMove, setCanMove, hardModeIsOn } = usePuzzleContext();
   // fim dos contextos
 
-
   const{ slots, shuffledPieces, pieceImg } = useBoardShuffler();
-
-
-  const [canMove, setCanMove] = useState(['12', '15']); // '6', '8'
-
   const [lastClick, setLastClick] = useState(0);
-
 
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => {
@@ -159,6 +153,7 @@ function Puzzle() {
   const [savedPiecesPosition, setSavedPiecesPosition] = useState([]);
   const [projectUrl, setProjectUrl] = useState('');
   const [hardModeIsOn, setHardModeIsOn] = useState(false);
+  const [canMove, setCanMove] = useState(['12', '15']); // '6', '8'
 
   // end context
 
@@ -197,7 +192,7 @@ function Puzzle() {
   const { instruction, hardCongrats, congrats } = t("puzzleDescription")
 
   return (
-    <PuzzleProvider value={{ savedPiecesPosition, setSavedPiecesPosition, setProjectUrl, hardModeIsOn }}>
+    <PuzzleProvider value={{ savedPiecesPosition, setSavedPiecesPosition, canMove, setCanMove, setProjectUrl, hardModeIsOn }}>
       <S.Wrapper>
         <S.Rules>
           {!projectWinner ? <S.TextRules>{instruction}</S.TextRules>
