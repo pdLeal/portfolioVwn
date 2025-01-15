@@ -20,7 +20,7 @@ function PuzzleBoard() {
 
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => {
-    if (!isMounted) {
+    if (!isMounted) { // Most of the time prevents a bug where all the pieces are the same
       setIsMounted(true);
       return;
     }

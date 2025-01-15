@@ -6,11 +6,11 @@ import './i18n.js';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  // <React.StrictMode>
-  <BrowserRouter>
-    <React.Suspense fallback="Loading...">
-      <App />
-    </React.Suspense>
-  </BrowserRouter>
-  // </React.StrictMode>
+  <React.StrictMode>
+    <BrowserRouter>
+      <React.Suspense fallback="Loading...">
+        <App />
+      </React.Suspense>
+    </BrowserRouter>
+  </React.StrictMode>
 )

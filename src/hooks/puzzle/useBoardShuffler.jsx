@@ -18,6 +18,8 @@ function useBoardShuffler(gridLayout = 4) {
 
 
     useEffect(() => {
+        if (slots.includes("")) return; // Prevents a bug that creates 2 empty slots
+
         // Shuffles the pieces every time the comp renders
         const shuffled = fisherYatesShuffle(slots);
         shuffled.pop();
