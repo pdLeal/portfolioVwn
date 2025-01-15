@@ -1,11 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react'
 import * as S from './Puzzle_Style';
-import { moveToEmpty, checkCanMove, handleErrors } from './helpers';
 import useBoardShuffler from '../../hooks/puzzle/useBoardShuffler';
 import checkCooldown from '../../utils/checkCooldown';
 import usePuzzleContext, { PuzzleProvider } from '../../contexts/PuzzleContext';
 import useWinnerContext from '../../contexts/WinnerContext';
 import useSavePoint from '../../hooks/puzzle/useSavePoint';
+import handleErrors from '../../utils/handleErrors';
+import moveToEmpty from '../../utils/moveToEmpty';
+import useCheckMovement from '../../hooks/puzzle/useCheckMovement';
 
 import { Fireworks } from '@fireworks-js/react'
 import { useTranslation } from 'react-i18next';
@@ -13,11 +15,12 @@ import { useTranslation } from 'react-i18next';
 function PuzzleBoard() {
   const fireRef = useRef(null);
 
-  const { projectWinner} = useWinnerContext();
+  const { projectWinner } = useWinnerContext();
   const { savedPiecesPosition, setSavedPiecesPosition, canMove, setCanMove, hardModeIsOn } = usePuzzleContext();
 
   const { slots, shuffledPieces, pieceImg } = useBoardShuffler();
   const { savePosition } = useSavePoint(fireRef);
+  const { checkCanMove } = useCheckMovement();
 
   const [lastClick, setLastClick] = useState(0);
 
@@ -97,7 +100,7 @@ function PuzzleBoard() {
                   moveToEmpty(e);
 
                   savePosition(e, shuffledPieces, savedPiecesPosition, setSavedPiecesPosition);
-                  
+
                 }}
               >
               </S.Piece>
