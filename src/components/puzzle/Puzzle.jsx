@@ -11,18 +11,17 @@ import { Fireworks } from '@fireworks-js/react'
 import { useTranslation } from 'react-i18next';
 
 function PuzzleBoard() {
-  const { projectWinner, setProjectWinner } = useWinnerContext();
+  const fireRef = useRef(null);
+
+  const { projectWinner} = useWinnerContext();
   const { savedPiecesPosition, setSavedPiecesPosition, canMove, setCanMove, hardModeIsOn } = usePuzzleContext();
 
   const { slots, shuffledPieces, pieceImg } = useBoardShuffler();
-
-  const { savePosition } = useSavePoint();
+  const { savePosition } = useSavePoint(fireRef);
 
   const [lastClick, setLastClick] = useState(0);
 
   // Fireworks
-  const fireRef = useRef(null);
-
   const options = {
     autoresize: true,
     opacity: 0.2,
@@ -73,8 +72,6 @@ function PuzzleBoard() {
     }
   }
 
-
-
   return (
     <S.Container $layout={4}>
 
@@ -100,6 +97,7 @@ function PuzzleBoard() {
                   moveToEmpty(e);
 
                   savePosition(e, shuffledPieces, savedPiecesPosition, setSavedPiecesPosition);
+                  
                 }}
               >
               </S.Piece>
@@ -125,7 +123,6 @@ function PuzzleBoard() {
         />
         <S.Congrats>YOU WIN!</S.Congrats>
       </>}
-
 
       <S.ErrorMsg id='error'>
         Hint: Clicking fast does not make you play better.
