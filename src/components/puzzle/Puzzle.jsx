@@ -16,7 +16,7 @@ function PuzzleBoard() {
   const fireRef = useRef(null);
 
   const { projectWinner } = useWinnerContext();
-  const { savedPiecesPosition, setSavedPiecesPosition, canMove, setCanMove, hardModeIsOn } = usePuzzleContext();
+  const { canMove, setCanMove, hardModeIsOn } = usePuzzleContext();
 
   const { slots, shuffledPieces, pieceImg } = useBoardShuffler();
   const { savePosition } = useSavePoint(fireRef);
@@ -78,7 +78,7 @@ function PuzzleBoard() {
   return (
     <S.Container $layout={4}>
 
-      {slots.map((slot, i) => { // Aloca as peças nas células da grid
+      {slots.map((slot, i) => { // Allocates pieces to grid cells
 
         if (shuffledPieces[i] != '') {
           return (
@@ -99,7 +99,7 @@ function PuzzleBoard() {
 
                   moveToEmpty(e);
 
-                  savePosition(e, shuffledPieces, savedPiecesPosition, setSavedPiecesPosition);
+                  savePosition(e);
 
                 }}
               >
