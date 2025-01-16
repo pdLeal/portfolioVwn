@@ -4,7 +4,7 @@ import usePuzzleContext from "../../contexts/PuzzleContext";
 import fisherYatesShuffle from "../../utils/fisherYatesShuffle";
 
 function useBoardShuffler(gridLayout = 4) {
-    const { setSavedPiecesPosition, setProjectUrl, setCanMove, } = usePuzzleContext();
+    const { setSavedPiecesPosition, setProjectUrl } = usePuzzleContext();
 
     const [shuffledPieces, setShuffledPieces] = useState([]);
     const [pieceImg, setPieceImg] = useState('');
@@ -19,9 +19,8 @@ function useBoardShuffler(gridLayout = 4) {
     useEffect(() => {
         if (slots.includes("")) return; // Prevents a bug that creates 2 empty slots
 
-        // Retrieves the positions and which pieces can move from local storage
+        // Retrieves the positions from local storage
         const savedPositions = localStorage.getItem('piecesPosition');
-        const savedCanMove = localStorage.getItem('canMove');
 
         if (savedPositions) {
             setSavedPiecesPosition(JSON.parse(savedPositions));
@@ -34,10 +33,6 @@ function useBoardShuffler(gridLayout = 4) {
 
             setShuffledPieces(shuffled);
 
-        }
-
-        if (savedCanMove) {
-            setCanMove(JSON.parse(savedCanMove));
         }
 
         // Determines the project puzzle

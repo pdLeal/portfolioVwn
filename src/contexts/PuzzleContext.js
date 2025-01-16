@@ -2,11 +2,9 @@ import { createContext, useContext } from "react";
 
 const PuzzleContext = createContext({
     savedPiecesPosition: [],
-    canMove: [],
     projectUrl: '',
     hardModeIsOn: false,
     setSavedPiecesPosition: () => {},
-    setCanMove: () => {},
     setProjectUrl: () => {},
     setHardModeIsOn: () => {},
 });

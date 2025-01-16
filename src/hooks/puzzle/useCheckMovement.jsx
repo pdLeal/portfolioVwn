@@ -1,7 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function useCheckMovement() {
     const [canMove, setCanMove] = useState(['12', '15']); // '6', '8'
+
+    // Retrieves the pieces that can move from local storage
+    const savedCanMove = localStorage.getItem('canMove');
+    useEffect(() => {
+        if(savedCanMove)  setCanMove(JSON.parse(savedCanMove));
+
+    }, [])
+
     const checkCanMove = (e) => {
         const clickedElem = e.target;
         const positionInGrid = clickedElem.parentElement.dataset.position;

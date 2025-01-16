@@ -15,7 +15,7 @@ function PuzzleBoard() {
     const fireRef = useRef(null);
   
     const { projectWinner } = useWinnerContext();
-    const { canMove, setCanMove, hardModeIsOn } = usePuzzleContext();
+    const { hardModeIsOn } = usePuzzleContext();
   
     const { slots, shuffledPieces, pieceImg } = useBoardShuffler();
     const { savePosition } = useSavePoint(fireRef);
@@ -89,7 +89,7 @@ function PuzzleBoard() {
   
                     try {
                       checkCooldown(lastClick, setLastClick, 550, "Too many clicks!");
-                      hardModeIsOn && checkCanMove(e, canMove, setCanMove);
+                      hardModeIsOn && checkCanMove(e);
   
                     } catch (error) {
                       handleErrors(e, error);

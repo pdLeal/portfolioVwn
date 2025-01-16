@@ -11,7 +11,6 @@ function Puzzle() {
   const [savedPiecesPosition, setSavedPiecesPosition] = useState([]);
   const [projectUrl, setProjectUrl] = useState('');
   const [hardModeIsOn, setHardModeIsOn] = useState(false);
-  const [canMove, setCanMove] = useState(['12', '15']); // '6', '8'
 
   // end context
 
@@ -50,7 +49,7 @@ function Puzzle() {
   const { instruction, hardCongrats, congrats } = t("puzzleDescription")
 
   return (
-    <PuzzleProvider value={{ savedPiecesPosition, setSavedPiecesPosition, canMove, setCanMove, setProjectUrl, hardModeIsOn }}>
+    <PuzzleProvider value={{ savedPiecesPosition, setSavedPiecesPosition, setProjectUrl, hardModeIsOn }}>
       <S.Wrapper>
         <S.Rules>
           {!projectWinner ? <S.TextRules>{instruction}</S.TextRules>
