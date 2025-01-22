@@ -2,13 +2,11 @@ import { useEffect, useState } from "react";
 import usePuzzleContext from "../../contexts/PuzzleContext";
 import useWinnerContext from "../../contexts/WinnerContext";
 import isPuzzleSolved from "../../utils/isPuzzleSolved";
-import useBoardShuffler from "./useBoardShuffler";
 
 function useSavePoint(fireRef) {
     const [isMounted, setIsMounted] = useState(false);
     const { savedPiecesPosition, setSavedPiecesPosition } = usePuzzleContext();
     const { setProjectWinner } = useWinnerContext();
-    const { shuffledPieces } = useBoardShuffler();
 
     useEffect(() => { // Updates local storage and checks if puzzle is solved
 
@@ -23,7 +21,7 @@ function useSavePoint(fireRef) {
 
     }, [savedPiecesPosition])
 
-    const savePosition = (e) => {
+    const savePosition = (e, shuffledPieces) => {
         const clickedElemIndex = e.target.parentElement.dataset.position - 1;
         const emptyElemIndex = document.querySelector('[data-empty=true]').dataset.position - 1;
 

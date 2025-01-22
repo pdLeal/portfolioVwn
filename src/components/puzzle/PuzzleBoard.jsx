@@ -98,7 +98,7 @@ function PuzzleBoard() {
   
                     moveToEmpty(e);
   
-                    savePosition(e);
+                    savePosition(e, shuffledPieces); // shuffledPieces needs to be passed as a prop, otherwise it creates a lot of weird bugs
   
                   }}
                 >
