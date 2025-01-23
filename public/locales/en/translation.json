@@ -59,5 +59,8 @@
     "hardBtn": "Hard Mode",
     "restartBtn": "Restart",
     "peekBtn": "Peek Answer",
-    "seeRepo": "See repository"
+    "seeRepo": "See repository",
+    "aboutDescription": "Congratulations on getting here! I know it's counterintuitive to hide this kind of info behind some silly mini-game, but I wanted this portfolio to be more than just another pile of information about some random developer. I wanted to have fun creating this project, and I hope you're having just as much fun discovering the answers and putting the pieces together! And also, I just freaking love video games!",
+    "dropdownTitle": "But what do coding and games have to do with each other?",
+    "dropdownDescription": "Well, my first contact with code was by chance, without much interest, but I soon realized that I love learning as much as I love playing. Each technology/language is its own game, with unique characteristics, nuances, and mechanics that must be mastered. Each project is like a level with its own challenges, obstacles to overcome (bosses), and surprises (easter eggs) to discover along the way. For me, coding is about having fun, learning, practicing, growing, evolving—and, finally, the thrill of beating that goddamn Souls boss you've been struggling with for the past 6 months."
 }

@@ -59,5 +59,8 @@
     "hardBtn": "Difícil",
     "restartBtn": "Recomeçar",
     "peekBtn": "Espiar Resposta",
-    "seeRepo": "Ver repositório"
+    "seeRepo": "Ver repositório",
+    "aboutDescription": "Parabéns por chegar até aqui! Sei que pode parecer contraintuitivo esconder essas informações atrás de um mini-jogo, mas eu queria que este portfólio fosse mais do que apenas um monte de informações sobre um desenvolvedor qualquer. Queria me divertir criando este projeto e espero que você esteja se divertindo tanto quanto eu ao descobrir as respostas e encaixando as peças! Além disso, eu simplesmente adoro videogames!",
+    "dropdownTitle": "Mas o que codar e jogar tem a ver um com outro?",
+    "dropdownDescription": "Bom, meu primeiro contato com código foi por acaso, sem muito interesse, mas logo percebi que amo aprender tanto quanto amo jogar. Cada tecnologia/linguagem é seu próprio jogo, com características, nuances e mecânicas únicas que devem ser dominadas. Cada projeto é como um nível com seus próprios desafios, obstáculos a superar (chefes) e surpresas (easter eggs) a descobrir ao longo do caminho. Para mim, programar é sobre se divertir, aprender, praticar, crescer, evoluir — e, finalmente, a emoção de derrotar aquele maldito chefe Souls com o qual você tem lutado nos últimos 6 meses."
 }
