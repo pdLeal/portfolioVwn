@@ -4,7 +4,7 @@ export const Sub_Grid = styled.div`
     padding: 16px;
     margin-bottom: 32px;
     display: grid;
-    grid-row: span 4;
+    grid-row: span 3;
     grid-template-rows: subgrid;
 
     border: solid 1px var(--primary-color);

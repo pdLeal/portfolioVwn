@@ -1,41 +1,46 @@
 [
     {
         "id": 1,
-        "title": "Selfcare Shop",
         "gitUrl": "https://github.com/pdLeal/vNW_desafioFInal",
         "pageUrl": "https://pdleal.github.io/vNW_desafioFInal/",
         "img": "/offerchallenge.png",
         "alt": "",
-        "text":"Project that simulates a shopping page emphasizing responsiveness." 
+        "text": {
+            "en":"Project that simulates a shopping page emphasizing responsiveness.",
+            "pt-BR":"Projeto que simula uma página de compras enfantizando reponsividade."
+        }
     },
-
     {
         "id": 2,
-        "title": "Ritmo da Batida",
         "gitUrl": "https://github.com/pdLeal/vaiNaWeb_desafio3",
         "pageUrl": "https://pdleal.github.io/vaiNaWeb_desafio3/#",
         "img": "/lifechallenge.png",
         "alt": "",
-        "text":"Project developed with the aim of having a first contact with API's (Unsplash)" 
+        "text": {
+            "en":"Project developed with the aim of having a first contact with API's.",
+            "pt-BR":"Projeto desenvolvido com a intenção de ter um primeiro contato com API's."
+        }
     },
-
     {
         "id": 3,
-        "title": "Odin's Calculator",
         "gitUrl": "https://github.com/pdLeal/Odin_calculator",
         "pageUrl": "https://pdleal.github.io/Odin_calculator/",
         "img": "/calcchallenge.png",
         "alt": "",
-        "text":"A simple calculator, able to do simple operations, one at time and without any priority. And this was botthering me..." 
+        "text": {
+            "en":"A simple calculator, able to do simple operations, one at time and without any priority. And this was botthering me...",
+            "pt-BR":"Inicialmente uma calculadora simples, capaz de uma operação de cada vez e sem prioridade."
+        }
     },
-
     {
         "id": 4,
-        "title": "McChallenge",
         "gitUrl": "https://github.com/pdLeal/vNW_McChallenge",
         "pageUrl": "https://mc-challenge.vercel.app/#",
         "img": "/mcchallenge.png",
         "alt": "",
-        "text":"Project carried out as a challenge during my time with the Vai Na Web project." 
+        "text": {
+            "en":"Project carried out as a challenge during my time with the Vai Na Web project.",
+            "pt-BR":"Projeto que simula uma página de compras enfantizando reponsividade."
+        }
     }
 ]

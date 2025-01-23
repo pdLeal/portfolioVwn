@@ -58,5 +58,6 @@
     },
     "hardBtn": "Difícil",
     "restartBtn": "Recomeçar",
-    "peekBtn": "Espiar Resposta"
+    "peekBtn": "Espiar Resposta",
+    "seeRepo": "Ver repositório"
 }

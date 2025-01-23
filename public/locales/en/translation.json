@@ -58,5 +58,6 @@
     },
     "hardBtn": "Hard Mode",
     "restartBtn": "Restart",
-    "peekBtn": "Peek Answer"
+    "peekBtn": "Peek Answer",
+    "seeRepo": "See repository"
 }
