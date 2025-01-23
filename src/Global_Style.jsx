@@ -25,7 +25,7 @@ const Global_Style = createGlobalStyle`
     }
 
     :root {
-        --kvn-font: "VT323", monospace;
+        --an0xia-font: "VT323", monospace;
         --bg-color: #000;
         --primary-color: #0ded0d;
         --redish: red;
@@ -34,6 +34,7 @@ const Global_Style = createGlobalStyle`
         --active-color: #2b6a2b;
         --typeSpeed: 5s;
         --delay: 1s;
+        --default-shadow: 0px 0px 4px;
     }
 `;
 

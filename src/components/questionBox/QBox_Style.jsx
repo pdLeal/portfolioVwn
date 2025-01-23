@@ -3,7 +3,7 @@ import styled, { keyframes } from "styled-components";
 import { Button, H3 } from '../hello/Hello_Style';
 
 export const Container = styled.div`
-    font-family: var(--kvn-font);
+    font-family: var(--an0xia-font);
     width: 100%;
     height: 100%;
     

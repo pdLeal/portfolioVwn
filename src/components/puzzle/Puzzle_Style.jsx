@@ -114,7 +114,7 @@ export const Piece = styled.div`
 export const Congrats = styled.p`
     width: 100%;
     height: 100%;
-    font-family: "VT323", monospace;
+    font-family: var(--an0xia-font);
     font-size: clamp(2rem, 15vw + 0.5rem, 8rem);
     font-weight: bold;
     letter-spacing: .2em;
@@ -124,11 +124,11 @@ export const Congrats = styled.p`
     align-items: center;
     position: absolute;
     color: black;
-    text-shadow: 0px 0px 4px var(--primary-color);
+    text-shadow: var(--default-shadow) var(--primary-color);
 `;
 
 export const ErrorMsg = styled.p`
-    font-family: "VT323", monospace;
+    font-family: var(--an0xia-font);
     margin-inline: auto;
     max-width: 80%;
     padding: 0.2em;
@@ -145,7 +145,7 @@ export const ErrorMsg = styled.p`
     backdrop-filter: blur(16px);
 `;
 
-// TESTE DE WHOLE
+// PuzzleBoard
 export const Wrapper = styled.div`
     display: flex;
     justify-content: space-between;
@@ -162,7 +162,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Rules = styled.div`
-    font-family: "VT323", monospace;
+    font-family: var(--an0xia-font);
     padding-block: 8px;
     display: grid;
     grid-template-areas:
@@ -188,8 +188,8 @@ export const Rules = styled.div`
             text-decoration: none;
             font-size: clamp(0.8rem, 2vw + 0.5rem, 1.8rem);
             color: var(--primary-color);
-            text-shadow: 0px 0px 4px var(--primary-color);
-            box-shadow:  0px 0px 4px var(--primary-color);
+            text-shadow: var(--default-shadow) var(--primary-color);
+            box-shadow:  var(--default-shadow) var(--primary-color);
             padding: 0.225em 0.8em;
             cursor: pointer;
             border: solid 1px var(--primary-color);
@@ -199,13 +199,13 @@ export const Rules = styled.div`
             
                 &:hover,
                 &:focus-visible {
-                color: #66f666;
-                border-color: #66f666;
+                color: var(--hover-color);
+                border-color: var(--hover-color);
                 }
                 
                 &:active {
-                color: #2b6a2b;
-                border-color: #2b6a2b;
+                color: var(--active-color);
+                border-color: var(--active-color);
                 }
             }
 
@@ -226,19 +226,19 @@ export const TextRules = styled(Tease)`
 
 export const Btn = styled(Button)`
     color: ${props => props.$hardModeIsOn ? 'red' : 'var(--primary-color)'};
-    text-shadow: 0px 0px 4px ${props => props.$hardModeIsOn ? 'red' : 'var(--primary-color)'};
-    box-shadow:  0px 0px 4px ${props => props.$hardModeIsOn ? 'red' : 'var(--primary-color)'};
+    text-shadow: var(--default-shadow) ${props => props.$hardModeIsOn ? 'red' : 'var(--primary-color)'};
+    box-shadow:  var(--default-shadow) ${props => props.$hardModeIsOn ? 'red' : 'var(--primary-color)'};
     border: solid 1px ${props => props.$hardModeIsOn ? 'red' : 'var(--primary-color)'};
     
         &:hover,
         &:focus-visible {
-        color:#5cff9b;
-        border-color: #5cff9b;
+        color:var(--hover-color);
+        border-color: var(--hover-color);
         }
         
         &:active {
-        color: #2b6a2b;
-        border-color: #2b6a2b;
+        color: var(--active-color);
+        border-color: var(--active-color);
         }
 `;
 

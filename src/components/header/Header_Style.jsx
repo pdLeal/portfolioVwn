@@ -65,7 +65,7 @@ export const Li = styled.li`
         }
 
         a.glitch {
-            font-family: var(--kvn-font);
+            font-family: var(--an0xia-font);
             text-transform: uppercase;
             text-shadow:
                 0.05em 0 0 rgba(255, 0, 0, 0.75),

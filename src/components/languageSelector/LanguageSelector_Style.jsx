@@ -14,8 +14,8 @@ export const Container = styled.div`
 
         .selected {
                 color: var(--redish);
-                text-shadow: 0px 0px 4px var(--redish);
-                box-shadow:  0px 0px 4px var(--redish);
+                text-shadow: var(--default-shadow) var(--redish);
+                box-shadow:  var(--default-shadow) var(--redish);
                 border-color: var(--redish);
             }
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PuzzleBoard from './PuzzleBoard';
 import * as S from './Puzzle_Style';
 import{ PuzzleProvider } from '../../contexts/PuzzleContext';
@@ -22,7 +22,7 @@ function Puzzle() {
       localStorage.removeItem('canMove');
       setProjectWinner(false);
       setSavedPiecesPosition([]);
-      
+
       // For some reason that I cannot comprehend, putting handleRestar as a custom hook/own file causes the shuffler to go bananas, preventing the user to win unless he/she reloads the entire page. Future me, please try to understand this when you have more knowlodge!
   }
 

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    font-family: var(--kvn-font);
+    font-family: var(--an0xia-font);
     text-align: center;
     padding: 24px;
     display: flex;
@@ -37,8 +37,8 @@ export const Wrapper = styled.div.attrs(props => ({
 export const Button = styled.button`
     font-size: clamp(0.8rem, 2vw + 0.5rem, 1.8rem);
     color: var(--primary-color);
-    text-shadow: 0px 0px 4px var(--primary-color);
-    box-shadow:  0px 0px 4px var(--primary-color);
+    text-shadow: var(--default-shadow) var(--primary-color);
+    box-shadow:  var(--default-shadow) var(--primary-color);
     padding: 0.225em 0.8em;
     cursor: pointer;
     border: solid 1px var(--primary-color);
