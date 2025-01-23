@@ -6,7 +6,6 @@ const PuzzleContext = createContext({
     hardModeIsOn: false,
     setSavedPiecesPosition: () => {},
     setProjectUrl: () => {},
-    setHardModeIsOn: () => {},
 });
 
 export default function usePuzzleContext() {

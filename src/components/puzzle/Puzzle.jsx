@@ -4,47 +4,19 @@ import * as S from './Puzzle_Style';
 import{ PuzzleProvider } from '../../contexts/PuzzleContext';
 import useWinnerContext from '../../contexts/WinnerContext';
 import { useTranslation } from 'react-i18next';
+import useRestart from '../../hooks/puzzle/useRestart';
+import useHardMode from '../../hooks/puzzle/useHardMode';
 
 function Puzzle() {
-  // context
-
   const [savedPiecesPosition, setSavedPiecesPosition] = useState([]);
   const [projectUrl, setProjectUrl] = useState('');
-  const [hardModeIsOn, setHardModeIsOn] = useState(false);
-
-  // end context
-
-  const [reloadPuzzleBoard, setReloadPuzzleBoard] = useState(true); // true/false doens't mattter, just needs to change to remount the whole comp
-
-  const { projectWinner, setProjectWinner } = useWinnerContext();
+  const { projectWinner } = useWinnerContext();
 
 
+  const { reloadPuzzleBoard, handleRestart } = useRestart();
+  const { hardModeIsOn, handleHardMode } = useHardMode();
 
-  function handleRestart() {
-    setReloadPuzzleBoard(!reloadPuzzleBoard);
-
-    setProjectWinner(false);
-    setSavedPiecesPosition([]);
-    localStorage.removeItem('piecesPosition');
-    localStorage.removeItem('canMove');
-  }
-
-  function handleHardMode() {
-    handleRestart();
-    setHardModeIsOn(!hardModeIsOn);
-    if (!localStorage.getItem('hardModeIsOn')) {
-      localStorage.setItem('hardModeIsOn', true)
-    } else {
-      localStorage.removeItem('hardModeIsOn')
-    }
-  }
-
-  useEffect(() => {
-    if (localStorage.getItem('hardModeIsOn')) {
-      setHardModeIsOn(true)
-    }
-  }, [])
-
+  // I18NEXT
   const { t } = useTranslation();
   const { instruction, hardCongrats, congrats } = t("puzzleDescription")
 
@@ -56,7 +28,7 @@ function Puzzle() {
             : hardModeIsOn ? <S.TextRules>{hardCongrats}</S.TextRules>
               : <S.TextRules>{congrats}</S.TextRules>}
 
-          <S.Btn $hardModeIsOn={hardModeIsOn} onClick={handleHardMode}>{t("hardBtn")}</S.Btn>
+          <S.Btn $hardModeIsOn={hardModeIsOn} onClick={() => handleHardMode(handleRestart)}>{t("hardBtn")}</S.Btn>
           <S.Btn onClick={handleRestart}>{t("restartBtn")}</S.Btn>
           <a href={projectUrl} target='_blank'>{t("peekBtn")}</a>
         </S.Rules>
