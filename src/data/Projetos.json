@@ -28,7 +28,7 @@
         "img": "/calcchallenge.png",
         "alt": "",
         "text": {
-            "en":"A simple calculator, able to do simple operations, one at time and without any priority. And this was botthering me...",
+            "en":"Initially a simple calculator, capable of one operation at a time and without priority.",
             "pt-BR":"Inicialmente uma calculadora simples, capaz de uma operação de cada vez e sem prioridade."
         }
     },
@@ -39,8 +39,8 @@
         "img": "/mcchallenge.png",
         "alt": "",
         "text": {
-            "en":"Project carried out as a challenge during my time with the Vai Na Web project.",
-            "pt-BR":"Projeto que simula uma página de compras enfantizando reponsividade."
+            "en":"Project carried out as one of the first challenges during my time with the Vai Na Web project.",
+            "pt-BR":"Projeto realizado como um dos primeiros desafios durante meu tempo no projeto Vai Na Web."
         }
     }
 ]

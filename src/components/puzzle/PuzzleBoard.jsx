@@ -10,6 +10,8 @@ import moveToEmpty from '../../utils/moveToEmpty';
 import useCheckMovement from '../../hooks/puzzle/useCheckMovement';
 
 import { Fireworks } from '@fireworks-js/react'
+import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 function PuzzleBoard() {
     const fireRef = useRef(null);
@@ -74,6 +76,9 @@ function PuzzleBoard() {
       }
     }
   
+    // I18NEXT
+    const {t} = useTranslation();
+
     return (
       <S.Container $layout={4}>
   
@@ -123,12 +128,10 @@ function PuzzleBoard() {
               position: 'absolute'
             }}
           />
-          <S.Congrats>YOU WIN!</S.Congrats>
+          <S.Congrats>{t("uwin")}</S.Congrats>
         </>}
   
-        <S.ErrorMsg id='error'>
-          Hint: Clicking fast does not make you play better.
-        </S.ErrorMsg>
+        <S.ErrorMsg id='error'>{t("puzzleHint")}</S.ErrorMsg>
       </S.Container>
     )
   }

@@ -120,11 +120,12 @@ export const Congrats = styled.p`
     letter-spacing: .2em;
     text-align: center;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     position: absolute;
     color: black;
     text-shadow: var(--default-shadow) var(--primary-color);
+    user-select: none;
 `;
 
 export const ErrorMsg = styled.p`

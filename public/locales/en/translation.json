@@ -59,6 +59,8 @@
     "hardBtn": "Hard Mode",
     "restartBtn": "Restart",
     "peekBtn": "Peek Answer",
+    "uwin" : "YOU WIN!",
+    "puzzleHint": "Hint: Clicking fast does not make you play better.",
     "seeRepo": "See repository",
     "aboutDescription": "Congratulations on getting here! I know it's counterintuitive to hide this kind of info behind some silly mini-game, but I wanted this portfolio to be more than just another pile of information about some random developer. I wanted to have fun creating this project, and I hope you're having just as much fun discovering the answers and putting the pieces together! And also, I just freaking love video games!",
     "dropdownTitle": "But what do coding and games have to do with each other?",

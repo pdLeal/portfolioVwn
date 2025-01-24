@@ -59,6 +59,8 @@
     "hardBtn": "Difícil",
     "restartBtn": "Recomeçar",
     "peekBtn": "Espiar Resposta",
+    "uwin" : "VOCÊ VENCEU!",
+    "puzzleHint": "Dica: Clicar rápido não faz de você um jogador melhor.",
     "seeRepo": "Ver repositório",
     "aboutDescription": "Parabéns por chegar até aqui! Sei que pode parecer contraintuitivo esconder essas informações atrás de um mini-jogo, mas eu queria que este portfólio fosse mais do que apenas um monte de informações sobre um desenvolvedor qualquer. Queria me divertir criando este projeto e espero que você esteja se divertindo tanto quanto eu ao descobrir as respostas e encaixando as peças! Além disso, eu simplesmente adoro videogames!",
     "dropdownTitle": "Mas o que codar e jogar tem a ver um com outro?",
