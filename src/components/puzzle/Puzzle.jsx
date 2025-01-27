@@ -28,7 +28,7 @@ function Puzzle() {
 
   // I18NEXT
   const { t } = useTranslation();
-  const { instruction, hardCongrats, congrats } = t("puzzleDescription")
+  const { instruction, hardCongrats, congrats } = t("puzzleDescription");
 
   return (
     <PuzzleProvider value={{ savedPiecesPosition, setSavedPiecesPosition, setProjectUrl, hardModeIsOn }}>

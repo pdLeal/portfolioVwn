@@ -54,7 +54,7 @@ export const OuterBg = styled.div`
     border-bottom-left-radius: 10%;
     border-bottom-right-radius: 10%;
     position: relative;
-    background-image: url("/bgGamesCard.png"); // Image from Thomas Bormans https://unsplash.com/pt-br/@thomasbormans
+    background-image: url("/bgGamesCard.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
