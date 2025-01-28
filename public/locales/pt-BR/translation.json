@@ -81,5 +81,9 @@
     "gitType": "Sistema de Versionamento",
     "gitDesc": "Rastreia alterações no código, permitindo que os devs trabalhem em diferentes ramificações, mesclem atualizações e revertam para versões anteriores, garantindo a integridade do código e o trabalho em equipe.",
     "invitation": "Estou apenas no começo da minha jornada como dev, e mal posso esperar para ver que caminhos se abrem neste RPG chamado vida. Até lá, se você quiser participar da aventura, aqui estão meu LinkedIn e GitHub. Vamos criar algo incrível juntos!",
-    "kc": "Talvez o Konami Code faça parte da sua vida desde criança, tanto que você vai tentar não importa o dispositivo. Ou talvez você tenha tropeçado nele enquanto conferia este portfólio. De qualquer forma, você se esforçou e merece uma pequena recompensa por isso! No entanto, me desculpe! Eu realmente quero \"terminar\" este projeto, então a grande surpresa virá em breve. Até lá, aproveite essas carinhas felizes!"
+    "kc": "Talvez o Konami Code faça parte da sua vida desde criança, tanto que você vai tentar não importa o dispositivo. Ou talvez você tenha tropeçado nele enquanto conferia este portfólio. De qualquer forma, você se esforçou e merece uma pequena recompensa por isso! No entanto, me desculpe! Eu realmente quero \"terminar\" este projeto, então a grande surpresa virá em breve. Até lá, aproveite essas carinhas felizes!",
+    "warning": "Aviso",
+    "denied": "!!!ACESSO NEGADO!!!",
+    "AN0X1Awarning": ["", "Ah, qualé? Você sabe que você PRECISA completar o desafio para ver o que quer --\""],
+    "backHome": "Voltar ao Início"
 }

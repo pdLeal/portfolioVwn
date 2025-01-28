@@ -81,5 +81,9 @@
     "gitType": "Version Control System",
     "gitDesc": "Tracks changes in code, enabling devs to work on different branches, merge updates, and revert to previous versions, ensuring code integrity and teamwork.",
     "invitation": "I'm just at the beginning of my journey as a dev, and I can't wait to see what paths open up in this RPG called life. Until then, if you'd like to join the adventure, here's my LinkedIn and GitHub. Let's create something amazing together!",
-    "kc": "Maybe the Konami Code is a part of your life since you a child, so much so that you’ll try it no matter the device. Or maybe you just stumbled upon it while checking out this portfolio. Either way, you’ve put in the effort, and you deserve a little reward for that! Sorry, though! I really want to \"finnish\" this project, so the big surprise will come soon. Until then, please enjoy theses happy faces!"
+    "kc": "Maybe the Konami Code is a part of your life since you a child, so much so that you’ll try it no matter the device. Or maybe you just stumbled upon it while checking out this portfolio. Either way, you’ve put in the effort, and you deserve a little reward for that! Sorry, though! I really want to \"finnish\" this project, so the big surprise will come soon. Until then, please enjoy theses happy faces!",
+    "warning": "Warning",
+    "denied": "!!!ACCESS DENIED!!!",
+    "AN0X1Awarning": ["", "Oh, c\\'mon! You know you MUST complete the challenge to see what you want --\""],
+    "backHome": "Back to Home"
 }

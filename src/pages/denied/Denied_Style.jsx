@@ -64,7 +64,7 @@ export const H2 = styled.h2`
 `;
 
 export const Tease = styled(H3)`
-    font-family: "VT323", monospace;
+    font-family: var(--an0xia-font);
     margin-inline: auto;
     max-width: 80%;
     text-align: center;
