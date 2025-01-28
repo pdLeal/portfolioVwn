@@ -13,7 +13,7 @@ function QBox() {
     const [typingIsDone, setTypingIsDone] = useState(false);
     const [giveHint, setGiveHint] = useState(false);
 
-    const { AnimationRef, question, isQuestion, secondAnswer, handleAnswer, handleFirstClick, handleInputText, handleVideoEnd, handleAboutWinner } = useNextQuestion(clicked, setTypingIsDone)
+    const { AnimationRef, question, isQuestion, secondAnswer, handleAnswer, handleFirstClick, handleInputText, kc, handleVideoEnd, handleAboutWinner } = useNextQuestion(clicked, setTypingIsDone)
 
     // Input-text auto-focus
     const inputRef = useRef(null);
@@ -106,9 +106,13 @@ function QBox() {
                             </H3>
 
                             {typingIsDone &&
-                                <S.Text_Input onChange={(e) => {
-                                    handleInputText(e, lang)
-                                }} type="text" ref={inputRef} />
+                                <S.Text_Input
+                                    onInput={(e) => {
+                                        handleInputText(e, lang)
+                                    }}
+                                    onKeyDown={kc}
+                                    type="text"
+                                    ref={inputRef} />
                             }
 
 

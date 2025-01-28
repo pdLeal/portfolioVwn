@@ -6,7 +6,6 @@ import Backend from "i18next-http-backend";
 i18next.use(LanguageDetector).use(initReactI18next)
   .use(Backend)
   .init({
-    debug: true,
     fallbackLng: "en",
     returnObjects: true,
   });
