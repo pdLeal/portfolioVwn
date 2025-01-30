@@ -138,47 +138,47 @@ export const Container = styled.section`
         }
 
         [data-piece="2"] {
-            background-position: 33% 0%;
+            background-position: ${props => props.$isWeak ? "50% 0%" : "33.5% 0%"};
         }
 
         [data-piece="3"] {
-            background-position: 66% 0%;
+            background-position: ${props => props.$isWeak ? "100% 0%" : "67% 0%"};
         }
 
         [data-piece="4"] {
-            background-position: 100% 0%;
+            background-position: ${props => props.$isWeak ? "0% 50%" : "100% 0%"};
         }
 
         [data-piece="5"] {
-            background-position: 0% 33%; 
+            background-position: ${props => props.$isWeak ? "50% 50%" : "0% 33.5%"}; 
         }
 
         [data-piece="6"] {
-            background-position: 33% 33%;
+            background-position: ${props => props.$isWeak ? "100% 50%" : "33.5% 33.5%"};
         }
 
         [data-piece="7"] {
-            background-position: 66% 33%;
+            background-position: ${props => props.$isWeak ? "0% 100%" : "67% 33.5%"};
         }
 
         [data-piece="8"] {
-            background-position: 100% 33%;
+            background-position: ${props => props.$isWeak ? "50% 100%" : "100% 33.5%"};
         }
 
         [data-piece="9"] {
-            background-position: 0% 66%; 
+            background-position: ${props => props.$isWeak ? "100% 100%" : "0% 67%"}; 
         }
-
+        
         [data-piece="10"] {
-            background-position: 33% 66%;
+            background-position: 33.5% 67%;
         }
 
         [data-piece="11"] {
-            background-position: 66% 66%;
+            background-position: 67% 67%;
         }
 
         [data-piece="12"] {
-            background-position: 100% 66%;
+            background-position: 100% 67%;
         }
 
         [data-piece="13"] {
@@ -186,11 +186,11 @@ export const Container = styled.section`
         }
 
         [data-piece="14"] {
-            background-position: 33% 100%;
+            background-position: 33.5% 100%;
         }
 
         [data-piece="15"] {
-            background-position: 66% 100%;
+            background-position: 67% 100%;
         }
 
         [data-piece="16"] {
@@ -210,7 +210,7 @@ export const Piece = styled.div`
     height: 100%;
     cursor: pointer;
     background-image: ${props => `url(${props.$imgUrl})`};
-    background-size: 400%;
+    background-size: ${props => props.$layout * 100}%;
     background-repeat: no-repeat;
     `;
 
@@ -248,39 +248,3 @@ export const ErrorMsg = styled.p`
     background-color: transparent;
     backdrop-filter: blur(16px);
 `;
-
-/* [data-piece="1"] { 3x3 GRID
-        background-position: 0% 0%;
-    }
-
-    [data-piece="2"] {
-        background-position: 50% 0%;
-    }
-
-    [data-piece="3"] {
-        background-position: 100% 0%;
-    }
-
-    [data-piece="4"] {
-        background-position: 0% 50%;
-    }
-
-    [data-piece="5"] {
-        background-position: 50% 50%; 
-    }
-
-    [data-piece="6"] {
-        background-position: 100% 50%;
-    }
-
-    [data-piece="7"] {
-        background-position: 0% 100%;
-    }
-
-    [data-piece="8"] {
-        background-position: 50% 100%;
-    }
-
-    [data-piece="9"] {
-        background-position: 100% 100%; 
-    } */

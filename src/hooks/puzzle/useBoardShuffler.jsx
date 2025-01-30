@@ -3,7 +3,7 @@ import data from '../../data/Projetos.json';
 import usePuzzleContext from "../../contexts/PuzzleContext";
 import fisherYatesShuffle from "../../utils/fisherYatesShuffle";
 
-function useBoardShuffler(gridLayout = 4) {
+function useBoardShuffler(gridLayout) {
     const { setSavedPiecesPosition, setProjectUrl } = usePuzzleContext();
 
     const [shuffledPieces, setShuffledPieces] = useState([]);
