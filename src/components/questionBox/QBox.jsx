@@ -7,11 +7,15 @@ import redBallonsBr from '../../assets/you_float_too_br.mp4';
 import pennywiseLaught from '../../assets/PennywiseLaugh.mp3';
 import useNextQuestion from '../../hooks/qBox/useNextQuestion.jsx';
 import { useTranslation } from 'react-i18next';
+import useWeakContext from "../../contexts/WeakContext.js"
+import useWinnerContext from "../../contexts/WinnerContext.js"
 
 function QBox() {
     const [clicked, setClicked] = useState(false);
     const [typingIsDone, setTypingIsDone] = useState(false);
     const [giveHint, setGiveHint] = useState(false);
+    const { setAboutWinner } = useWinnerContext();
+    const { isWeak } = useWeakContext();
 
     const { AnimationRef, question, isQuestion, secondAnswer, handleAnswer, handleFirstClick, handleInputText, kc, handleVideoEnd, handleAboutWinner } = useNextQuestion(clicked, setTypingIsDone)
 
@@ -26,7 +30,7 @@ function QBox() {
 
     // I18NEXT
     const { t, i18n } = useTranslation();
-    const { question1, question2, question3, question4 } = t("AN0X1Aquestions");
+    const { question1, question2, question3, question4, noQuestionForTheWeak } = t("AN0X1Aquestions");
     const { q1_a1, q1_a2, q2_a1, q2_a2, q2_a3, q2_a4 } = t("anwsers");
     const lang = i18n.language;
 
@@ -34,7 +38,7 @@ function QBox() {
         <S.Container>
             {!clicked && <S.See_Btn onClick={() => setClicked(true)}>{t("seeBtn")}</S.See_Btn>}
 
-            {clicked &&
+            {(clicked && !isWeak) &&
                 <S.Question_Box $display={isQuestion} ref={AnimationRef}>
 
                     {/* FIRST QUESTION */}
@@ -137,6 +141,18 @@ function QBox() {
                             <TypeEfct
                                 text={question4}
                                 onDone={handleAboutWinner} />
+                        </H3>
+                    }
+                </S.Question_Box>
+            }
+
+            {(clicked && isWeak) &&
+                <S.Question_Box $display={isQuestion} ref={AnimationRef}>
+
+                    {/* FIRST QUESTION */}
+                    {(question == 1 && isQuestion) &&
+                        <H3>
+                            <TypeEfct text={noQuestionForTheWeak} onDone={() => setAboutWinner(true)} />
                         </H3>
                     }
                 </S.Question_Box>

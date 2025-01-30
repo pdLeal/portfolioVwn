@@ -2,14 +2,22 @@
     "skipBtn": "Skip",
     "helloFromAN0X1A": {
         "line1": [
+            "",
             "Oh! Hello! Sorry, didn't see you there...",
             "I suppose you're here to see Pedro's portfolio, right?",
             "But before, what about a game?",
             "All you have to do is click the button =)"
         ],
         "line2": [
+            "",
             "It seems you're having a hard time clicking the button =S",
             "Here, a button that won't runaway!"
+        ],
+        "weakLine": [
+            "",
+            "I can see that last time you were absolutely terrible at this, but hey, look at you, crawling back for more!",
+            "I suppose you've finally gotten tired of being a pathetic weakling and decided to do something right for once. I can almost respect that... even coming from you.",
+            "Good luck—you’re going to need =)"
         ]
     },
     "clickBtn": "Click Me",
@@ -37,6 +45,10 @@
         "question4": [
             "",
             "You shall pass...for now."
+        ],
+        "noQuestionForTheWeak": [
+            "",
+            "Normally, I'd throw a few questions your way to test whatever tiny shred of dignity you might have left, but seeing as it's already excruciatingly clear you're nothing more than a worthless weakling, just get lost already."
         ]
     },
     "anwsers": {
@@ -54,7 +66,8 @@
     "puzzleDescription": {
         "instruction": "A simple puzzle for simple projects. Just click the pieces and sort them out until the image makes sense. Easy enough, right? Even your can could do it!",
         "hardCongrats": "Oh, you are real good at this,aren't you?",
-        "congrats": "Congratulations! You can move on and see all the projects you want. Also, how about trying the hard difficulty? Show them how good you really are!"
+        "congrats": "Congratulations! You can move on and see all the projects you want. Also, how about trying the hard difficulty? Show them how good you really are!",
+        "weakCongrats": "Oh, look at you—such a brilliant weakling. Congratulations on what is probably the first and only victory of your pathetic life!"
     },
     "hardBtn": "Hard Mode",
     "restartBtn": "Restart",

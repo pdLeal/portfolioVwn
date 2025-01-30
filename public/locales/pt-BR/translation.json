@@ -2,14 +2,22 @@
     "skipBtn": "Pular",
     "helloFromAN0X1A": {
         "line1": [
+            "",
             "Ah! Oi! Desculpe, não tinha te visto aí...",
             "Imagino que esteja aqui para ver o portifólio do Pedro, certo?",
             "Mas antes, que tal um jogo?",
             "Tudo que você precisa fazer é clicar no botão =)"
         ],
         "line2": [
+            "",
             "Parece que você está tendo problemas em clicar no botão =S",
             "Aqui, um botão que não vai fugir!"
+        ],
+        "weakLine": [
+            "",
+            "Posso ver que da última vez você foi absolutamente terrível nisso, mas ei, olha só você, se arrastando de volta para mais!",
+            "Imagino que você finalmente se cansou de ser um fracote patético e decidiu fazer algo certo pela primeira vez. Eu quase posso respeitar isso... mesmo vindo de você.",
+            "Boa Sorte-você vai precisar =)"
         ]
     },
     "clickBtn": "Clique Aqui",
@@ -37,6 +45,10 @@
         "question4": [
             "",
             "Você pode passar...por enquanto."
+        ],
+        "noQuestionForTheWeak": [
+            "",
+            "Normalmente, eu faria algumas perguntas para testar qualquer resquício de dignidade que ainda lhe restasse, mas, visto que já está terrivelmente claro que você não passa de um fracote inútil, caia fora logo daqui."
         ]
     },
     "anwsers": {
@@ -54,7 +66,8 @@
     "puzzleDescription": {
         "instruction": "Um quebra-cabeças simples para projetos simples. É só clicar nas peças e arrumá-las até a imagem fazer sentido. Fácil não é mesmo? Até você consegue fazer isso!",
         "hardCongrats": "Quem diria, você é bom mesmo hein?",
-        "congrats": "Parabéns! Você pode seguir em frente e ver todos os projetos que quiser. Além disso, que tal tentar no modo difícil? Mostre a eles o quão bom você é!"
+        "congrats": "Parabéns! Você pode seguir em frente e ver todos os projetos que quiser. Além disso, que tal tentar no modo difícil? Mostre a eles o quão bom você é!",
+        "weakCongrats": "Oh, olhe só para você — um fracote tão brilhante. Parabéns pelo que provavelmente é a primeira e única vitória da sua vida patética!"
     },
     "hardBtn": "Difícil",
     "restartBtn": "Recomeçar",

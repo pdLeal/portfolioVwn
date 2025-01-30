@@ -10,7 +10,6 @@ import moveToEmpty from '../../utils/moveToEmpty';
 import useCheckMovement from '../../hooks/puzzle/useCheckMovement';
 
 import { Fireworks } from '@fireworks-js/react'
-import { t } from 'i18next';
 import { useTranslation } from 'react-i18next';
 
 function PuzzleBoard() {

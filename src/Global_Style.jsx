@@ -27,11 +27,11 @@ const Global_Style = createGlobalStyle`
     :root {
         --an0xia-font: "VT323", monospace;
         --bg-color: #000;
-        --primary-color: #0ded0d;
+        --primary-color: ${({isWeak}) => !isWeak ? "#0ded0d" : "#6df7f7"};
         --redish: red;
         --blueish: blue;
-        --hover-color: #b4f7b4;
-        --active-color: #2b6a2b;
+        --hover-color: ${({isWeak}) => !isWeak ? "#b4f7b4" : "#f4fcc4"};
+        --active-color: ${({isWeak}) => !isWeak ? "#2b6a2b" : "#1a6c6c"};
         --typeSpeed: 5s;
         --delay: 1s;
         --default-shadow: 0px 0px 4px;

@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
+import useWeakContext from "../../contexts/WeakContext";
 
 function useShowBtns(timesMoved) {
-    
     const [showNext, setshowNext] = useState(false);
     const [showBtn, setShowBtn] = useState(false);
     const [showWeakBtn, setShowWeakBtn] = useState(false);
     const [canSkip, setCanSkip] = useState(false);
+    const { isWeak } = useWeakContext()
 
     useEffect(() => {
         if (localStorage.getItem('skippable')) setCanSkip(true);
@@ -15,7 +16,7 @@ function useShowBtns(timesMoved) {
 
     const handleTypeDone = (e) => {
         if (timesMoved > 10 || (e.touches && count > 3)) {
-            setshowNext(true);
+            !isWeak && setshowNext(true);
             // Ensures the user must interact with the button before triggering the next message.
         }
 
@@ -28,7 +29,7 @@ function useShowBtns(timesMoved) {
         }
     }
 
-    return {showNext, showBtn, showWeakBtn, canSkip, handleTypeDone}
+    return { showNext, showBtn, showWeakBtn, canSkip, handleTypeDone }
 }
 
 export default useShowBtns
